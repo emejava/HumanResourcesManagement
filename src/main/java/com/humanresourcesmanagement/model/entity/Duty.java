@@ -27,11 +27,11 @@ public class Duty {
 
     @JsonProperty("وظیفه")
     @NotBlank(message = "وظیفه را شرح دهید")
-    private String duty;
+    private String dutyExplanation;
 
-    public Duty(Position position, String duty) {
+    public Duty(Position position, String dutyExplanation) {
         this.position = position;
-        this.duty = duty;
+        this.dutyExplanation = dutyExplanation;
     }
 
     @Override
