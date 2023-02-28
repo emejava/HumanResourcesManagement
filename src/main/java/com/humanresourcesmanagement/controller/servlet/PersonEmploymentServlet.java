@@ -1,7 +1,9 @@
 package com.humanresourcesmanagement.controller.servlet;
 
 import com.humanresourcesmanagement.controller.PersonEmploymentController;
+import com.humanresourcesmanagement.model.entity.Duty;
 import com.humanresourcesmanagement.model.entity.Person;
+import com.humanresourcesmanagement.model.entity.Unit;
 import com.humanresourcesmanagement.model.entity.enums.EmploymentType;
 import com.humanresourcesmanagement.model.entity.enums.Position;
 import com.humanresourcesmanagement.model.entity.enums.ShiftWork;
@@ -20,16 +22,17 @@ public class PersonEmploymentServlet extends HttpServlet {
         Long personId = Long.valueOf(req.getParameter("personId"));
         EmploymentType employmentType = EmploymentType.valueOf(req.getParameter("EmploymentType"));
         Long unitId = Long.valueOf(req.getParameter("Unit"));
-        Long dutyId = Long.valueOf(req.getParameter("Duty"));
         Position position = Position.valueOf(req.getParameter("Position"));
         Timestamp startWorkingDate = Timestamp.valueOf(req.getParameter("StartWorkingDate"));
         String workingPerDay = req.getParameter("WorkingTimePerDay");
         ShiftWork shiftWork = ShiftWork.valueOf(req.getParameter("ShiftWork"));
         Person person = new Person();
+        person.setId(personId);
         Unit unit = new Unit();
-        Duty duty = new Duty();
-        PersonEmploymentController.getPersonEmploymentController().save(person.setId(personId),employmentType,unit.setId(unitId),
-                duty.setId(dutyId),position,startWorkingDate,workingPerDay,shiftWork);
+        unit.setId(unitId);
+        Duty duty = UnitController.findDutyByUnitId(unitId);
+        PersonEmploymentController.getPersonEmploymentController().save(person,employmentType,unit,
+                duty,position,startWorkingDate,workingPerDay,shiftWork);
 
         resp.sendRedirect("/employment.do");
     }
@@ -52,10 +55,12 @@ public class PersonEmploymentServlet extends HttpServlet {
         String workingPerDay = req.getParameter("WorkingTimePerDay");
         ShiftWork shiftWork = ShiftWork.valueOf(req.getParameter("ShiftWork"));
         Person person = new Person();
+        person.setId(personId);
         Unit unit = new Unit();
-        Duty duty = new Duty();
-        PersonEmploymentController.getPersonEmploymentController().edit(personnelCode,person.setId(personId),employmentType,unit.setId(unitId),
-                duty.setId(dutyId),position,startWorkingDate,workingPerDay,shiftWork);
+        unit.setId(unitId);
+        Duty duty = UnitController.findDutyByUnitId(unitId);
+        PersonEmploymentController.getPersonEmploymentController().edit(personnelCode,person,employmentType,unit,
+                duty,position,startWorkingDate,workingPerDay,shiftWork);
 
         resp.sendRedirect("/employment.do");
     }

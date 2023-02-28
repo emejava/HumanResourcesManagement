@@ -1,8 +1,10 @@
 package com.humanresourcesmanagement.controller;
 
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.model.entity.Duty;
 import com.humanresourcesmanagement.model.entity.Person;
 import com.humanresourcesmanagement.model.entity.PersonEmployment;
+import com.humanresourcesmanagement.model.entity.Unit;
 import com.humanresourcesmanagement.model.entity.enums.EmploymentType;
 import com.humanresourcesmanagement.model.entity.enums.Position;
 import com.humanresourcesmanagement.model.entity.enums.ShiftWork;
@@ -22,9 +24,9 @@ public class PersonEmploymentController {
     }
 
     public String save(Person person, EmploymentType employmentType, Unit unit, List<Duty> duties,
-                     Position position, Timestamp startWorkingDate, String workingTimePerDay, ShiftWork shiftWork) {
+                       Position position, Timestamp startWorkingDate, String workingTimePerDay, ShiftWork shiftWork) {
         try {
-            Long personnelCode = Long.valueOf(String.valueOf(unit.getId()) + String.valueOf(position.getId()) + String.valueOf(person.getId()));
+            Long personnelCode = Long.valueOf(String.valueOf(unit.getId()) + String.valueOf(position.ordinal()) + String.valueOf(person.getId()));
             PersonEmployment personEmployment = new PersonEmployment(personnelCode, person, employmentType, unit, duties, position, startWorkingDate, workingTimePerDay, shiftWork);
            return PersonEmploymentService.getPersonEmploymentService().save(personEmployment).toString();
         } catch (Exception e) {
