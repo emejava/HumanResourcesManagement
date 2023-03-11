@@ -30,22 +30,24 @@ public class RecruitmentSupplyDepController {
                 return "Invalid Age : Please Try Again\n";
         }
     }
-
     public String edit(long id, Person person, String education, String fieldOfStudy, int ageCondition, String university,
                        String workExperience, String lastJob, String lastJobExitReason, String lastJobAddress,
                        String lastJobNo, String jobObjective, String requestedSalary) {
-        try {
-            RecruitmentSupplyDep recruitmentSupplyDep = new RecruitmentSupplyDep(id, person, education, fieldOfStudy,
-                    ageCondition, university, workExperience, lastJob, lastJobExitReason, lastJobAddress, lastJobNo, jobObjective, requestedSalary);
-            return RecruitmentSupplyDepService.getSupplyDepService().edit(recruitmentSupplyDep).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper(e).toString();
+        if (ageCondition > 20 & ageCondition < 40) {
+            try {
+                RecruitmentSupplyDep recruitmentSupplyDep = new RecruitmentSupplyDep(id, person, education, fieldOfStudy, ageCondition, university, workExperience, lastJob, lastJobExitReason, lastJobAddress, lastJobNo, jobObjective, requestedSalary);
+                return RecruitmentSupplyDepService.getSupplyDepService().edit(recruitmentSupplyDep).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper(e).toString();
+            }
+        }else {
+            return "Invalid Age : Please Try Again\n";
         }
     }
-    public String remove(long id){
+    public String deactivate(Long id) {
         try {
             return RecruitmentSupplyDepService.getSupplyDepService().deactivate(id).toString();
-        }catch (Exception e) {
+        } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper(e).toString();
         }
     }
@@ -64,9 +66,9 @@ public class RecruitmentSupplyDepController {
             return ExceptionWrapper.getExceptionWrapper(e).toString();
         }
     }
-    public String findByPerson_id(long id){
+    public String findByPersonId(long id){
         try {
-            return RecruitmentSupplyDepService.getSupplyDepService().findByPerson_id(id).toString();
+            return RecruitmentSupplyDepService.getSupplyDepService().findByPersonId(id).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper(e).toString();
         }

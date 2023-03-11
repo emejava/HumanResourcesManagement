@@ -4,106 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/PersonEmploymentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/exceptions/ExceptionWrapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PersonEmploymentServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Attachment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Log.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/PersonEmployment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Access.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Action.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/EmploymentType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/FileType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Gender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/MaritalStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/ShiftWork.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/FastInfoset-1.2.15.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/antlr-2.7.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/asm-9.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/asyncutil-0.1.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/btf-1.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/byte-buddy-1.11.20.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/classmate-1.5.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/commons-dbcp2-2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/commons-dbcp2-2.1.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/commons-logging-1.1.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/commons-logging-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/commons-pool2-2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/commons-pool2-2.4.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/gson-2.9.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/hibernate-commons-annotations-5.1.2.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/hibernate-core-5.6.0.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/hibernate-validator-6.2.0.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/istack-commons-runtime-3.0.7.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jackson-annotations-2.11.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jackson-core-2.11.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jackson-coreutils-2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jackson-databind-2.11.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jackson-jaxrs-base-2.11.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jackson-jaxrs-json-provider-2.11.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jackson-module-jaxb-annotations-2.11.4.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jakarta.activation-1.2.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jakarta.activation-api-1.2.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jakarta.validation-api-2.0.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jandex-2.2.3.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/javax.activation-api-1.2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/javax.persistence-api-2.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jaxb-api-2.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jaxb-runtime-2.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jboss-annotations-api_1.3_spec-2.0.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jboss-jaxb-api_2.3_spec-2.0.0.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jboss-jaxrs-api_2.1_spec-2.0.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jboss-logging-3.4.2.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/json-patch-1.13.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/jstl-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/lombok-1.18.22.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/microprofile-config-api-2.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/msg-simple-1.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/ojdbc11-21.8.0.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/reactive-streams-1.0.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/resteasy-core-4.6.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/resteasy-core-spi-4.6.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/resteasy-jackson2-provider-4.6.0.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/resteasy-servlet-initializer-4.6.1.Final.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/smallrye-common-annotation-1.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/smallrye-common-classloader-1.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/smallrye-common-constraint-1.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/smallrye-common-expression-1.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/smallrye-common-function-1.6.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/smallrye-config-2.3.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/smallrye-config-common-2.3.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/smallrye-config-core-2.3.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/stax-ex-1.8.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/lib/txw2-2.3.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/repository/CrudRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/LogService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PersonEmploymentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/ServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/utils/JpaProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/beans.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="hello" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,35 +37,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Class/Java EE/Projects/HumanResourcesManagement/src/main/resources/META-INF&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15234375&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.updates&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "F:/Java EE/Projects/HumanResourcesManagement/src/main/webapp/WEB-INF/lib/gson-2.9.1.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15234375",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.updates",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;oracle&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.humanresourcesmanagement.model.entity.enums" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model\service" />
+      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model\entity" />
+      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller" />
       <recent name="F:\Class\Java EE\Projects\HumanResourcesManagement\src\main\resources\META-INF" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller\servlet" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.humanresourcesmanagement.model.entity.enums" />
@@ -197,8 +104,21 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="hello" />
+    <option name="LAST_COMMIT_MESSAGE" value="hello" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

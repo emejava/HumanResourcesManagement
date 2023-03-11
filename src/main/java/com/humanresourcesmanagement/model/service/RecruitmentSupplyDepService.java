@@ -1,16 +1,16 @@
 package com.humanresourcesmanagement.model.service;
 
-import com.humanresourcesmanagement.model.entity.RecruitmentSupplyDep;
-import com.humanresourcesmanagement.model.repository.CrudRepository;
 import com.humanresourcesmanagement.model.entity.Log;
+import com.humanresourcesmanagement.model.entity.RecruitmentSupplyDep;
 import com.humanresourcesmanagement.model.entity.enums.Action;
+import com.humanresourcesmanagement.model.repository.CrudRepository;
 
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RecruitmentSupplyDepService implements ServiceImpl<RecruitmentSupplyDep, Long> {
+public class RecruitmentSupplyDepService implements ServiceImpl<RecruitmentSupplyDep , Long> {
 
     private static RecruitmentSupplyDepService recruitmentSupplyDepService = new RecruitmentSupplyDepService();
 
@@ -75,28 +75,25 @@ public class RecruitmentSupplyDepService implements ServiceImpl<RecruitmentSuppl
         LogService.getLogService().save(log);
         return recruitmentSupplyDep;
     }
-    //متوجه این کدت نشدم
     @Override
     public List<RecruitmentSupplyDep> executeQuery(String namedQuery, Map<String, Object> params) throws Exception {
-        return null;
+        CrudRepository<RecruitmentSupplyDep ,Long> crudRepository = new CrudRepository<>();
+        return crudRepository.executeQuery(namedQuery,params);
     }
 //NamedQuery
-    public List<RecruitmentSupplyDep> findByPerson_id(Long id) throws Exception{
-        CrudRepository<RecruitmentSupplyDep , Long> repository = new CrudRepository<>();
+    public List<RecruitmentSupplyDep> findByPersonId(Long id) throws Exception{
         Map<String , Object> params = new HashMap<>();
         params.put("person" , id);
-        return repository.executeQuery("findByPerson.id",params);
+        return executeQuery("findByPersonId",params);
     }
     public List<RecruitmentSupplyDep> findByFieldOfStudy(String fieldOfStudy) throws Exception{
-        CrudRepository<RecruitmentSupplyDep , Long> repository = new CrudRepository<>();
         Map<String , Object> params = new HashMap<>();
         params.put("fieldOfStudy" ,fieldOfStudy);
-        return repository.executeQuery("findByFieldOfStudy",params);
+        return executeQuery("findByFieldOfStudy",params);
     }
     public List<RecruitmentSupplyDep> findByUniversity(String university) throws Exception{
-        CrudRepository<RecruitmentSupplyDep , Long> repository = new CrudRepository<>();
         Map<String , Object> params = new HashMap<>();
         params.put("university" ,university);
-        return repository.executeQuery("findByUniversity",params);
+        return executeQuery("findByUniversity",params);
     }
 }

@@ -1,7 +1,8 @@
 package com.humanresourcesmanagement.controller.servlet;
 
-import com.humanresourcesmanagement.model.entity.Person;
+
 import com.humanresourcesmanagement.controller.RecruitmentSupplyDepController;
+import com.humanresourcesmanagement.model.entity.Person;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -33,14 +34,13 @@ public class RecruitmentSupplyDepServlet extends HttpServlet {
                 education ,fieldOfStudy,ageCondition,university,workExperience,lastJob,lastJobExitReason,
                 lastJobAddress,lastJobNo,jobObjective,requestedSalary);
         response.sendRedirect("/RecruitmentSupplyDep.do");
+        response.getWriter().write("اطلاعات شما با صلاحیت ثبت شد");
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().setAttribute("RecruitmentSupplyList" ,RecruitmentSupplyDepController.getRecruitmentSupplyDepController().findAll());
         response.sendRedirect("RecruitmentSupply.jsp");
     }
-
     @Override
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Long id = Long.valueOf(request.getParameter("RecruitmentSupply_ID"));
@@ -61,13 +61,6 @@ public class RecruitmentSupplyDepServlet extends HttpServlet {
         RecruitmentSupplyDepController.getRecruitmentSupplyDepController().edit(id,person,
                 education ,fieldOfStudy,ageCondition,university,workExperience,lastJob,lastJobExitReason,
                 lastJobAddress,lastJobNo,jobObjective,requestedSalary);
-        response.sendRedirect("/RecruitmentSupplyDep.do");
-    }
-
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Long id = Long.valueOf(request.getParameter("RecruitmentSupply_ID"));
-        RecruitmentSupplyDepController.getRecruitmentSupplyDepController().remove(id);
         response.sendRedirect("/RecruitmentSupplyDep.do");
     }
 }
