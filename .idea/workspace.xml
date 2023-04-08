@@ -4,7 +4,89 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="hello" />
+    <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="hello">
+      <change afterPath="$PROJECT_DIR$/.jpb/jpb-settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/AccessLevelController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/DutyController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/FileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/MessageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/MessageFileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/PersonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/PositionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/RetirementController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/UnitController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/filter/ServerFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/filter/ServletFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ComposeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DutyServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/InboxServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetirementDepServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SingleMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/UnitServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/session/SessionManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/validation/ServletValidation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/websocket/GetHttpSessionConfigurator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/websocket/WsServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/AccessLevel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/File.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/MessageFile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/News.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Payment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Position.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Resignation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Retirement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/AccessLevelService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/DutyService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/FileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/MessageFileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/MessageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PositionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/RecruitmentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/RetirementService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/RoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/UnitService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diagram/HRM UCD.eddx" beforeDir="false" afterPath="$PROJECT_DIR$/Diagram/HRM UCD.eddx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/DismissalDepController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/DismissalController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/PersonEmploymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/EmploymentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/RecruitmentSupplyDepController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/RecruitmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/exceptions/ExceptionWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/exceptions/ExceptionWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DismissalDepServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DismissalDepServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PersonEmploymentServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PersonEmploymentServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PersonServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PersonServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentSupplyDepServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentSupplyDepServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Attachment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/DismissalDep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Dismissal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Duty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Duty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/PersonEmployment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Employment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/RecruitmentSupplyDep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Recruitment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Access.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/FileType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Position.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/repository/CrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/repository/CrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/DismissalDepService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/DismissalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/LogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PersonEmploymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/EmploymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/RecruitmentSupplyDepService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/ServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/ServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/utils/JpaProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/utils/JpaProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,9 +95,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="AnnotationType" />
+        <option value="Enum" />
         <option value="Class" />
+        <option value="com.haulmont.jpb.JpaEntity" />
       </list>
     </option>
   </component>
@@ -44,14 +127,14 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "F:/Java EE/Projects/HumanResourcesManagement/src/main/webapp/WEB-INF/lib/gson-2.9.1.jar",
+    "last_opened_file_path": "F:/Java EE/Projects/HumanResourcesManagement/src/main/java/com/humanresourcesmanagement/controller/servlet",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15234375",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.updates",
+    "settings.editor.selected.configurable": "com.haulmont.jpb.entityDeclaration",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -65,16 +148,21 @@
       <recent name="com.humanresourcesmanagement.model.entity.enums" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model\service" />
-      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model\entity" />
+      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller\servlet" />
       <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller" />
-      <recent name="F:\Class\Java EE\Projects\HumanResourcesManagement\src\main\resources\META-INF" />
+      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model\service" />
+      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model" />
+      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller\websocket" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller\servlet" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.humanresourcesmanagement.model.entity.enums" />
+      <recent name="com.humanresourcesmanagement.controller" />
+      <recent name="com.humanresourcesmanagement.model.entity" />
+      <recent name="com.humanresourcesmanagement.model.service" />
+      <recent name="com.humanresourcesmanagement.controller.session" />
+      <recent name="com.humanresourcesmanagement.model.repository" />
     </key>
   </component>
   <component name="RunManager">

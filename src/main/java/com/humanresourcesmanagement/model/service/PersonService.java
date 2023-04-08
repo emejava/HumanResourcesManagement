@@ -1,19 +1,22 @@
 package com.humanresourcesmanagement.model.service;
 
 
-
 import com.humanresourcesmanagement.model.entity.Log;
+import com.humanresourcesmanagement.model.entity.User;
 import com.humanresourcesmanagement.model.entity.enums.Action;
 import com.humanresourcesmanagement.model.entity.Person;
+import com.humanresourcesmanagement.model.entity.enums.Status;
 import com.humanresourcesmanagement.model.repository.CrudRepository;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class PersonService implements ServiceImpl<Person,Long>{
-    private static  PersonService personService = new PersonService();
+public class PersonService {
+    //  ---------SINGLETON---------------------------------------------------------
+    private static PersonService personService = new PersonService();
 
     private PersonService() {
     }
@@ -22,92 +25,173 @@ public class PersonService implements ServiceImpl<Person,Long>{
         return personService;
     }
 
-
-    @Override
-    public Person save(Person person) throws Exception {
-        CrudRepository<Person,Long> personDA = new CrudRepository<>();
-        person = personDA.save(person);
-        Log log =new Log(Action.Insert,person.toString(),  null);
-        LogService.getLogService().save(log);
-        return person;
+    //  ---------INSERT-DATA--------------------------------------------------------
+    public Person save(Person person, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            person = personDa.save(person);
+            Log log = new Log(Action.Insert, person.toString(), user);
+            LogService.getLogService().save(log);
+            return person;
+        }
     }
 
-    @Override
-    public Person edit(Person person) throws Exception {
-        CrudRepository<Person,Long> userDA = new CrudRepository<>();
-        return userDA.edit(person);
+    //  ---------UPDATE-DATA--------------------------------------------------------
+    public Person edit(Person person, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            person = personDa.edit(person);
+            Log log = new Log(Action.Update, person.toString(), user);
+            LogService.getLogService().save(log);
+            return person;
+        }
     }
 
-    @Override
-    public Person deactivate(Long id) throws Exception {
-        CrudRepository<Person,Long> userDA = new CrudRepository<>();
-        return userDA.deactivate(Person.class, id);
+    //  ---------DELETE-------------------------------------------------------------
+    public Person delete(Long id, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            Person person = personDa.delete(Person.class, id);
+            Log log = new Log(Action.Delete, person.toString(), user);
+            LogService.getLogService().save(log);
+            return person;
+        }
     }
 
-    @Override
-    public Person fire(Long id) throws Exception {
-        return null;
+    //  ---------LOGICAL-DELETE-----------------------------------------------------
+    public Person deactivate(Long id, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            Person person = personDa.findById(Person.class, id);
+            person.setStatus(Status.Inactive);
+            personDa.edit(person);
+            Log log = new Log(Action.Deactivate, person.toString(), user);
+            LogService.getLogService().save(log);
+            return person;
+        }
     }
 
-    @Override
-    public Person resign(Long id) throws Exception {
-        return null;
+    //  ---------ACTIVE-STATUS------------------------------------------------------
+    public Person activate(Long id, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            Person person = personDa.findById(Person.class, id);
+            person.setStatus(Status.Active);
+            personDa.edit(person);
+            Log log = new Log(Action.Activate, person.toString(), user);
+            LogService.getLogService().save(log);
+            return person;
+        }
     }
 
-    @Override
-    public Person remove(Long id) throws Exception {
-        return null;
+    //  ---------SELECT-ALL---------------------------------------------------------
+    public List<Person> findAll(User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            List<Person> personList = personDa.findAll(Person.class);
+            Log log = new Log(Action.Search, "All Persons", user);
+            LogService.getLogService().save(log);
+            return personList;
+        }
     }
 
-    @Override
-    public List<Person> findAll() throws Exception {
-        CrudRepository<Person,Long> personDA = new CrudRepository<>();
-        List<Person> personList  = personDA.findAll(Person.class);
-        Log log =new Log(Action.Search,"SELECT ALL",  null);
-        LogService.getLogService().save(log);
-        return personList;
+    //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
+    public List<Person> findAllActive(User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            List<Person> personList = personDa.executeQuery("person.findAllActive", null);
+            Log log = new Log(Action.Search, "All Active Persons", user);
+            LogService.getLogService().save(log);
+            return personList;
+        }
     }
 
-    @Override
-    public Person findById(Long id) throws Exception {
-        CrudRepository<Person,Long> personDA = new CrudRepository<>();
-        return personDA.findById(Person.class,id);
+    //  ---------SELECT-BY-ID-------------------------------------------------------
+    public Person findById(Long id, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            Person person = personDa.findById(Person.class, id);
+            Log log = new Log(Action.Search, person.toString(), user);
+            LogService.getLogService().save(log);
+            return person;
+        }
     }
 
-    @Override
+    //  ---------SELECT-BY-FIRSTNAME-AND-LASTNAME-------------------------------------
+    public Person findByFirstAndLastName(String firstName, String lastName, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("firstName", firstName);
+            params.put("lastName", firstName);
+            List<Person> persons = personDa.executeQuery("person.findByFirstAndLastName", params);
+            Log log = new Log(Action.Search, "All Active Persons", user);
+            LogService.getLogService().save(log);
+            if (persons.size() == 1) {
+                return persons.get(0);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    //  ---------SELECT-BY-NATIONAL-CODE----------------------------------------------
+    public Person findByNationalCode(String nationalCode, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("nationalCode", nationalCode);
+            List<Person> persons = personDa.executeQuery("person.findByNationalCode", params);
+            Log log = new Log(Action.Search, persons.toString(), user);
+            LogService.getLogService().save(log);
+            if (persons.size() == 1) {
+                return persons.get(0);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    //  ---------SELECT-BY-PHONE-NO---------------------------------------------------
+    public Person findByPhoneNo(String phoneNo, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("phoneNo", phoneNo);
+            List<Person> persons = personDa.executeQuery("person.findByPhoneNo", params);
+            Log log = new Log(Action.Search, persons.toString(), user);
+            LogService.getLogService().save(log);
+            if (persons.size() == 1) {
+                return persons.get(0);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    //  ---------SELECT-BY-BIRTHDAY---------------------------------------------------
+    public Person findByBirthDay(Timestamp birthDay, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("birthDay", birthDay);
+            List<Person> persons = personDa.executeQuery("person.findByBirthday", params);
+            Log log = new Log(Action.Search, persons.toString(), user);
+            LogService.getLogService().save(log);
+            if (persons.size() == 1) {
+                return persons.get(0);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    //  ---------SELECT-BY-PERSONNEL-CODE---------------------------------------------
+    public Person findByPersonnelCode(String personnelCode, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("personnelCode", personnelCode);
+            List<Person> persons = personDa.executeQuery("person.findByPersonnelCode", params);
+            Log log = new Log(Action.Search, persons.toString(), user);
+            LogService.getLogService().save(log);
+            if (persons.size() == 1) {
+                return persons.get(0);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    //  ---------RUN-NAMED-QUERIES----------------------------------------------------
     public List<Person> executeQuery(String namedQuery, Map<String, Object> params) throws Exception {
         return null;
     }
-//    @Override
-//    public Person findByFirstName(String firstName) throws Exception {
-//        CrudRepository<Person,String> personDA = new CrudRepository<>();
-//        return personDA.findByFirstName(Person.class,firstName);
-//    }
-//
-//    @Override
-//    public Person findByLastName(String lastName) throws Exception {
-//        CrudRepository<Person,String> personDA = new CrudRepository<>();
-//        return personDA.selectByLastName(Person.class,lastName);
-//    }
-//
-//    @Override
-//    public Person findByNationalCode(String nationalCode) throws Exception {
-//        CrudRepository<Person,String> personDA = new CrudRepository<>();
-//        return personDA.selectByNationalCode(Person.class,nationalCode);
-//    }
-//
-//    @Override
-//    public Person findByPhoneNo(String phoneNo) throws Exception {
-//        CrudRepository<Person,String> personDA = new CrudRepository<>();
-//        return personDA.selectByPhoneNo(Person.class,phoneNo);
-//    }
-//
-//    @Override
-//    public Person findByBirthDay(LocalDate birthDay) throws Exception {
-//        CrudRepository<Person,LocalDate> personDA = new CrudRepository<>();
-//        return personDA.selectByBirthDay(Person.class,birthDay);
-//    }
-
-
-
 }

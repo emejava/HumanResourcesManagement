@@ -1,7 +1,7 @@
 package com.humanresourcesmanagement.controller.servlet;
 
 
-import com.humanresourcesmanagement.controller.RecruitmentSupplyDepController;
+import com.humanresourcesmanagement.controller.RecruitmentController;
 import com.humanresourcesmanagement.model.entity.Person;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -30,7 +30,7 @@ public class RecruitmentSupplyDepServlet extends HttpServlet {
         String requestedSalary =request.getParameter("Requested Salary");
         Person person = new Person();
         person.setId(personId);
-        RecruitmentSupplyDepController.getRecruitmentSupplyDepController().save(person,
+        RecruitmentController.getRecruitmentSupplyDepController().save(person,
                 education ,fieldOfStudy,ageCondition,university,workExperience,lastJob,lastJobExitReason,
                 lastJobAddress,lastJobNo,jobObjective,requestedSalary);
         response.sendRedirect("/RecruitmentSupplyDep.do");
@@ -38,7 +38,7 @@ public class RecruitmentSupplyDepServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().setAttribute("RecruitmentSupplyList" ,RecruitmentSupplyDepController.getRecruitmentSupplyDepController().findAll());
+        request.getSession().setAttribute("RecruitmentSupplyList" , RecruitmentController.getRecruitmentSupplyDepController().findAll());
         response.sendRedirect("RecruitmentSupply.jsp");
     }
     @Override
@@ -58,7 +58,7 @@ public class RecruitmentSupplyDepServlet extends HttpServlet {
         String requestedSalary =request.getParameter("Requested Salary");
         Person person = new Person();
         person.setId(personId);
-        RecruitmentSupplyDepController.getRecruitmentSupplyDepController().edit(id,person,
+        RecruitmentController.getRecruitmentSupplyDepController().edit(id,person,
                 education ,fieldOfStudy,ageCondition,university,workExperience,lastJob,lastJobExitReason,
                 lastJobAddress,lastJobNo,jobObjective,requestedSalary);
         response.sendRedirect("/RecruitmentSupplyDep.do");

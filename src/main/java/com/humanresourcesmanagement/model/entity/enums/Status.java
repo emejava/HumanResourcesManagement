@@ -4,5 +4,9 @@ public enum Status {
     Active,
     Inactive,
     Fired,
-    Resigned
+    Resigned,
+    Retired,
+    Accepted,
+    Rejected,
+    Pending
 }

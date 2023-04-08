@@ -6,15 +6,17 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class ExceptionWrapper {
+    //   ---------SINGLETON---------------------------------------------------------------
     private static ExceptionWrapper exceptionWrapper = new ExceptionWrapper();
 
-    public ExceptionWrapper() {
+    private ExceptionWrapper() {
     }
 
-    public static ExceptionWrapper getExceptionWrapper(Exception e) {
+    public static ExceptionWrapper getExceptionWrapper() {
         return exceptionWrapper;
     }
 
+    //    ---------------------------------------------------------------------------------
     public String getMessage(Exception exception) {
         if (exception instanceof SQLException) {
             return "SQL Message: Check Your SQL CODES\n" + exception.getMessage();

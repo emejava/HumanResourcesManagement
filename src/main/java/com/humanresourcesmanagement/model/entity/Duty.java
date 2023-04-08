@@ -2,38 +2,60 @@ package com.humanresourcesmanagement.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
-import com.humanresourcesmanagement.model.entity.enums.Position;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
+import com.humanresourcesmanagement.model.entity.enums.Status;
+import oracle.jdbc.proxy.annotation.Pre;
 
-import java.util.List;
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 
 @Entity(name = "dutyEntity")
 @Table(name = "tb_duty")
+@NamedQueries({
+        @NamedQuery(
+                name = "duty.findByPosition",
+                query = "SELECT d FROM dutyEntity d WHERE d.position=:position AND d.status =:Active ")})
 public class Duty {
     @Id
+    @JsonProperty("کد")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Enumerated(value = EnumType.STRING)
+    @JsonProperty("سمت")
+    @NonNull
+    @NotBlank(message = "سمت را انتخاب کنید")
+    @OneToOne
     private Position position;
 
-    @JsonProperty("وظیفه")
+    @JsonProperty("شرح وظیفه")
+    @NonNull
     @NotBlank(message = "وظیفه را شرح دهید")
+    @Pattern(regexp = "، [آ-ی \\s]", message = "لطفا از حروف فارسی استفاده کنید")
+    @Column(name = "dutyExplanation", columnDefinition = "NVARCHAR2(255)")
     private String dutyExplanation;
 
-    public Duty(Position position, String dutyExplanation) {
+    @JsonProperty("وضعیت")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", columnDefinition = "NVARCHAR2(10)")
+    private Status status;
+
+    public Duty(Long id, @NonNull Position position, @NonNull String dutyExplanation) {
+        this.id = id;
         this.position = position;
         this.dutyExplanation = dutyExplanation;
     }
 
+    @PrePersist
+    public void statusSet(){
+        status = Status.Active;
+    }
     @Override
     public String toString() {
         return new Gson().toJson(this);

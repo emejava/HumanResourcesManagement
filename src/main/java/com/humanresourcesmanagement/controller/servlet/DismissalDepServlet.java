@@ -1,5 +1,5 @@
 package com.humanresourcesmanagement.controller.servlet;
-import com.humanresourcesmanagement.controller.DismissalDepController;
+import com.humanresourcesmanagement.controller.DismissalController;
 import com.humanresourcesmanagement.model.entity.Person;
 import com.humanresourcesmanagement.model.entity.enums.Status;
 import jakarta.servlet.annotation.WebServlet;
@@ -20,14 +20,14 @@ public class DismissalDepServlet extends HttpServlet {
         Long checkOut = Long.valueOf(req.getParameter("checkOut"));
         Person person = new Person();
 
-        DismissalDepController.getDismissalDepController().save(personId,personnelCode,
+        DismissalController.getDismissalDepController().save(personId,personnelCode,
                 reasonOfDismissal,timestamp,status,checkOut);
         resp.sendRedirect("/dismissalDep.do");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        req.getSession().setAttribute("dismissalDep",DismissalDepController.getDismissalDepController().findAll());
+        req.getSession().setAttribute("dismissalDep", DismissalController.getDismissalDepController().findAll());
         resp.sendRedirect("dismissalDep.jsp");
     }
 
@@ -40,7 +40,7 @@ public class DismissalDepServlet extends HttpServlet {
         Status status = Status.valueOf(req.getParameter("status"));
         Long checkOut = Long.valueOf(req.getParameter("checkOut"));
         Person person = new Person();
-        DismissalDepController.getDismissalDepController().save(personId,personnelCode,
+        DismissalController.getDismissalDepController().save(personId,personnelCode,
                 reasonOfDismissal,timestamp,status,checkOut);
         resp.sendRedirect("/dismissalDep.do");
     }
@@ -48,7 +48,7 @@ public class DismissalDepServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Long personnelCode = Long.valueOf(req.getParameter("personnelCode"));
-        DismissalDepController.getDismissalDepController().remove(personnelCode);
+        DismissalController.getDismissalDepController().remove(personnelCode);
 
         resp.sendRedirect("/employment.do");
     }

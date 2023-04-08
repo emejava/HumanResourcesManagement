@@ -1,10 +1,11 @@
 package com.humanresourcesmanagement.model.service;
 
-import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
 import com.humanresourcesmanagement.model.entity.Log;
 import com.humanresourcesmanagement.model.repository.CrudRepository;
 
 public class LogService {
+
+    //  ---------SINGLETON---------------------------------------------------------
     private static LogService logService = new LogService();
 
     private LogService() {
@@ -13,8 +14,14 @@ public class LogService {
     public static LogService getLogService() {
         return logService;
     }
-    public Log save(Log log){
-            CrudRepository<Log,Long> logDA = new CrudRepository<>();
-            return logDA.save(log);
+
+    //  ---------INSERT-LOG---------------------------------------------------------
+    public Log save(Log log) throws Exception {
+        try(CrudRepository<Log, Long> logDa = new CrudRepository<>()) {
+            logDa.save(log);
+            return log;
+        }
     }
+
 }
+

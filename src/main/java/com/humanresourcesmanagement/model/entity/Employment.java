@@ -4,82 +4,89 @@ package com.humanresourcesmanagement.model.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
 import com.humanresourcesmanagement.model.entity.enums.EmploymentType;
-import com.humanresourcesmanagement.model.entity.enums.Position;
 import com.humanresourcesmanagement.model.entity.enums.ShiftWork;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-
-import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.List;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 
-@Entity(name = "PersonEmploymentEntity")
-@Table(name = "tb_personEmployment")
-//@NamedNativeQuery(name = "PE.personnelCode", query = "Select personnelcode_seq.nextval from dual")
-//@NamedQueries({@NamedQuery(name = "PE.UnitId", query = "Select un from unitEntity un where unit.name=:name")})
-public class PersonEmployment implements Serializable {
+@Entity(name = "employmentEntity")
+@Table(name = "tb_employment")
+public class Employment {
     @Id
     @JsonProperty("کد پرسنلی")
-    @NotBlank(message = "کد پرسنلی را وارد کنید")
-    private long personnelCode;
-    //    String code = + personEmploymentDa.findById(Unit.class,personEmployment.getUnit()).toString() +
+    @Column(name = "personnelCode",columnDefinition = "NUMBER(10)")
+    private Long personnelCode;
     
     @JsonProperty("شخص")
-    @NotBlank(message = "کد شخص مورد نظر را وارد کنید")
+    @NonNull
     @OneToOne
     private Person person;
 
     @JsonProperty("نوع استخدام")
+    @NonNull
     @NotBlank(message = "نوع استخدام راانتخاب کنید")
+    @Column(name = "employmentType", columnDefinition = "NVARCHAR2(15)")
     @Enumerated(EnumType.STRING)
     private EmploymentType employmentType;
 
     @JsonProperty("بخش")
+    @NonNull
     @NotBlank(message = "بخش راانتخاب کنید")
     @OneToOne
     private Unit unit;
 
     @JsonProperty("وظایف")
+    @NonNull
     @NotBlank(message = "وظایف را وارد کنید")
     @OneToOne
-    private List<Duty> duties;
+    private Duty duty;
 
     @JsonProperty("سمت")
+    @NonNull
     @NotBlank(message = "سمت به درستی انتخاب نشده")
-    @Enumerated(EnumType.STRING)
+    @OneToOne
     private Position position;
 
-    @JsonProperty("تاریخ شروع به کار")
+    @JsonProperty("تاریخ آمادگی شروع به کار")
+    @NonNull
     @NotBlank(message = "تاریخ شروع به کار را وارد کنید")
-    @Temporal(TemporalType.TIMESTAMP)
     private Timestamp startWorkingDate;
 
-
-    @JsonProperty("مجموع ساعت کاری روزانه")
-    @NotBlank(message = "مجموع ساعت کاری روزانه را وارد کنید")
-    private String workingTimePerDay;
-
     @JsonProperty("شیفت")
+    @NonNull
     @NotBlank(message = "شیفت کاری را انتخاب کنید")
+    @Column(name = "shiftWork", columnDefinition = "NVARCHAR2(15)")
     @Enumerated(EnumType.STRING)
     private ShiftWork shiftWork;
 
+    @JsonProperty("عکس قرارداد")
+    @OneToOne
+    private File CV;
 
-    public PersonEmployment(Person person, EmploymentType employmentType, Unit unit, List<Duty> duties, Position position, Timestamp startWorkingDate, String workingTimePerDay, ShiftWork shiftWork) {
+    public Employment(
+            Long personnelCode,
+            @NonNull Person person,
+            @NonNull EmploymentType employmentType,
+            @NonNull Unit unit,
+            @NonNull Duty duty,
+            @NonNull Position position,
+            @NonNull Timestamp startWorkingDate,
+            @NonNull ShiftWork shiftWork) {
+        this.personnelCode = personnelCode;
         this.person = person;
         this.employmentType = employmentType;
         this.unit = unit;
-        this.duties = duties;
+        this.duty = duty;
         this.position = position;
         this.startWorkingDate = startWorkingDate;
-        this.workingTimePerDay = workingTimePerDay;
         this.shiftWork = shiftWork;
     }
 

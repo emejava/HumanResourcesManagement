@@ -1,7 +1,6 @@
 package com.humanresourcesmanagement.model.service;
 
-import com.humanresourcesmanagement.model.entity.Log;
-import com.humanresourcesmanagement.model.entity.User;
+import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.enums.Action;
 import com.humanresourcesmanagement.model.entity.enums.Status;
 import com.humanresourcesmanagement.model.repository.CrudRepository;
@@ -10,7 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserService {
+public class UserService{
+
+    //  ---------SINGLETON---------------------------------------------------------
     private static UserService userService = new UserService();
 
     private UserService() {
@@ -20,64 +21,129 @@ public class UserService {
         return userService;
     }
 
-    public User save(User user) throws Exception {
-        CrudRepository<User, Long> userDa = new CrudRepository<>();
-        user.setStatus(Status.Active);
-        user = userDa.save(user);
-        Log log = new Log(Action.Insert, user.toString(), null);
-        LogService.getLogService().save(log);
-        return user;
-    }
-
-    public User edit(User user) throws Exception {
-        CrudRepository<User, Long> userDa = new CrudRepository<>();
-        user = userDa.edit(user);
-        Log log = new Log(Action.Update, user.toString(), null);
-        LogService.getLogService().save(log);
-        return user;
-    }
-
-    public User deactivate(Long id) throws Exception {
-        CrudRepository<User, Long> userDa = new CrudRepository<>();
-            User user = userDa.deactivate(User.class,id);
-            Log log = new Log(Action.Change_Status, user.toString(), null);
-        LogService.getLogService().save(log);
-        return userDa.deactivate(User.class, id);
-    }
-
-    public List<User> findAll() throws Exception {
-        CrudRepository<User, Long> userDa = new CrudRepository<>();
-        List<User> userList = userDa.findAll(User.class);
-        Log log = new Log(Action.Search,"Select All", null);
-        LogService.getLogService().save(log);
-        return userList;
-
-    }
-
-    public User findById(Long id) throws Exception {
-        CrudRepository<User, Long> userDa = new CrudRepository<>();
-        User user =  userDa.findById(User.class,id);
-        Log log = new Log(Action.Search,user.toString(), null);
-        LogService.getLogService().save(log);
-        return user;
-    }
-
-
-    public User isValidate(String userName,String password){
-        CrudRepository<User,Long> userDa = new CrudRepository<>();
-        Map<String,Object> paramMap = new HashMap<>();
-        paramMap.put("username",userName);
-        paramMap.put("password",password);
-        if(userDa.executeQuery("User.isValidate",paramMap)!=null){
-            User user = userDa.executeQuery("User.isValidate",paramMap).get(0);
-            Log log = new Log(Action.Success_Login,userName+"/"+password,null);
+    //  ---------INSERT-DATA--------------------------------------------------------
+    public User save(User newUser,User user) throws Exception {
+        try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            newUser = userDa.save(newUser);
+            Log log = new Log(Action.Insert, newUser.toString(), user);
             LogService.getLogService().save(log);
-            return user;
-        }else{
-            Log log = new Log(Action.Failed_Login,userName+"/"+password,null);
-            LogService.getLogService().save(log);
-            return null;
+            return newUser;
         }
+    }
 
+    //  ---------UPDATE-DATA--------------------------------------------------------
+    public User edit(User userToEdit,User user) throws Exception {
+        try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            userToEdit = userDa.edit(userToEdit);
+            Log log = new Log(Action.Update, userToEdit.toString(), user);
+            LogService.getLogService().save(log);
+            return userToEdit;
+        }
+    }
+
+    //  ----------DELETE------------------------------------------------------------
+    public User delete(Long id,User user) throws Exception {
+        try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            User foundUser = userDa.delete(User.class, id);
+            Log log = new Log(Action.Delete, foundUser.toString(), user);
+            LogService.getLogService().save(log);
+            return foundUser;
+        }
+    }
+
+    //  ---------LOGICAL-DELETE-----------------------------------------------------
+    public User deactivate(Long id,User user) throws Exception {
+        try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            User foundUser = userDa.findById(User.class, id);
+            foundUser.setStatus(Status.Inactive);
+            userDa.edit(foundUser);
+            Log log = new Log(Action.Deactivate, foundUser.toString(), user);
+            LogService.getLogService().save(log);
+            return foundUser;
+        }
+    }
+
+    //  ---------ACTIVE-STATUS------------------------------------------------------
+    public User activate(Long id,User user) throws Exception {
+        try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            User foundUser = userDa.findById(User.class, id);
+            foundUser.setStatus(Status.Active);
+            userDa.edit(foundUser);
+            Log log = new Log(Action.Activate, foundUser.toString(), user);
+            LogService.getLogService().save(log);
+            return foundUser;
+        }
+    }
+
+    //  ---------SELECT-ALL---------------------------------------------------------
+    public List<User> findAll(User user) throws Exception {
+        try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            List<User> users = userDa.findAll(User.class);
+            Log log = new Log(Action.Search, "All Users", user);
+            LogService.getLogService().save(log);
+            return users;
+        }
+    }
+
+    //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
+    public List<User> findAllActive(User user) throws Exception {
+        try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            List<User> activeUsers = userDa.executeQuery("user.findAllActive", null);
+            Log log = new Log(Action.Search, "All Active Users", user);
+            LogService.getLogService().save(log);
+            return activeUsers;
+        }
+    }
+
+    //  ---------SELECT-BY-ID-------------------------------------USER-HAS-NO-ID(LONG)
+    public User findById(Long id) throws Exception {
+        return null;
+    }
+
+    //  ---------SELECT-BY-USERNAME---------------------------------------------------
+    public User findByUsername(String username,User user) throws Exception {
+        try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("userName", username);
+            List<User> users = userDa.executeQuery("user.findByUsername", params);
+            Log log = new Log(Action.Search, users.toString(), user);
+            LogService.getLogService().save(log);
+            if (users.size() == 1) {
+                return users.get(0);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    //  ---------VALIDATE-LOGIN-DATA--------------------------------------------------
+    public User isValidate(String username, String password) throws Exception {
+        try (CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("userName", username);
+            params.put("password", password);
+            List<User> users = userDa.executeQuery("user.isValidate", params);
+            User user = null;
+            if (users.size() == 1) {
+                return users.get(0);
+            } else {
+                return null;
+            }
+        }
+    }
+
+    //  ---------CHECK-USER-ACCESS---------------------------------------------------
+    public String hasAccess(String username) throws Exception {
+        try (CrudRepository<User, Long> userDa = new CrudRepository<>()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("userName", username);
+            List<User> users = userDa.executeQuery("user.hasAccess", params);
+            User user1 = null;
+            if (users.size() == 1) {
+                return users.get(0).getAccessLevel().getTitle();
+            } else {
+                return null;
+            }
+        }
     }
 }

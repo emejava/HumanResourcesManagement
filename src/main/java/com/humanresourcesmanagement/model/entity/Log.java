@@ -1,56 +1,56 @@
 package com.humanresourcesmanagement.model.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.model.entity.enums.Action;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Persister;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@RequiredArgsConstructor
 
 @Entity(name = "logEntity")
-@Table(name = "t_log")
+@Table(name = "tb_log")
 public class Log {
     @Id
+    @JsonProperty("کد")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @JsonProperty("نوع عملیات")
     @Enumerated(EnumType.STRING)
+    @NonNull
+    @Column(name = "action", columnDefinition = "NVARCHAR2(15)")
     private Action action;
 
-    @Column(columnDefinition = "VARCHAR2(255)")
+    @JsonProperty("توضیحات")
+    @NonNull
+    @Column(columnDefinition = "VARCHAR2(150)")
     private String data;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @JsonProperty("تاریخ")
     private Timestamp timestamp;
 
+    @JsonProperty("عامل")
     @OneToOne
+    @NonNull
     private User user;
 
-    public Log(Action action, String data, User user) {
-        this.action = action;
-        this.data = data;
-        this.user = user;
-    }
-
-
-    @PrePersist
-    public void logTimeSetter() {
-        this.timestamp = Timestamp.valueOf(LocalDateTime.now());
-    }
-
     @PostPersist
-    public void showLog() {
-        System.out.printf("JakartaEE [LOG] at [%s] - Action : [%s] - on Data : [%s] \n",
-                this.timestamp,
-                this.action,
-                this.data);
+    public void setTimeStamp(){
+        timestamp = Timestamp.valueOf(LocalDateTime.now());
+    }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 }

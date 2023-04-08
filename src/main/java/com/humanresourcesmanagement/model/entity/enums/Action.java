@@ -6,7 +6,9 @@ public enum Action {
     Logout,
     Insert,
     Update,
-    Change_Status,
+    Deactivate,
+    Activate,
+    Delete,
     Search,
-    Add_attachment
+    SearchBy
 }

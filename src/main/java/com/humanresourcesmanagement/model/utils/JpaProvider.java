@@ -7,13 +7,21 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 public class JpaProvider {
-    private static JpaProvider jpaProvider = new JpaProvider();
-    private EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("eme");
+    //  -------SINGLETON---------------------------
+    private static final JpaProvider jpaProvider = new JpaProvider();
 
+    private JpaProvider() {
+    }
     public static JpaProvider getJpaProvider() {
         return jpaProvider;
     }
 
+
+    //  -------CREATE-FACTORY----------------------
+    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("vaqf");
+
+
+    //  -------RETURN-AND-CREATE-ENTITY-MANAGER-----
     public EntityManager getEntityManager(){
         return entityManagerFactory.createEntityManager();
     }

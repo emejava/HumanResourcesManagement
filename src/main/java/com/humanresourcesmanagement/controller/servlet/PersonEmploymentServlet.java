@@ -1,11 +1,11 @@
 package com.humanresourcesmanagement.controller.servlet;
 
-import com.humanresourcesmanagement.controller.PersonEmploymentController;
+import com.humanresourcesmanagement.controller.EmploymentController;
+import com.humanresourcesmanagement.controller.UnitController;
 import com.humanresourcesmanagement.model.entity.Duty;
 import com.humanresourcesmanagement.model.entity.Person;
 import com.humanresourcesmanagement.model.entity.Unit;
 import com.humanresourcesmanagement.model.entity.enums.EmploymentType;
-import com.humanresourcesmanagement.model.entity.enums.Position;
 import com.humanresourcesmanagement.model.entity.enums.ShiftWork;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -30,8 +30,8 @@ public class PersonEmploymentServlet extends HttpServlet {
         person.setId(personId);
         Unit unit = new Unit();
         unit.setId(unitId);
-        Duty duty = UnitController.findDutyByUnitId(unitId);
-        PersonEmploymentController.getPersonEmploymentController().save(person,employmentType,unit,
+        Duty duty = UnitController.getUnitController().findDutyByUnitId(unitId);
+        EmploymentController.getPersonEmploymentController().save(person,employmentType,unit,
                 duty,position,startWorkingDate,workingPerDay,shiftWork);
 
         resp.sendRedirect("/employment.do");
@@ -39,7 +39,7 @@ public class PersonEmploymentServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        req.getSession().setAttribute("personEmploymentList",PersonEmploymentController.getPersonEmploymentController().findAll());
+        req.getSession().setAttribute("personEmploymentList", EmploymentController.getPersonEmploymentController().findAll());
         resp.sendRedirect("employment.jsp");
     }
 
@@ -59,7 +59,7 @@ public class PersonEmploymentServlet extends HttpServlet {
         Unit unit = new Unit();
         unit.setId(unitId);
         Duty duty = UnitController.findDutyByUnitId(unitId);
-        PersonEmploymentController.getPersonEmploymentController().edit(personnelCode,person,employmentType,unit,
+        EmploymentController.getPersonEmploymentController().edit(personnelCode,person,employmentType,unit,
                 duty,position,startWorkingDate,workingPerDay,shiftWork);
 
         resp.sendRedirect("/employment.do");
@@ -68,7 +68,7 @@ public class PersonEmploymentServlet extends HttpServlet {
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Long personnelCode = Long.valueOf(req.getParameter("personnelCode"));
-        PersonEmploymentController.getPersonEmploymentController().deactivate(personnelCode);
+        EmploymentController.getPersonEmploymentController().deactivate(personnelCode);
 
         resp.sendRedirect("/employment.do");
     }
