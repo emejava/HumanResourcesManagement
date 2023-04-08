@@ -17,5 +17,5 @@ import lombok.*;
 @Table(name = "tb_leaveDays")
 public class LeaveDays {
     @Id
-    private Long ide;
+    private Long id;
 }
