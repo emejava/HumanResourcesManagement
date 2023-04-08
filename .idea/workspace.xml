@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="the latest version" />
+    <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="the latest version">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/ResignationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/LeaveDays.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/ResignationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Dismissal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Dismissal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Payment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Resignation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Resignation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Retirement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Retirement.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +24,8 @@
       <list>
         <option value="AnnotationType" />
         <option value="Enum" />
-        <option value="Class" />
         <option value="com.haulmont.jpb.JpaEntity" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -29,6 +38,9 @@
         <option name="workspaceImportEnabled" value="true" />
       </MavenImportingSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2LdhydQDQ791ZWxZ09PhVYC0gts" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

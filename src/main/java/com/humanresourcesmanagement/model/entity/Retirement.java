@@ -18,14 +18,11 @@ import java.time.LocalDate;
 
 @Entity(name = "retirementEntity")
 @Table(name = "tb_retirement")
-
-
 @NamedQueries({
         @NamedQuery(name="retirement.findByPersonnelCode",
                 query = "select r from retirementEntity r where r.person.employment.personnelCode=:personnelCode"),
         @NamedQuery(name="retirement.findByDate",
                 query = "select r from retirementEntity r where r.date=:date")})
-
 public class Retirement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,9 +45,8 @@ public class Retirement {
     @OneToOne
     private Payment lastPayment;
 
-    @JsonProperty("")
+    @JsonProperty("استعفا نامه")
     @NonNull
-    @NotBlank(message = "")
     @OneToOne
     private File attachment;
 

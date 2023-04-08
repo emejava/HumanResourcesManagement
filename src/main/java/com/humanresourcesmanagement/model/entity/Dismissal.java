@@ -63,12 +63,12 @@ public class Dismissal {
             @NonNull Person person,
             @NonNull String reason,
             @NonNull LocalDate date,
-            Payment payment) {
+            Payment lastPayment) {
         this.id = id;
         this.person = person;
         this.reason = reason;
         this.date = date;
-        this.payment = payment;
+        this.lastPayment = lastPayment;
     }
     @Override
     public String toString() {

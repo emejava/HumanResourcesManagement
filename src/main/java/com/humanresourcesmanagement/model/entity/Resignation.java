@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.google.gson.Gson;
 import com.humanresourcesmanagement.model.entity.enums.Status;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -14,9 +15,13 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 
-
 @Entity(name = "resignationEntity")
 @Table(name = "tb_resignation")
+@NamedQueries({
+        @NamedQuery(name="resignation.findByPersonnelCode",
+                query = "select r from resignationEntity r where r.person.employment.personnelCode=:personnelCode"),
+        @NamedQuery(name="resignation.findByDate",
+                query = "select r from resignationEntity r where r.date=:date")})
 public class Resignation {
     @Id
     @JsonProperty("کد")
@@ -42,22 +47,41 @@ public class Resignation {
     @OneToOne
     private File attachment;
 
+    @JsonProperty("آخرین فیش حقوقی")
+    @NonNull
+    @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
+    @OneToOne
+    private Payment lastPayment;
+
     @PrePersist
     public void statusSet(){
         status = Status.Pending;
     }
 
-    public Resignation(@NonNull Person person, @NonNull LocalDate date, @NonNull File attachment) {
+    public Resignation(
+            Long id,
+            @NonNull Person person,
+            @NonNull File attachment,
+            @NonNull Payment lastPayment) {
+        this.id = id;
+        this.person = person;
+        this.attachment = attachment;
+        this.lastPayment = lastPayment;
+    }
+
+    public Resignation(
+            @NonNull Person person,
+            @NonNull LocalDate date,
+            @NonNull File attachment) {
         this.person = person;
         this.date = date;
         this.attachment = attachment;
     }
 
-    public Resignation(Long id, @NonNull Person person, @NonNull LocalDate date, @NonNull File attachment) {
+    public Resignation(Long id, @NonNull Person person, Status status) {
         this.id = id;
         this.person = person;
-        this.date = date;
-        this.attachment = attachment;
+        this.status = status;
     }
 
     @Override
