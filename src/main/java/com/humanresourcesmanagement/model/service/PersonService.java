@@ -175,7 +175,7 @@ public class PersonService {
     }
 
     //  ---------SELECT-BY-PERSONNEL-CODE---------------------------------------------
-    public Person findByPersonnelCode(String personnelCode, User user) throws Exception {
+    public Person findByPersonnelCode(Long personnelCode, User user) throws Exception {
         try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
             Map<String, Object> params = new HashMap<>();
             params.put("personnelCode", personnelCode);

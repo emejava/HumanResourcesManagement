@@ -8,5 +8,6 @@ public enum Status {
     Retired,
     Accepted,
     Rejected,
-    Pending
+    Pending,
+    Payed
 }

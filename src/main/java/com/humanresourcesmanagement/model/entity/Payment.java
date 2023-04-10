@@ -14,6 +14,7 @@ import java.sql.Time;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.Year;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,6 +25,18 @@ import java.time.Year;
 
 @Entity(name = "paymentEntity")
 @Table(name = "tb_payment")
+@NamedQueries({
+        @NamedQuery(
+                name = "payment.findAllActive",query = "SELECT p FROM paymentEntity p WHERE p.status =:Active"),
+        @NamedQuery(
+                name = "payment.findByNationalCode",query = "SELECT p FROM paymentEntity p WHERE p.person.nationalCode =:nationalCode"),
+        @NamedQuery(
+                name = "payment.findByPersonnelCode",query = "SELECT p FROM paymentEntity p WHERE p.person.employment.personnelCode =:personnelCode"),
+        @NamedQuery(
+                name = "payment.findByYear",query = "SELECT p FROM paymentEntity p WHERE p.year =:year"),
+        @NamedQuery(
+                name = "payment.findByYearAndMonth",query = "SELECT p FROM paymentEntity p WHERE p.year =:year AND p.from =:from AND p.till =:till")
+})
 public class Payment {
     @Id
     @JsonProperty("کد")
@@ -79,21 +92,21 @@ public class Payment {
     @NonNull
     @NotBlank
     @Column(name="over_time_count",columnDefinition = "NUMBER(10)")
-    private Double overTimeCount;
+    private Double overTimePayCount;
 
     @JsonProperty("کسری غیبت")
     @NonNull
     @NotBlank
     @Pattern(regexp = "[0-9]")
     @Column(name="absence_count",columnDefinition = "NUMBER(10)")
-    private Double absenceCount;
+    private Double absencePayCount;
 
     @JsonProperty("ملبغ کارکرد")
     @NonNull
     @NotBlank
     @Pattern(regexp = "[0-9]")
     @Column(name="operation_count",columnDefinition = "NUMBER(10)")
-    private Double operationCount;
+    private Double operationPayCount;
 
     @JsonProperty("حق مسکن")
     @NonNull
@@ -104,8 +117,14 @@ public class Payment {
 
     @JsonProperty("مرخصی")
     @NonNull
-    @OneToOne
-    private LeaveDays leaveDays;
+    @OneToMany
+    private List<LeaveDays> leaveDays;
+
+    @JsonProperty("مبلغ کسر بابت مرخصی")
+    @NonNull
+    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Column(name="leave_days_pay_deduction",columnDefinition = "NUMBER(10)")
+    private Double leaveDaysPayDeduction;
 
     @JsonProperty("مزایا")
     @NonNull
@@ -147,9 +166,9 @@ public class Payment {
     @Column(name="tax",columnDefinition = "NUMBER(10)")
     private Double tax;
 
-    @JsonProperty("کسروات")
+    @JsonProperty("کسورات")
     @NonNull
-    @NotBlank(message = "کسروات وارد نشده")
+    @NotBlank(message = "کسورات وارد نشده")
     @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="debt",columnDefinition = "NUMBER(10)")
     private Double debt;
@@ -165,7 +184,7 @@ public class Payment {
     private Long transactionNumber;
 
     @JsonProperty("وضعیت")
-    @NonNull
+    @Enumerated(EnumType.STRING)
     @Column(name="status",columnDefinition = "NVARCHAR2(15)")
     private Status status;
 
@@ -173,12 +192,65 @@ public class Payment {
     private LocalDateTime submitTime;
 
     @PrePersist
-    private void SetLocalDateAndTime(){
+    private void setDateAndStatus(){
         submitTime = LocalDateTime.now();
+        status = Status.Pending;
     }
 
-    public Payment(Long id, Long transactionNumber, @NonNull Status status) {
+    public Payment(Long id, Long transactionNumber) {
         this.id = id;
+        this.transactionNumber = transactionNumber;
+    }
+
+    public Payment(
+            Long id,
+            @NonNull Year year,
+            @NonNull Date from,
+            @NonNull Date till,
+            @NonNull Person person,
+            @NonNull Double basicSalary,
+            @NonNull Time overTime,
+            @NonNull Time absenceTime,
+            @NonNull Time operationTime,
+            @NonNull Double overTimePayCount,
+            @NonNull Double absencePayCount,
+            @NonNull Double operationPayCount,
+            @NonNull Double housing,
+            @NonNull List<LeaveDays> leaveDays,
+            @NonNull Double leaveDaysPayDeduction,
+            @NonNull Double benefits,
+            @NonNull Double managementBonus,
+            @NonNull Double childrenPay,
+            @NonNull Double severancePay,
+            @NonNull Double insurance,
+            @NonNull Double tax,
+            @NonNull Double debt,
+            @NonNull Double totalPayment,
+            Long transactionNumber,
+            Status status) {
+        this.id = id;
+        this.year = year;
+        this.from = from;
+        this.till = till;
+        this.person = person;
+        this.basicSalary = basicSalary;
+        this.overTime = overTime;
+        this.absenceTime = absenceTime;
+        this.operationTime = operationTime;
+        this.overTimePayCount = overTimePayCount;
+        this.absencePayCount = absencePayCount;
+        this.operationPayCount = operationPayCount;
+        this.housing = housing;
+        this.leaveDays = leaveDays;
+        this.leaveDaysPayDeduction = leaveDaysPayDeduction;
+        this.benefits = benefits;
+        this.managementBonus = managementBonus;
+        this.childrenPay = childrenPay;
+        this.severancePay = severancePay;
+        this.insurance = insurance;
+        this.tax = tax;
+        this.debt = debt;
+        this.totalPayment = totalPayment;
         this.transactionNumber = transactionNumber;
         this.status = status;
     }

@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="the latest version">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/ResignationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/LeaveDays.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/ResignationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/NewsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/PaymentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/NewsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PaymentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Dismissal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Dismissal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/News.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Resignation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Resignation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Retirement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Retirement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/enums/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PersonService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +42,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2LdhydQDQ791ZWxZ09PhVYC0gts" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

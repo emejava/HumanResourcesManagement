@@ -6,7 +6,9 @@ import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.enums.Gender;
 import com.humanresourcesmanagement.model.entity.enums.MaritalStatus;
 import com.humanresourcesmanagement.model.service.PersonService;
+
 import java.sql.Timestamp;
+
 public class PersonController {
 
     //  ---------SINGLETON---------------------------------------------------------------
@@ -63,7 +65,7 @@ public class PersonController {
                 birthCertificatePicture);
 
         try {
-                return PersonService.getPersonService().save(person, user).toString();
+            return PersonService.getPersonService().save(person, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
@@ -121,6 +123,7 @@ public class PersonController {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
+
     //  ---------LOGICAL-DELETE-----------------------------------------------------
     public String delete(Long personnelCode, User user) {
         try {
@@ -174,10 +177,11 @@ public class PersonController {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
+
     //  ---------SELECT-BY-FIRSTNAME-AND-LASTNAME-------------------------------------
-    public String findByFirstAndLastName(String firstName,String lastName, User user) {
+    public String findByFirstAndLastName(String firstName, String lastName, User user) {
         try {
-            return PersonService.getPersonService().findByFirstAndLastName(firstName,lastName, user).toString();
+            return PersonService.getPersonService().findByFirstAndLastName(firstName, lastName, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
@@ -205,6 +209,15 @@ public class PersonController {
     public String findByBirthDay(Timestamp birthDay, User user) {
         try {
             return PersonService.getPersonService().findByBirthDay(birthDay, user).toString();
+        } catch (Exception e) {
+            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        }
+    }
+
+    //  ---------SELECT-BY-PERSONNEL-CODE----------------------------------------------
+    public String findByPersonnelCode(Long personnelCode, User user) {
+        try {
+            return PersonService.getPersonService().findByPersonnelCode(personnelCode, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
