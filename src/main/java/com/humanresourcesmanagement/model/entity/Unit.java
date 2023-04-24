@@ -13,7 +13,7 @@ import java.util.*;
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 
 
@@ -22,7 +22,13 @@ import java.util.*;
 @NamedQueries({
         @NamedQuery(
                 name = "unit.findAllActive",
-                query = "SELECT u FROM unitEntity u WHERE u.name=:name AND u.status =:Active ")})
+                query = "SELECT u FROM unitEntity u WHERE u.status =:status "),
+        @NamedQuery(
+                name = "unit.findByName",
+                query = "SELECT u FROM unitEntity u WHERE u.name=:name"),
+        @NamedQuery(
+                name = "unit.findByCity",
+                query = "SELECT u FROM unitEntity u WHERE u.city=:city ")})
 public class Unit {
 
     @JsonProperty("کد")
@@ -34,7 +40,7 @@ public class Unit {
     @JsonProperty("نام بخش")
     @NonNull
     @NotBlank(message = "نام بخش را وارد کنید")
-    @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name = "name", columnDefinition = "NVARCHAR2(20)")
     private String name;
 

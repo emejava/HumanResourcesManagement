@@ -8,6 +8,7 @@ import com.humanresourcesmanagement.model.entity.enums.MaritalStatus;
 import com.humanresourcesmanagement.model.service.PersonService;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class PersonController {
 
@@ -27,7 +28,7 @@ public class PersonController {
             String lastName,
             String nationalCode,
             String birthCertificateCode,
-            Timestamp birthday,
+            Date birthday,
             Gender gender,
             Integer age,
             String father,
@@ -38,7 +39,7 @@ public class PersonController {
             MaritalStatus maritalStatus,
             String phoneNo,
             String landLineNo,
-            String children,
+            Short children,
             String email,
             File nationalCardPicture,
             File birthCertificatePicture,
@@ -78,7 +79,7 @@ public class PersonController {
             String lastName,
             String nationalCode,
             String birthCertificateCode,
-            Timestamp birthday,
+            Date birthday,
             Gender gender,
             Integer age,
             String father,
@@ -89,7 +90,7 @@ public class PersonController {
             MaritalStatus maritalStatus,
             String phoneNo,
             String landLineNo,
-            String children,
+            Short children,
             String email,
             File nationalCardPicture,
             File birthCertificatePicture,

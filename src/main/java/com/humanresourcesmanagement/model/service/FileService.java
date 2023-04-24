@@ -77,7 +77,10 @@ public class FileService {
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public List<File> findAllActive(User user) throws Exception {
         try (CrudRepository<File, Long> fileDa = new CrudRepository<>()) {
-            List<File> fileList = fileDa.executeQuery("file.findAllActive", null);
+            Map<String,Object> params = new HashMap<>();
+            Status status = Status.Active;
+            params.put("status",status);
+            List<File> fileList = fileDa.executeQuery("file.findAllActive", params);
             Log log = new Log(Action.Search, "All Active Files", user);
             LogService.getLogService().save(log);
             return fileList;
@@ -110,8 +113,10 @@ public class FileService {
     public File findByNameAndUploader(String name,User uploader, User user) throws Exception {
         try (CrudRepository<File, Long> fileDa = new CrudRepository<>()) {
             Map<String, Object> params = new HashMap<>();
+            Status status = Status.Active;
             params.put("name", name);
             params.put("uploader", uploader);
+            params.put("status",status);
             List<File> files = fileDa.executeQuery("file.findByNameAndUploader", params);
             Log log = new Log(Action.Search, uploader.toString() +" "+ files.toString(), user);
             LogService.getLogService().save(log);

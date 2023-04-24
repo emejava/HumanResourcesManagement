@@ -8,6 +8,7 @@ import com.humanresourcesmanagement.model.service.EmploymentService;
 import com.humanresourcesmanagement.model.service.EmploymentService;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 public class EmploymentController {
@@ -30,7 +31,7 @@ public class EmploymentController {
             Unit unit,
             Duty duty,
             Position position,
-            Timestamp startWorkingDate,
+            LocalDate startWorkingDate,
             ShiftWork shiftWork,
             User user) {
         Employment employment = new Employment(
@@ -58,7 +59,7 @@ public class EmploymentController {
             Unit unit,
             Duty duty,
             Position position,
-            Timestamp startWorkingDate,
+            LocalDate startWorkingDate,
             ShiftWork shiftWork,
             File CV,
             User user) {

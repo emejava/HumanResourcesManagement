@@ -88,7 +88,10 @@ public class UserService{
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public List<User> findAllActive(User user) throws Exception {
         try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
-            List<User> activeUsers = userDa.executeQuery("user.findAllActive", null);
+            Map<String,Object> params = new HashMap<>();
+            Status status = Status.Active;
+            params.put("status",status);
+            List<User> activeUsers = userDa.executeQuery("user.findAllActive", params);
             Log log = new Log(Action.Search, "All Active Users", user);
             LogService.getLogService().save(log);
             return activeUsers;
@@ -104,7 +107,9 @@ public class UserService{
     public User findByUsername(String username,User user) throws Exception {
         try(CrudRepository<User, Long> userDa = new CrudRepository<>()) {
             Map<String, Object> params = new HashMap<>();
-            params.put("userName", username);
+            Status status = Status.Active;
+            params.put("username", username);
+            params.put("status",status);
             List<User> users = userDa.executeQuery("user.findByUsername", params);
             Log log = new Log(Action.Search, users.toString(), user);
             LogService.getLogService().save(log);
@@ -120,8 +125,10 @@ public class UserService{
     public User isValidate(String username, String password) throws Exception {
         try (CrudRepository<User, Long> userDa = new CrudRepository<>()) {
             Map<String, Object> params = new HashMap<>();
-            params.put("userName", username);
+            Status status = Status.Active;
+            params.put("username", username);
             params.put("password", password);
+            params.put("status",status);
             List<User> users = userDa.executeQuery("user.isValidate", params);
             User user = null;
             if (users.size() == 1) {
@@ -136,7 +143,9 @@ public class UserService{
     public String hasAccess(String username) throws Exception {
         try (CrudRepository<User, Long> userDa = new CrudRepository<>()) {
             Map<String, Object> params = new HashMap<>();
-            params.put("userName", username);
+            Status status = Status.Active;
+            params.put("username", username);
+            params.put("status",status);
             List<User> users = userDa.executeQuery("user.hasAccess", params);
             User user1 = null;
             if (users.size() == 1) {

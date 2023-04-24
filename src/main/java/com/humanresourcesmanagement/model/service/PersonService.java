@@ -92,7 +92,10 @@ public class PersonService {
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public List<Person> findAllActive(User user) throws Exception {
         try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
-            List<Person> personList = personDa.executeQuery("person.findAllActive", null);
+            Map<String,Object> params = new HashMap<>();
+            Status status = Status.Active;
+            params.put("status",status);
+            List<Person> personList = personDa.executeQuery("person.findAllActive", params);
             Log log = new Log(Action.Search, "All Active Persons", user);
             LogService.getLogService().save(log);
             return personList;

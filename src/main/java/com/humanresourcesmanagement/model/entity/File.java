@@ -11,7 +11,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 
@@ -20,11 +20,11 @@ import lombok.*;
 @Table(name = "tb_file")
 @NamedQueries({
         @NamedQuery(
-                name = "file.findAllActive", query = "SELECT f FROM fileEntity f WHERE f.status=:Active"),
+                name = "file.findAllActive", query = "SELECT f FROM fileEntity f WHERE f.status=:status"),
         @NamedQuery(
                 name = "file.findAllByUploader", query = "SELECT f FROM fileEntity f WHERE f.uploader=:uploader"),
         @NamedQuery(
-                name = "file.findByNameAndUploader", query = "SELECT f FROM fileEntity f WHERE f.name=:name AND f.uploader=:uploader AND f.status=:Active")})
+                name = "file.findByNameAndUploader", query = "SELECT f FROM fileEntity f WHERE f.name=:name AND f.uploader=:uploader AND f.status=:status")})
 public class File {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,7 +34,7 @@ public class File {
     @JsonProperty("نام")
     @NonNull
     @NotBlank(message = "نام وارد نشده")
-    @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name = "name", columnDefinition = "NVARCHAR2(20)")
     private String name;
 

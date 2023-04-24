@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Table(name = "tb_file")
 @NamedQueries(
         @NamedQuery(name = "messageFileDirection.findAllActive",
-        query = "SELECT m FROM messageFileDirectionEntity m WHERE m.status=:Active"))
+        query = "SELECT m FROM messageFileDirectionEntity m WHERE m.status=:status"))
 public class MessageFile {
     @Id
     @JsonProperty("کد")
@@ -34,7 +34,8 @@ public class MessageFile {
 
     @JsonProperty("آدرس فایل")
     @NonNull
-    private String fileLocation;
+    @Column(name = "file_path")
+    private String filePath;
 
     @JsonProperty("پیام")
     @NonNull

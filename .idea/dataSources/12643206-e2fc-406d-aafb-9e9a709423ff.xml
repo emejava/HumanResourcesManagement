@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="eme/Hibernate">
-  <database-model serializer="dbm" dbms="ORACLE" family-id="ORACLE" format-version="4.45">
+  <database-model serializer="dbm" dbms="ORACLE" family-id="ORACLE" format-version="4.48">
     <root id="1">
       <IntrospectionLevel>3</IntrospectionLevel>
-      <ServerVersion>21.0.0.0.0</ServerVersion>
-      <TablespacesHash>23420661385</TablespacesHash>
     </root>
     <schema id="2" parent="1" name="ANONYMOUS">
       <ObjectId>72</ObjectId>

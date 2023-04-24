@@ -7,7 +7,9 @@ import com.humanresourcesmanagement.model.entity.enums.Action;
 import com.humanresourcesmanagement.model.entity.enums.Status;
 import com.humanresourcesmanagement.model.repository.CrudRepository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class NewsService {
     //  ---------SINGLETON---------------------------------------------------------
@@ -78,7 +80,7 @@ public class NewsService {
     public List<News> findAll(User user) throws Exception {
         try (CrudRepository<News, Long> newsDa = new CrudRepository<>()) {
             List<News> newsList = newsDa.findAll(News.class);
-            Log log = new Log(Action.Search, "All Newss", user);
+            Log log = new Log(Action.Search, "All News", user);
             LogService.getLogService().save(log);
             return newsList;
         }
@@ -87,8 +89,11 @@ public class NewsService {
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public List<News> findAllActive(User user) throws Exception {
         try (CrudRepository<News, Long> newsDa = new CrudRepository<>()) {
-            List<News> newsList = newsDa.executeQuery("news.findAllActive", null);
-            Log log = new Log(Action.Search, "All Active Newss", user);
+            Map<String,Object> params = new HashMap<>();
+            Status status = Status.Active;
+            params.put("status",status);
+            List<News> newsList = newsDa.executeQuery("news.findAllActive", params);
+            Log log = new Log(Action.Search, "All Active News", user);
             LogService.getLogService().save(log);
             return newsList;
         }

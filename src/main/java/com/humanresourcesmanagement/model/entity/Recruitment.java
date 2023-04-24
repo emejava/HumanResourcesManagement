@@ -12,7 +12,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 
@@ -20,9 +20,14 @@ import lombok.*;
 @Table(name = "tb_recruitment")
 @NamedQueries({
         @NamedQuery(
-                name = "recruitment.findByFieldOfStudy", query = "SELECT oo from recruitmentEntity oo where oo.fieldOfStudy=:fieldOfStudy"),
+                name = "recruitment.findByFieldOfStudy",
+                query = "SELECT oo from recruitmentEntity oo where oo.fieldOfStudy=:fieldOfStudy"),
         @NamedQuery(
-                name = "recruitment.findByUniversity", query = "SELECT oo from recruitmentEntity oo where oo.educationPlace LIKE educationPlace")})
+                name = "recruitment.findByUniversity",
+                query = "SELECT oo from recruitmentEntity oo where oo.educationPlace LIKE educationPlace"),
+        @NamedQuery(
+                name = "recruitment.findByStatus",
+                query = "SELECT oo from recruitmentEntity oo where oo.status=:status")})
 public class Recruitment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,58 +55,58 @@ public class Recruitment {
     @NonNull
     @NotBlank(message = "نام دانشگاه را وارد کنید")
     @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
-    @Column(name = "educationPlace", columnDefinition = "NVARCHAR2(40)")
+    @Column(name = "education_place", columnDefinition = "NVARCHAR2(40)")
     private String educationPlace;
 
     @JsonProperty("تجربه کاری")
     @NonNull
     @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
-    @Column(name = "Work_Experience", columnDefinition = "NVARCHAR2(100)")
+    @Column(name = "work_experience", columnDefinition = "NVARCHAR2(100)")
     private String workExperience;
 
     @JsonProperty("کار قبلی")
     @NonNull
     @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
-    @Column(name = "Last_Job", columnDefinition = "NVARCHAR2(20)")
+    @Column(name = "last_job", columnDefinition = "NVARCHAR2(20)")
     private String lastJob;
 
     @JsonProperty("دلیل خروج از محل کار قبلی")
     @NonNull
     @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
-    @Column(name = "Last_Job_Exit_Reason", columnDefinition = "NVARCHAR2(100)")
+    @Column(name = "last_jb_exit_reason", columnDefinition = "NVARCHAR2(100)")
     private String lastJobExitReason;
 
     @JsonProperty("آدرس محل کار قبلی")
     @NonNull
     @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
-    @Column(name = "Last_Job_Address", columnDefinition = "NVARCHAR2(255)")
+    @Column(name = "last_job_address", columnDefinition = "NVARCHAR2(255)")
     private String lastJobAddress;
 
     @JsonProperty("شماره تماس کار قبلی")
     @NonNull
-    @Pattern(regexp = "[0-9]", message = "لطفا از اعداد انگلیسی استفاده کنید")
-    @Column(name = "Last_Job_No", columnDefinition = "NVARCHAR2(11)")
+    @Pattern(regexp = "[0-9]{11}", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Column(name = "last_job_no", columnDefinition = "NVARCHAR2(11)")
     private String lastJobNo;
 
     @JsonProperty("هدف شغلی")
     @NonNull
     @NotBlank(message = "هدف شغلی وارد نشده")
-    @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
-    @Column(name = "Job_Goal", columnDefinition = "NVARCHAR2(100)")
+    @Pattern(regexp = "[آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
+    @Column(name = "job_goal", columnDefinition = "NVARCHAR2(100)")
     private String jobObjective;
 
     @JsonProperty("شیفت مورد نظر")
     @NonNull
     @NotBlank(message = "شیفت کاری را انتخاب کنید")
-    @Column(name = "shiftWork", columnDefinition = "NVARCHAR2(15)")
+    @Column(name = "shift_work", columnDefinition = "NVARCHAR2(15)")
     @Enumerated(EnumType.STRING)
     private ShiftWork shiftWork;
 
     @JsonProperty("حقوق درخواستی")
     @NonNull
-    @Pattern(regexp = "[0-9]", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{8}", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @NotBlank(message = "حقوق درخواستی وارد نشده")
-    @Column(name = "Requested_Salary", columnDefinition = "NVARCHAR2(8)")
+    @Column(name = "requested_salary", columnDefinition = "NVARCHAR2(8)")
     private String requestedSalary;
 
 

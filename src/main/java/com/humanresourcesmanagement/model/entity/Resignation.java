@@ -13,7 +13,8 @@ import java.time.LocalDate;
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
+@RequiredArgsConstructor
 
 @Entity(name = "resignationEntity")
 @Table(name = "tb_resignation")

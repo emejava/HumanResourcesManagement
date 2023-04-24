@@ -12,7 +12,7 @@ import oracle.jdbc.proxy.annotation.Pre;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 
@@ -20,8 +20,11 @@ import oracle.jdbc.proxy.annotation.Pre;
 @Table(name = "tb_duty")
 @NamedQueries({
         @NamedQuery(
+                name = "duty.findAllActive",
+                query = "SELECT d FROM dutyEntity d WHERE d.status =:status "),
+        @NamedQuery(
                 name = "duty.findByPosition",
-                query = "SELECT d FROM dutyEntity d WHERE d.position=:position AND d.status =:Active ")})
+                query = "SELECT d FROM dutyEntity d WHERE d.position=:position AND d.status =:status ")})
 public class Duty {
     @Id
     @JsonProperty("کد")
@@ -37,8 +40,8 @@ public class Duty {
     @JsonProperty("شرح وظیفه")
     @NonNull
     @NotBlank(message = "وظیفه را شرح دهید")
-    @Pattern(regexp = "، [آ-ی \\s]", message = "لطفا از حروف فارسی استفاده کنید")
-    @Column(name = "dutyExplanation", columnDefinition = "NVARCHAR2(255)")
+    @Pattern(regexp = "، [آ-ی \\s]*", message = "لطفا از حروف فارسی استفاده کنید")
+    @Column(name = "duty_explanation", columnDefinition = "NVARCHAR2(255)")
     private String dutyExplanation;
 
     @JsonProperty("وضعیت")

@@ -74,7 +74,10 @@ public class DutyService{
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public List<Duty> findAllActive(User user) throws Exception {
         try (CrudRepository<Duty, Long> dutyDa = new CrudRepository<>()) {
-            List<Duty> duties = dutyDa.executeQuery("duty.findAllActive", null);
+            Map<String,Object> params = new HashMap<>();
+            Status status = Status.Active;
+            params.put("status",status);
+            List<Duty> duties = dutyDa.executeQuery("duty.findAllActive", params);
             Log log = new Log(Action.Search, "All Active duties", user);
             LogService.getLogService().save(log);
             return duties;
@@ -95,7 +98,9 @@ public class DutyService{
     public List<Duty> findByPosition(Position position, User user) throws Exception {
         try (CrudRepository<Duty, Long> dutyDa = new CrudRepository<>()) {
             Map<String, Object> params = new HashMap<>();
+            Status status = Status.Active;
             params.put("position", position);
+            params.put("status",status);
             List<Duty> duties = dutyDa.executeQuery("duty.findByPosition", params);
             Log log = new Log(Action.Search, "FIND BY Position", user);
             LogService.getLogService().save(log);

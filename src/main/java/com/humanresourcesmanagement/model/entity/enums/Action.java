@@ -9,6 +9,7 @@ public enum Action {
     Deactivate,
     Activate,
     Delete,
+    Reject,
     Search,
     SearchBy
 }

@@ -18,13 +18,13 @@ public class MessageFileController {
     //  ---------INSERT-DATA--------------------------------------------------------
     public String save(
             User sender,
-            String fileLocation,
+            String filePath,
             Message msg,
             User user) {
 
         MessageFile messageFile = new MessageFile(
                 sender,
-                fileLocation,
+                filePath,
                 msg)
                 ;
 

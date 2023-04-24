@@ -74,7 +74,10 @@ public class PositionService {
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public List<Position> findAllActive(User user) throws Exception {
         try(CrudRepository<Position, Long> positionDa = new CrudRepository<>()) {
-            List<Position> positions = positionDa.executeQuery("position.findAllActive", null);
+            Map<String,Object> params = new HashMap<>();
+            Status status = Status.Active;
+            params.put("status",status);
+            List<Position> positions = positionDa.executeQuery("position.findAllActive", params);
             Log log = new Log(Action.Search, "All Positions", user);
             LogService.getLogService().save(log);
             return positions;

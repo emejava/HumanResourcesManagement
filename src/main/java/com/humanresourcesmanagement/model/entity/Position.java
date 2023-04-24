@@ -12,7 +12,7 @@ import lombok.*;
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 
 @Entity(name = "positionEntity")
@@ -20,7 +20,7 @@ import lombok.*;
 @NamedQueries({
         @NamedQuery(
                 name = "position.findByPosition",
-                query = "SELECT p FROM positionEntity p WHERE p.name=:name AND p.status =:Active ")})
+                query = "SELECT p FROM positionEntity p WHERE p.name=:name AND p.status =:status ")})
 public class Position {
     @Id
     @JsonProperty("کد")
@@ -31,7 +31,7 @@ public class Position {
     @JsonProperty("نام")
     @NonNull
     @NotBlank(message = "نام وارد نشده")
-    @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name="name",columnDefinition = "NVARCHAR2(20)")
     private String name;
 

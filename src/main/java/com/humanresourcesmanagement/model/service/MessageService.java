@@ -102,7 +102,10 @@ public class MessageService{
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public List<Message> findAllActive(User user) throws Exception {
         try(CrudRepository<Message, Long> messageDa = new CrudRepository<>()) {
-            List<Message> messageList = messageDa.executeQuery("message.findAllActive", null);
+            Map<String,Object> params = new HashMap<>();
+            Status status = Status.Active;
+            params.put("status",status);
+            List<Message> messageList = messageDa.executeQuery("message.findAllActive", params);
             Log log = new Log(Action.Search, "All Active Messages", user);
             LogService.getLogService().save(log);
             return messageList;
@@ -123,8 +126,10 @@ public class MessageService{
     public List<Message> findBySenderAndReceiver(User sender,User receiver,User user) throws Exception {
         try(CrudRepository<Message, Long> messageDa = new CrudRepository<>()) {
             Map<String, Object> params = new HashMap<>();
+            Status status = Status.Active;
             params.put("sender", sender);
             params.put("receiver", receiver);
+            params.put("status",status);
             List<Message> messageList = messageDa.executeQuery("message.findBySenderAndReceiver", params);
             Log log = new Log(Action.Search, "All Messages By Sender & Receiver", user);
             LogService.getLogService().save(log);
@@ -136,7 +141,9 @@ public class MessageService{
     public List<Message> findAllBySender(User sender,User user) throws Exception {
         try(CrudRepository<Message, Long> messageDa = new CrudRepository<>()) {
             Map<String, Object> params = new HashMap<>();
+            Status status = Status.Active;
             params.put("sender", sender);
+            params.put("status",status);
             List<Message> messageList = messageDa.executeQuery("message.findAllBySender", params);
             Log log = new Log(Action.Search, "All Messages By Sender", user);
             LogService.getLogService().save(log);
@@ -148,7 +155,9 @@ public class MessageService{
     public List<Message> findAllByReceiver(User receiver,User user) throws Exception {
         try(CrudRepository<Message, Long> messageDa = new CrudRepository<>()) {
             Map<String, Object> params = new HashMap<>();
+            Status status = Status.Active;
             params.put("receiver", receiver);
+            params.put("status",status);
             List<Message> messageList = messageDa.executeQuery("message.findAllByReceiver", params);
             Log log = new Log(Action.Search, "All Messages By Sender & Receiver", user);
             LogService.getLogService().save(log);

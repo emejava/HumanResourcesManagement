@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 
 @Entity(name = "userEntity")
@@ -22,26 +22,29 @@ import java.sql.Timestamp;
 @NamedQueries({
         @NamedQuery(
                 name = "user.findAllActive",
-                query = "SELECT u FROM userEntity u WHERE u.status =:Active "),
+                query = "SELECT u FROM userEntity u WHERE u.status =:status "),
+        @NamedQuery(
+                name = "user.findByUsername",
+                query = "SELECT u FROM userEntity u WHERE u.username=:username "),
         @NamedQuery(
                 name = "user.isValidate",
-                query = "SELECT u FROM userEntity u WHERE u.userName =:username AND u.password =:password AND u.status =:Active"),
+                query = "SELECT u FROM userEntity u WHERE u.username =:username AND u.password =:password AND u.status =:status"),
         @NamedQuery(
                 name = "user.hasAccess",
-                query = "SELECT u FROM userEntity u WHERE u.userName=:username AND u.password=:password AND u.status =:Active AND u.accessLevel=:title")})
+                query = "SELECT u FROM userEntity u WHERE u.username=:username AND u.password=:password AND u.status =:status AND u.accessLevel=:title")})
 public class User {
     @Id
     @JsonProperty("نام کاربری")
     @NonNull
     @NotBlank(message = "نام کاربری وارد نشده")
-    @Pattern(regexp = "[@_.&][a-z A-Z][0-9]", message = "کاراکتر های مجاز: (اعداد و حروف انگلیسی)(@)(_)(.)(&)")
+    @Pattern(regexp = "[@_.&]*[a-z A-Z]*[0-9]", message = "کاراکتر های مجاز: (اعداد و حروف انگلیسی)(@)(_)(.)(&)")
     @Column(columnDefinition = "NVARCHAR2(20)")
-    private String userName;
+    private String username;
 
     @JsonProperty("رمز عبور")
     @NonNull
     @NotBlank(message = "رمز عبور وارد نشده")
-    @Pattern(regexp = "[@_.&][a-z A-Z][0-9]{8,20}", message = "کاراکتر های مجاز: (اعداد و حروف انگلیسی)(@)(_)(.)(&) و حداقل 8 کاراکتر")
+    @Pattern(regexp = "[@_.&]*[a-z A-Z]*[0-9]{8,20}", message = "کاراکتر های مجاز: (اعداد و حروف انگلیسی)(@)(_)(.)(&) و حداقل 8 کاراکتر")
     @Column(columnDefinition = "NVARCHAR2(20)")
     private String password;
 
@@ -74,11 +77,11 @@ public class User {
     }
 
     public User(
-            @NonNull String userName,
+            @NonNull String username,
             @NonNull String password,
             @NonNull Person person,
             @NonNull AccessLevel accessLevel) {
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.person = person;
         this.accessLevel = accessLevel;

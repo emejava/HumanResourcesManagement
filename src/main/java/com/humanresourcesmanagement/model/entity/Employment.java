@@ -9,11 +9,12 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 
@@ -22,7 +23,7 @@ import java.sql.Timestamp;
 public class Employment {
     @Id
     @JsonProperty("کد پرسنلی")
-    @Column(name = "personnelCode",columnDefinition = "NUMBER(10)")
+    @Column(name = "personnel_code",columnDefinition = "NUMBER(10)")
     private Long personnelCode;
     
     @JsonProperty("شخص")
@@ -33,7 +34,7 @@ public class Employment {
     @JsonProperty("نوع استخدام")
     @NonNull
     @NotBlank(message = "نوع استخدام راانتخاب کنید")
-    @Column(name = "employmentType", columnDefinition = "NVARCHAR2(15)")
+    @Column(name = "employment_type", columnDefinition = "NVARCHAR2(15)")
     @Enumerated(EnumType.STRING)
     private EmploymentType employmentType;
 
@@ -58,12 +59,12 @@ public class Employment {
     @JsonProperty("تاریخ آمادگی شروع به کار")
     @NonNull
     @NotBlank(message = "تاریخ شروع به کار را وارد کنید")
-    private Timestamp startWorkingDate;
+    private LocalDate startWorkingDate;
 
     @JsonProperty("شیفت")
     @NonNull
     @NotBlank(message = "شیفت کاری را انتخاب کنید")
-    @Column(name = "shiftWork", columnDefinition = "NVARCHAR2(15)")
+    @Column(name = "shift_work", columnDefinition = "NVARCHAR2(15)")
     @Enumerated(EnumType.STRING)
     private ShiftWork shiftWork;
 
@@ -78,7 +79,7 @@ public class Employment {
             @NonNull Unit unit,
             @NonNull Duty duty,
             @NonNull Position position,
-            @NonNull Timestamp startWorkingDate,
+            @NonNull LocalDate startWorkingDate,
             @NonNull ShiftWork shiftWork) {
         this.personnelCode = personnelCode;
         this.person = person;

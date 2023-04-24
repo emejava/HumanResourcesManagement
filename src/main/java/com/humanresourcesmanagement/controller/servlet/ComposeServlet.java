@@ -73,7 +73,6 @@ public class ComposeServlet extends HttpServlet {
                 String fileName = part.getSubmittedFileName();
                 for (Part part1 : req.getParts()) {
                     String fileLocation = "c:\\root\\" + fileName;
-                    part1.write(fileLocation);
                     MessageFile messageFile = new MessageFile(
                             sender,
                             fileLocation,

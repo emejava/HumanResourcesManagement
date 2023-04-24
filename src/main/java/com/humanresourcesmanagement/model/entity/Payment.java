@@ -19,7 +19,7 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 
@@ -27,7 +27,7 @@ import java.util.List;
 @Table(name = "tb_payment")
 @NamedQueries({
         @NamedQuery(
-                name = "payment.findAllActive",query = "SELECT p FROM paymentEntity p WHERE p.status =:Active"),
+                name = "payment.findAllActive",query = "SELECT p FROM paymentEntity p WHERE p.status =:status"),
         @NamedQuery(
                 name = "payment.findByNationalCode",query = "SELECT p FROM paymentEntity p WHERE p.person.nationalCode =:nationalCode"),
         @NamedQuery(
@@ -66,7 +66,7 @@ public class Payment {
     @JsonProperty("حقوق پایه")
     @NonNull
     @NotBlank(message = "حقوق پایه وارد نشده")
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="basic_Salary",columnDefinition = "NUMBER(10)")
     private Double basicSalary;
 
@@ -111,7 +111,7 @@ public class Payment {
     @JsonProperty("حق مسکن")
     @NonNull
     @NotBlank(message = "حق مسکن را وارد کنید")
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="housing",columnDefinition = "NUMBER(10)")
     private Double housing;
 
@@ -122,54 +122,54 @@ public class Payment {
 
     @JsonProperty("مبلغ کسر بابت مرخصی")
     @NonNull
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="leave_days_pay_deduction",columnDefinition = "NUMBER(10)")
     private Double leaveDaysPayDeduction;
 
     @JsonProperty("مزایا")
     @NonNull
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="benefits",columnDefinition = "NUMBER(10)")
     private Double benefits;
 
     @JsonProperty("پاداش مدیرتی")
     @NonNull
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="management_bonus",columnDefinition = "NUMBER(10)")
     private Double managementBonus;
 
     @JsonProperty("حق فرزند")
     @NonNull
     @NotBlank(message = "حق فرزند وارد نشده")
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="children_pay",columnDefinition = "NUMBER(10)")
     private Double childrenPay;
 
     @JsonProperty("سنوات")
     @NonNull
     @NotBlank(message = "سنوات وارد نشده")
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9 ,]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="severance_pay",columnDefinition = "NUMBER(10)")
     private Double severancePay;
 
     @JsonProperty("حق بیمه")
     @NonNull
     @NotBlank(message = "حق بیمه وارد نشده")
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="insurance",columnDefinition = "NUMBER(10)")
     private Double insurance;
 
     @JsonProperty("مالیات")
     @NonNull
     @NotBlank(message = "مالیات وارد نشده")
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="tax",columnDefinition = "NUMBER(10)")
     private Double tax;
 
     @JsonProperty("کسورات")
     @NonNull
     @NotBlank(message = "کسورات وارد نشده")
-    @Pattern(regexp = "[0-9]",message = "از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "[0-9]{10}",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="debt",columnDefinition = "NUMBER(10)")
     private Double debt;
 

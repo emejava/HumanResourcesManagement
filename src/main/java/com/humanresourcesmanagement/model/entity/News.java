@@ -10,13 +10,19 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 
 
-@Entity(name = "fileEntity")
+@Entity(name = "newsEntity")
 @Table(name = "tb_file")
+@NamedQueries(
+        @NamedQuery(
+                name = "findAllActive",
+                query = "SELECT n FROM newsEntity n WHERE n.status=:status"
+        )
+)
 public class News {
     @Id
     @JsonProperty("کد")

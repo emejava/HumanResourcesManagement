@@ -91,7 +91,10 @@ public class PaymentService {
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public List<Payment> findAllActive(User user) throws Exception {
         try (CrudRepository<Payment, Long> paymentDa = new CrudRepository<>()) {
-            List<Payment> paymentList = paymentDa.executeQuery("payment.findAllActive", null);
+            Map<String,Object> params = new HashMap<>();
+            Status status = Status.Active;
+            params.put("status",status);
+            List<Payment> paymentList = paymentDa.executeQuery("payment.findAllActive", params);
             Log log = new Log(Action.Search, "All Active Payments", user);
             LogService.getLogService().save(log);
             return paymentList;

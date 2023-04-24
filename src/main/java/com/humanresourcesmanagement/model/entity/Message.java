@@ -15,20 +15,20 @@ import java.util.List;
 @Setter
 @Builder
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @RequiredArgsConstructor
 
 @Entity(name = "messageEntity")
 @Table(name = "tb_message")
 @NamedQueries({
         @NamedQuery(name = "message.findAllActive",
-                query = "SELECT m FROM messageEntity m WHERE m.active=true"),
+                query = "SELECT m FROM messageEntity m WHERE m.status=:status"),
         @NamedQuery(name = "message.findBySenderAndReceiver",
-                query = "SELECT m FROM messageEntity m WHERE m.sender=:sender AND m.receiver=:receiver AND m.active=true"),
+                query = "SELECT m FROM messageEntity m WHERE m.sender=:sender AND m.receiver=:receiver AND m.status=:status"),
         @NamedQuery(name = "message.findAllBySender",
-                query = "SELECT m FROM messageEntity m WHERE m.sender=:sender AND m.active=true"),
+                query = "SELECT m FROM messageEntity m WHERE m.sender=:sender AND m.status=:status"),
         @NamedQuery(name = "message.findAllByReceiver",
-                query = "SELECT m FROM messageEntity m WHERE m.receiver=:receiver AND m.active=true")})
+                query = "SELECT m FROM messageEntity m WHERE m.receiver=:receiver AND m.status=:status")})
 public class Message {
     @Id
     @JsonProperty("کد")
@@ -36,8 +36,8 @@ public class Message {
     private Long id;
 
     @JsonProperty("موضوع")
-    @Column(columnDefinition = "NVARCHAR2(30)")
     @NonNull
+    @Column(name = "subject",columnDefinition = "NVARCHAR2(30)")
     private String subject;
 
     @JsonProperty("فرستنده")
@@ -52,10 +52,12 @@ public class Message {
 
     @JsonProperty("رونوشت")
     @NonNull
+    @Column(name = "receiver_role",columnDefinition = "NVARCHAR2(20)")
     private String receiverRole;
 
     @JsonProperty("پیام")
     @NonNull
+    @Column(name = "message",columnDefinition = "NVARCHAR2(1000)")
     private String msg;
 
     @JsonProperty("پیوست ها")

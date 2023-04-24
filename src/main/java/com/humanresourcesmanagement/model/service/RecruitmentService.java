@@ -72,6 +72,18 @@ public class RecruitmentService {
         }
     }
 
+    //  ---------REJECT-STATUS-------------------------------------------------------
+    public Recruitment reject(Long id, User user) throws Exception {
+        try (CrudRepository<Recruitment, Long> recruitmentDa = new CrudRepository<>()) {
+            Recruitment recruitment = recruitmentDa.findById(Recruitment.class, id);
+            recruitment.setStatus(Status.Rejected);
+            recruitmentDa.edit(recruitment);
+            Log log = new Log(Action.Reject, recruitment.toString(), user);
+            LogService.getLogService().save(log);
+            return recruitment;
+        }
+    }
+
     //  ---------SELECT-ALL---------------------------------------------------------
     public List<Recruitment> findAll(User user) throws Exception {
         try (CrudRepository<Recruitment, Long> recruitmentDa = new CrudRepository<>()) {
@@ -82,13 +94,15 @@ public class RecruitmentService {
         }
     }
 
-    //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
-    public List<Recruitment> findAllActive(User user) throws Exception {
+    //  ---------SELECT-BY-STATUS------------------------------------------------
+    public List<Recruitment> findByStatus(String status, User user) throws Exception {
         try (CrudRepository<Recruitment, Long> recruitmentDa = new CrudRepository<>()) {
-            List<Recruitment> recruitmentList = recruitmentDa.executeQuery("recruitment.findAllActive", null);
-            Log log = new Log(Action.Search, "All Active Recruitments", user);
+            Map<String, Object> params = new HashMap<>();
+            params.put("status",status);
+            List<Recruitment> recruitments = recruitmentDa.executeQuery("recruitment.findByStatus", params);
+            Log log = new Log(Action.Search, "University", user);
             LogService.getLogService().save(log);
-            return recruitmentList;
+            return recruitments;
         }
     }
 
@@ -113,6 +127,7 @@ public class RecruitmentService {
             return recruitments;
         }
     }
+
     //  ---------SELECT-BY-UNIVERSITY------------------------------------------------
     public List<Recruitment> findByUniversity(String university, User user) throws Exception {
         try (CrudRepository<Recruitment, Long> recruitmentDa = new CrudRepository<>()) {
@@ -124,4 +139,6 @@ public class RecruitmentService {
             return recruitments;
         }
     }
+
+
 }

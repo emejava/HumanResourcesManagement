@@ -75,7 +75,10 @@ public class UnitService{
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public List<Unit> findAllActive(User user) throws Exception {
         try (CrudRepository<Unit, Long> unitDa = new CrudRepository<>()) {
-            List<Unit> unitList = unitDa.executeQuery("unit.findAllActive", null);
+            Map<String,Object> params = new HashMap<>();
+            Status status = Status.Active;
+            params.put("status",status);
+            List<Unit> unitList = unitDa.executeQuery("unit.findAllActive", params);
             Log log = new Log(Action.Search, "All Active Units", user);
             LogService.getLogService().save(log);
             return unitList;

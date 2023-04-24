@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(force = true)
 @AllArgsConstructor
 @RequiredArgsConstructor
 
@@ -36,14 +36,14 @@ public class Dismissal {
     @JsonProperty("دلیل")
     @NonNull
     @NotBlank(message = "دلیل اخراج وارد نشده")
-    @Pattern(regexp = "[0-9][آ-ی\\s]", message = "لطفا از حروف فارسی و اعداد انگلیسی استفاده کنید")
-    @Column(columnDefinition = "nvarchar2(255)")
+    @Pattern(regexp = "[0-9]*[آ-ی\\s]*", message = "لطفا از حروف فارسی و اعداد انگلیسی استفاده کنید")
+    @Column(name = "reason",columnDefinition = "nvarchar2(255)")
     private String reason;
 
     @JsonProperty("تاریخ")
     @NonNull
     @NotBlank(message = "تاریخ اخراج وارد نشده")
-    @Column(columnDefinition = "nvarchar2(30)")
+    @Column(name = "date",columnDefinition = "nvarchar2(30)")
     private LocalDate date;
 
     @JsonProperty("آخرین فیش حقوقی")
