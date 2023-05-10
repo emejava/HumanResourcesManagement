@@ -1,10 +1,13 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.MessageService;
 
 import java.util.List;
+import java.util.Map;
 
 public class MessageController {
     //  ---------SINGLETON---------------------------------------------------------------
@@ -26,7 +29,7 @@ public class MessageController {
             String msg,
             List<MessageFile> messageFiles,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Message message = new Message(
                 subject,
                 sender,
@@ -34,14 +37,18 @@ public class MessageController {
                 receiverRole,
                 msg,
                 messageFiles);
-
-        try {
-            return MessageService.getMessageService().save(message,user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(message);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return MessageService.getMessageService().save(message, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
-
     //  ---------UPDATE-DATA--------------------------------------------------------
     public String edit(
             Long id,
@@ -53,7 +60,7 @@ public class MessageController {
             boolean forwarded,
             User forwardedTo,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Message message = new Message(
                 id,
                 subject,
@@ -63,11 +70,15 @@ public class MessageController {
                 msg,
                 forwarded,
                 forwardedTo);
-
-        try {
-            return MessageService.getMessageService().edit(message,user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        Map<String, String> errors = Validation.getValidation().doValidation(message);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return MessageService.getMessageService().edit(message, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
     //  ---------DELETE-------------------------------------------------------------

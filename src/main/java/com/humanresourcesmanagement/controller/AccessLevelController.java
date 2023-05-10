@@ -1,9 +1,13 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.AccessLevel;
 import com.humanresourcesmanagement.model.entity.User;
 import com.humanresourcesmanagement.model.service.AccessLevelService;
+
+import java.util.Map;
 
 public class AccessLevelController {
     //  ---------SINGLETON---------------------------------------------------------------
@@ -25,7 +29,7 @@ public class AccessLevelController {
             Boolean canFind,
             Boolean canFindAll,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         AccessLevel accessLevel = new AccessLevel(
                 title,
                 canInsert,
@@ -34,10 +38,16 @@ public class AccessLevelController {
                 canFind,
                 canFindAll);
 
-        try {
-            return AccessLevelService.getAccessLevelService().save(accessLevel,user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(accessLevel);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return AccessLevelService.getAccessLevelService().save(accessLevel, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
@@ -52,8 +62,8 @@ public class AccessLevelController {
             Boolean canFindAll,
             User user) {
 
+        //  ---------CREATE-OBJECT-----------------
         AccessLevel accessLevel = new AccessLevel(
-                id,
                 title,
                 canInsert,
                 canUpdate,
@@ -61,16 +71,23 @@ public class AccessLevelController {
                 canFind,
                 canFindAll);
 
-        try {
-            return AccessLevelService.getAccessLevelService().edit(accessLevel,user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(accessLevel);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return AccessLevelService.getAccessLevelService().edit(accessLevel, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
+
     //  ---------DELETE-------------------------------------------------------------
-    public String delete(Long id,User user) {
+    public String delete(Long id, User user) {
         try {
-            return AccessLevelService.getAccessLevelService().delete(id,user).toString();
+            return AccessLevelService.getAccessLevelService().delete(id, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
@@ -86,10 +103,10 @@ public class AccessLevelController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id,User user) {
+    public String findById(Long id, User user) {
 
         try {
-            return AccessLevelService.getAccessLevelService().findById(id,user).toString();
+            return AccessLevelService.getAccessLevelService().findById(id, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }

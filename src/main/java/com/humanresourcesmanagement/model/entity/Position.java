@@ -24,7 +24,7 @@ import lombok.*;
 public class Position {
     @Id
     @JsonProperty("کد")
-    @SequenceGenerator(name="postionSeq",sequenceName = "position_seq",initialValue = 10)
+    @SequenceGenerator(name="positionSeq",sequenceName = "position_seq",initialValue = 10)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "position_seq")
     private Long id;
 
@@ -40,14 +40,24 @@ public class Position {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    @JsonProperty("وظیفه")
+    @NonNull
+    @NotBlank(message = "وظیفه را انتخاب کنید")
+    @OneToOne
+    private Duty duty;
+
     @PrePersist
     public void StatusSet(){
         status = Status.Active;
     }
 
-    public Position(Long id, @NonNull String name) {
+    public Position(
+            Long id,
+            @NonNull String name,
+            @NonNull Duty duty) {
         this.id = id;
         this.name = name;
+        this.duty = duty;
     }
 
     @Override

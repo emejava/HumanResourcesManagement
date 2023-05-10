@@ -38,6 +38,12 @@ public class Resignation {
     @NonNull
     private LocalDate date;
 
+    @JsonProperty("دلیل استعفا")
+    @NonNull
+    @NotBlank(message = "دلیل استعفا وارد نشده")
+    @Column(name = "reason",columnDefinition = "CLOB")
+    private String reason;
+
     @JsonProperty("وضعیت درخواست")
     @Enumerated(EnumType.STRING)
     @Column(name = "status",columnDefinition = "NVARCHAR2(10)")
@@ -46,7 +52,7 @@ public class Resignation {
     @JsonProperty
     @NonNull
     @OneToOne
-    private File attachment;
+    private Attachment attachment;
 
     @JsonProperty("آخرین فیش حقوقی")
     @NonNull
@@ -62,7 +68,7 @@ public class Resignation {
     public Resignation(
             Long id,
             @NonNull Person person,
-            @NonNull File attachment,
+            @NonNull Attachment attachment,
             @NonNull Payment lastPayment) {
         this.id = id;
         this.person = person;
@@ -73,11 +79,12 @@ public class Resignation {
     public Resignation(
             @NonNull Person person,
             @NonNull LocalDate date,
-            @NonNull File attachment) {
+            @NonNull Attachment attachment) {
         this.person = person;
         this.date = date;
         this.attachment = attachment;
     }
+
 
     public Resignation(Long id, @NonNull Person person, Status status) {
         this.id = id;

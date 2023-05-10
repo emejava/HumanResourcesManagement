@@ -1,14 +1,18 @@
 package com.humanresourcesmanagement.controller;
 
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.enums.Gender;
 import com.humanresourcesmanagement.model.entity.enums.MaritalStatus;
+import com.humanresourcesmanagement.model.entity.enums.Status;
 import com.humanresourcesmanagement.model.service.PersonService;
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Map;
 
 public class PersonController {
 
@@ -28,7 +32,7 @@ public class PersonController {
             String lastName,
             String nationalCode,
             String birthCertificateCode,
-            Date birthday,
+            LocalDate birthday,
             Gender gender,
             Integer age,
             String father,
@@ -41,9 +45,11 @@ public class PersonController {
             String landLineNo,
             Short children,
             String email,
-            File nationalCardPicture,
-            File birthCertificatePicture,
+            Attachment nationalCardPicture,
+            Attachment birthCertificatePicture,
             User user) {
+
+        //  ---------CREATE-OBJECT-----------------
         Person person = new Person(
                 firstName,
                 lastName,
@@ -63,12 +69,19 @@ public class PersonController {
                 children,
                 email,
                 nationalCardPicture,
-                birthCertificatePicture);
-
-        try {
-            return PersonService.getPersonService().save(person, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                birthCertificatePicture
+        );
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(person);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        }else{
+            try {
+              Person newPerson = PersonService.getPersonService().save(person, user);
+              return newPerson.getId().toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
@@ -79,7 +92,7 @@ public class PersonController {
             String lastName,
             String nationalCode,
             String birthCertificateCode,
-            Date birthday,
+            LocalDate birthday,
             Gender gender,
             Integer age,
             String father,
@@ -92,10 +105,10 @@ public class PersonController {
             String landLineNo,
             Short children,
             String email,
-            File nationalCardPicture,
-            File birthCertificatePicture,
+            Attachment nationalCardPicture,
+            Attachment birthCertificatePicture,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Person person = new Person(
                 id,
                 firstName,
@@ -117,11 +130,16 @@ public class PersonController {
                 email,
                 nationalCardPicture,
                 birthCertificatePicture);
-
-        try {
-            return PersonService.getPersonService().edit(person, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(person);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return PersonService.getPersonService().edit(person, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
@@ -171,20 +189,20 @@ public class PersonController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long personnelCode, User user) {
+    public Person findById(Long id, User user) {
         try {
-            return PersonService.getPersonService().findById(personnelCode, user).toString();
+            return PersonService.getPersonService().findById(id, user);
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            return null; // TODO: How return error with returning object
         }
     }
 
     //  ---------SELECT-BY-FIRSTNAME-AND-LASTNAME-------------------------------------
-    public String findByFirstAndLastName(String firstName, String lastName, User user) {
+    public Person findByFirstAndLastName(String firstName, String lastName, User user) {
         try {
-            return PersonService.getPersonService().findByFirstAndLastName(firstName, lastName, user).toString();
+            return PersonService.getPersonService().findByFirstAndLastName(firstName, lastName, user);
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            return null; // TODO: How return error with returning object
         }
     }
 
@@ -219,6 +237,25 @@ public class PersonController {
     public String findByPersonnelCode(Long personnelCode, User user) {
         try {
             return PersonService.getPersonService().findByPersonnelCode(personnelCode, user).toString();
+        } catch (Exception e) {
+            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        }
+    }
+
+    //  ---------SET-EMPLOYMENT--------------------------------------------------------
+    public String setPersonEmployment(Person person,Employment employment, User user) {
+        try {
+            person.setEmployment(employment);
+            return PersonService.getPersonService().edit(person, user).toString();
+        } catch (Exception e) {
+            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        }
+    }
+
+    //  ---------CHANGE-STATUS---------------------------------------------------------
+    public String changeStatus(Person person, Status status, User user) {
+        try {
+            return PersonService.getPersonService().changeStatus(person,status, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }

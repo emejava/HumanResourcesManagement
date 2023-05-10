@@ -1,6 +1,8 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.Recruitment;
 import com.humanresourcesmanagement.model.entity.enums.Gender;
@@ -11,6 +13,7 @@ import com.humanresourcesmanagement.model.service.RecruitmentService;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 public class RecruitmentController {
 
@@ -39,6 +42,8 @@ public class RecruitmentController {
             ShiftWork shiftWork,
             String requestedSalary,
             User user) {
+
+        //  ---------CREATE-OBJECT-----------------
         Recruitment recruitment = new Recruitment(
                 person,
                 education,
@@ -51,12 +56,18 @@ public class RecruitmentController {
                 lastJobNo,
                 jobGoal,
                 shiftWork,
-                requestedSalary);
-
-        try {
-            return RecruitmentService.getRecruitmentService().save(recruitment, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                requestedSalary
+        );
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> recruitmentErrors = Validation.getValidation().doValidation(recruitment);
+        if (recruitmentErrors != null) {
+            return new Gson().toJson(recruitmentErrors);
+        } else {
+            try {
+                return RecruitmentService.getRecruitmentService().save(recruitment, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
@@ -76,7 +87,7 @@ public class RecruitmentController {
             ShiftWork shiftWork,
             String requestedSalary,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Recruitment recruitment = new Recruitment(
                 id,
                 person,
@@ -91,13 +102,19 @@ public class RecruitmentController {
                 jobGoal,
                 shiftWork,
                 requestedSalary);
-
-        try {
-            return RecruitmentService.getRecruitmentService().edit(recruitment, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> recruitmentErrors = Validation.getValidation().doValidation(recruitment);
+        if (recruitmentErrors != null) {
+            return new Gson().toJson(recruitmentErrors);
+        } else {
+            try {
+                return RecruitmentService.getRecruitmentService().edit(recruitment, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
+
     //  ---------LOGICAL-DELETE-----------------------------------------------------
     public String delete(Long id, User user) {
         try {
@@ -134,15 +151,6 @@ public class RecruitmentController {
         }
     }
 
-    //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
-    public String findAllActive(User user) {
-        try {
-            return RecruitmentService.getRecruitmentService().findAllActive(user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-        }
-    }
-
     //  ---------SELECT-BY-ID-------------------------------------------------------
     public String findById(Long id, User user) {
         try {
@@ -151,6 +159,7 @@ public class RecruitmentController {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
+
     //  ---------SELECT-BY-FIELD-OF-STUDY-------------------------------------------
     public String findByFieldOfStudy(String fieldOfStudy, User user) {
         try {

@@ -1,16 +1,13 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.enums.Status;
-import com.humanresourcesmanagement.model.service.PersonService;
-import com.humanresourcesmanagement.model.service.RetirementService;
 import com.humanresourcesmanagement.model.service.RetirementService;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class RetirementController {
@@ -29,20 +26,28 @@ public class RetirementController {
             Person person,
             LocalDate date,
             Payment lastPayment,
-            File attachment,
+            Attachment attachment,
             User user) {
-        person.setStatus(Status.Retired);
+
+        //  ---------CREATE-OBJECT-----------------
         Retirement retirement = new Retirement(
                 person,
                 date,
                 lastPayment,
-                attachment);
+                attachment
+        );
 
-        try {
-            PersonService.getPersonService().edit(person,user);
-            return RetirementService.getRetirementService().save(retirement, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(retirement);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                PersonController.getPersonController().changeStatus(person, Status.Retired, user);
+                return RetirementService.getRetirementService().save(retirement, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
@@ -53,17 +58,22 @@ public class RetirementController {
             LocalDate date,
             Payment lastPayment,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Retirement retirement = new Retirement(
                 id,
                 person,
                 date,
                 lastPayment);
-
-        try {
-            return RetirementService.getRetirementService().edit(retirement, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(retirement);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return RetirementService.getRetirementService().edit(retirement, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 

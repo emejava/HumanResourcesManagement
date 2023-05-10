@@ -40,7 +40,7 @@ public class Duty {
     @JsonProperty("شرح وظیفه")
     @NonNull
     @NotBlank(message = "وظیفه را شرح دهید")
-    @Pattern(regexp = "، [آ-ی \\s]*", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[،0-9آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name = "duty_explanation", columnDefinition = "NVARCHAR2(255)")
     private String dutyExplanation;
 

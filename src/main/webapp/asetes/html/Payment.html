@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--                    Css                      -->
+    <link rel="stylesheet" href="../css/styleSignUp.css">
+    <!--                    Css Icon                 -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>Payment Form</title>
+</head>
+<body>
+<div class="container">
+    <header>Payment</header>
+    <form action="" method="post">
+        <div class="form first">
+            <div class="details personal">
+                <span class="title">Financial Details</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Year</label>
+                        <input type="date" name="Year"  required>
+                    </div>
+                    <div class="input-field">
+                        <label>Date From</label>
+                        <input type="datetime-local" name="DateFrom"  required>
+                    </div>
+                    <div class="input-field">
+                        <label>Date Till</label>
+                        <input type="datetime-local" name="DateTill"  required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Person</label>
+                        <input type="number" name="Person" placeholder="Please Enter Your Person number" required>
+                    </div>
+                    <div class="input-field">
+                        <label>BasicSalary</label>
+                        <input type="number" name="BasicSalary" placeholder="Please Enter Your BasicSalary in the Year" required>
+                    </div>
+                    <div class="input-field">
+                        <label>OverTime</label>
+                        <input type="datetime-local" name="OverTime"  required>
+                    </div>
+                </div>
+            </div>
+            <div class="details ID">
+                <span class="title">AbsenceTime Details</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>AbsenceTime</label>
+                        <input type="datetime-local" name="AbsenceTime" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Operation Time</label>
+                        <input type="datetime-local" name="OperationTime" required>
+                    </div>
+                    <div class="input-field">
+                        <label>OverTime Pay Count</label>
+                        <input type="number" name="OverTimePayCount" placeholder="Please Enter Your OverTime Pay Count" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Absence pay Count</label>
+                        <input type="number" name="AbsencepayCount" placeholder="Please Enter Your Absence pay Count" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Operation Pay Count</label>
+                        <input type="number" name="OperationPayCount" placeholder="Please Enter Your Operation Pay Count" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Housing</label>
+                        <input type="number" name="Housing" placeholder="Please Enter Your Housing" required>
+                    </div>
+                </div>
+                <button class="nextBTN">
+                    <span class="btnText">Next</span>
+                    <i class="uil-navigator"></i>
+                </button>
+            </div>
+        </div>
+        <!--    ////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <div class="form second">
+            <div class="details address">
+                <span class="title">More Details</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>LeaveDays</label>
+                        <input type="list" name="LeaveDays"  required>
+                    </div>
+                    <div class="input-field">
+                        <label>LeaveDays Pay Deduction</label>
+                        <input type="number" name="LeaveDaysPayDeduction" placeholder="Please Enter Your LeaveDays Pay Deduction" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Benefits</label>
+                        <input type="text" name="Benefits" placeholder="Please Enter You Benefits" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Management Bonus</label>
+                        <input type="number" name="ManagementBonus" placeholder="Please Enter You Management Bonus" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Children Pay</label>
+                        <input type="number" name="Children Pay" placeholder="Please Enter You Children Pay" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Severance Pay</label>
+                        <input type="number" name="SeverancePay" placeholder="Please Enter You Severance Pay" required>
+                    </div>
+                </div>
+            </div>
+            <div class="details Family">
+                <span class="title">Payment Details</span>
+
+                <div class="fields">
+                    <div class="input-field">
+                        <label>Insurance</label>
+                        <input type="number" name="Insurance" placeholder="Please Enter You Insurance" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Tax</label>
+                        <input type="number" name="Tax" placeholder="Please Enter You Tax" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Debt</label>
+                        <input type="number" name="Debt" placeholder="Please Enter You Debt in the Year" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Total Payment</label>
+                        <input type="number" name="TotalPayment" placeholder="Please Enter You Total Payment in the Year" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Transaction Number</label>
+                        <input type="number" name="Transaction Number" placeholder="Please Enter You Transaction Number" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Color Status</label>
+                        <input type="color"  required>
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="backBTN">
+                        <i class="uil-navigator"></i>
+                        <span class="btnText">Back</span>
+                    </div>
+                    <button class="nextBTN">
+                        <span class="btnText">Record</span>
+                        <i class="uil-navigator"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="../js/nextBTN.js"></script>
+</body>
+</html>

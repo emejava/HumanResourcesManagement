@@ -48,7 +48,7 @@ public class Retirement {
     @JsonProperty("استعفا نامه")
     @NonNull
     @OneToOne
-    private File attachment;
+    private Attachment attachment;
 
     public Retirement(Long id,
                       @NonNull Person person,

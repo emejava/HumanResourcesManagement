@@ -1,12 +1,16 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.LeaveDays;
 import com.humanresourcesmanagement.model.entity.Person;
 import com.humanresourcesmanagement.model.entity.User;
 import com.humanresourcesmanagement.model.service.LeaveDaysService;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.Map;
 
 public class LeaveDaysController {
 
@@ -22,33 +26,41 @@ public class LeaveDaysController {
     //  ---------INSERT-DATA--------------------------------------------------------
     public String save(
             Person person,
-            Date from,
-            Date till,
-            Long daysCount,
+            LocalDate from,
+            LocalDate till,
+            Byte daysCount,
             String request,
-            User user){
+            User user) {
+        //  ---------CREATE-OBJECT-----------------
         LeaveDays leaveDays = new LeaveDays(
                 person,
                 from,
                 till,
                 daysCount,
                 request);
-        try {
-            return LeaveDaysService.getLeaveDaysService().save(leaveDays,user).toString();
-        }catch (Exception e){
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(leaveDays);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return LeaveDaysService.getLeaveDaysService().save(leaveDays, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
     //  ---------UPDATE-DATA--------------------------------------------------------
     public String edit(
         Long id,
         Person person,
-        Date from,
-        Date till,
-        Long daysCount,
+        LocalDate from,
+        LocalDate till,
+        Byte daysCount,
         String request,
         Boolean accepted,
-        User user){
+        User user) {
+        //  ---------CREATE-OBJECT-----------------
         LeaveDays leaveDays = new LeaveDays(
                 id,
                 person,
@@ -57,10 +69,16 @@ public class LeaveDaysController {
                 daysCount,
                 request,
                 accepted);
-        try {
-            return LeaveDaysService.getLeaveDaysService().edit(leaveDays,user).toString();
-        }catch (Exception e){
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(leaveDays);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return LeaveDaysService.getLeaveDaysService().edit(leaveDays, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
     //  ---------DELETE-------------------------------------------------------------

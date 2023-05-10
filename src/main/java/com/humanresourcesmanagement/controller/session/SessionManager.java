@@ -83,7 +83,7 @@ public class SessionManager {
     //  METHOD-------GET-HTTPSESSION-BY-USERNAME----------------------
     public static HttpSession findHttpSessionByUserName(String userName) {
         for (HttpSession httpSession : sessionMap.keySet()) {
-            if (((User) httpSession.getAttribute("user")).getUserName().equals(userName)) {
+            if (((User) httpSession.getAttribute("user")).getUsername().equals(userName)) {
                 return httpSession;
             }
         }

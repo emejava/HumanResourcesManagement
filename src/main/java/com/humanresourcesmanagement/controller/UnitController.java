@@ -1,10 +1,13 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.UnitService;
 
 import java.util.List;
+import java.util.Map;
 
 public class UnitController {
     //  ---------SINGLETON---------------------------------------------------------------
@@ -20,21 +23,24 @@ public class UnitController {
     //  ---------INSERT-DATA--------------------------------------------------------
     public String save(
             String name,
-            List<Unit> relatedUnits,
             String city,
             List<Duty> duties,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Unit unit = new Unit(
                 name,
-                relatedUnits,
                 city,
                 duties);
-
-        try {
-            return UnitService.getUnitService().save(unit, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(unit);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return UnitService.getUnitService().save(unit, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
@@ -46,18 +52,23 @@ public class UnitController {
             String city,
             List<Duty> duties,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Unit unit = new Unit(
                 id,
                 name,
                 relatedUnits,
                 city,
                 duties);
-
-        try {
-            return UnitService.getUnitService().edit(unit, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(unit);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return UnitService.getUnitService().edit(unit, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 

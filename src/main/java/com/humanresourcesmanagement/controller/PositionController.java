@@ -1,12 +1,15 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.Duty;
 import com.humanresourcesmanagement.model.entity.Position;
 import com.humanresourcesmanagement.model.entity.User;
 import com.humanresourcesmanagement.model.service.PositionService;
 
 import java.util.List;
+import java.util.Map;
 
 public class PositionController {
     //  ---------SINGLETON---------------------------------------------------------------
@@ -22,34 +25,45 @@ public class PositionController {
     //  ---------INSERT-DATA--------------------------------------------------------
     public String save(
             String name,
+            Duty duty,
             User user) {
-
-        Position position = new Position(name);
-
-        try {
-            return PositionService.getPositionService().save(position, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------CREATE-OBJECT-----------------
+        Position position = new Position(name, duty);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(position);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return PositionService.getPositionService().save(position, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
-
     //  ---------UPDATE-DATA--------------------------------------------------------
     public String edit(
             Long id,
             String name,
+            Duty duty,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Position position = new Position(
                 id,
-                name);
-
-        try {
-            return PositionService.getPositionService().edit(position, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                name,
+                duty);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(position);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return PositionService.getPositionService().edit(position, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
-
     //  ---------DELETE-------------------------------------------------------------
     public String delete(Long id, User user) {
         try {
@@ -87,12 +101,12 @@ public class PositionController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id, User user) {
+    public Position findById(Long id, User user) {
 
         try {
-            return PositionService.getPositionService().findById(id, user).toString();
+            return PositionService.getPositionService().findById(id, user);
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            return null;  // TODO: How return error with returning object
         }
     }
 

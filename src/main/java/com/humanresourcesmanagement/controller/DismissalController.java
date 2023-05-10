@@ -1,12 +1,14 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.enums.Status;
 import com.humanresourcesmanagement.model.service.DismissalService;
-import com.humanresourcesmanagement.model.service.PersonService;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 public class DismissalController {
     //  ---------SINGLETON---------------------------------------------------------------
@@ -25,21 +27,28 @@ public class DismissalController {
             String reason,
             LocalDate date,
             Payment lastPayment,
-            File attachment,
+            Attachment attachment,
             User user) {
-        person.setStatus(Status.Fired);
+        //  ---------CREATE-OBJECT-----------------
         Dismissal dismissal = new Dismissal(
                 person,
                 reason,
                 date,
                 lastPayment,
-                attachment);
+                attachment
+        );
 
-        try {
-            PersonService.getPersonService().edit(person,user);
-            return DismissalService.getDismissalService().save(dismissal, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(dismissal);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                PersonController.getPersonController().changeStatus(person, Status.Fired, user);
+                return DismissalService.getDismissalService().save(dismissal, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
@@ -51,7 +60,7 @@ public class DismissalController {
             LocalDate date,
             Payment lastPayment,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Dismissal dismissal = new Dismissal(
                 id,
                 person,
@@ -59,40 +68,47 @@ public class DismissalController {
                 date,
                 lastPayment);
 
-        try {
-            return DismissalService.getDismissalService().edit(dismissal, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(dismissal);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+
+            try {
+                return DismissalService.getDismissalService().edit(dismissal, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
-    //  ---------SELECT-ALL---------------------------------------------------------
-    public String findAll(User user) {
-        try {
-            return DismissalService.getDismissalService().findAll(user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------SELECT-ALL---------------------------------------------------------
+        public String findAll (User user){
+            try {
+                return DismissalService.getDismissalService().findAll(user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
-    }
 
-    //  ---------SELECT-BY-PERSONNEL-CODE-------------------------------------------
-    public String findByPersonnelCode(Long personnelCode, User user) {
+        //  ---------SELECT-BY-PERSONNEL-CODE-------------------------------------------
+        public String findByPersonnelCode (Long personnelCode, User user){
 
-        try {
-            return DismissalService.getDismissalService().findByPersonnelCode(personnelCode, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            try {
+                return DismissalService.getDismissalService().findByPersonnelCode(personnelCode, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
-    }
 
-    //  ---------SELECT-BY-DATE------------------------------------------------------
-    public String findByDate(LocalDate date, User user) {
-        try {
-            return DismissalService.getDismissalService().findByDate(date, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------SELECT-BY-DATE------------------------------------------------------
+        public String findByDate (LocalDate date, User user){
+            try {
+                return DismissalService.getDismissalService().findByDate(date, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
-    }
 
-}
+    }
 

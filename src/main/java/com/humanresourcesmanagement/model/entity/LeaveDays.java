@@ -33,17 +33,17 @@ public class LeaveDays {
 
     @JsonProperty("از تاریخ")
     @NonNull
-    private Date from;
+    private LocalDate from;
 
     @JsonProperty("تا تاریخ")
     @NonNull
-    private Date till;
+    private LocalDate till;
 
     @JsonProperty("تعداد روز درخواستی")
     @NonNull
-    @Pattern(regexp = "[0-9]{2}", message = "لطفا از عداد استفاده کنید")
-    @Column(columnDefinition = "NUMBER(2)")
-    private Long daysCount;
+    @Pattern(regexp = "^\\d{2}$", message = "لطفا از عداد استفاده کنید")
+    @Column(name = "days-count",columnDefinition = "NUMBER(2)")
+    private Byte daysCount;
 
     @JsonProperty("تقاضا")
     @NotBlank(message = "درخواست شما وارد نشده است")
@@ -66,9 +66,9 @@ public class LeaveDays {
     public LeaveDays(
             Long id,
             @NonNull Person person,
-            @NonNull Date from,
-            @NonNull Date till,
-            @NonNull Long daysCount,
+            @NonNull LocalDate from,
+            @NonNull LocalDate till,
+            @NonNull Byte daysCount,
             @NonNull String request,
             Boolean accepted) {
         this.id = id;

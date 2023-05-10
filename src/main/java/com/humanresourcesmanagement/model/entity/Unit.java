@@ -45,7 +45,6 @@ public class Unit {
     private String name;
 
     @JsonProperty("بخش های مرتبط")
-    @NonNull
     @NotBlank(message = "بخش های مربوطه را انتخاب کنید")
     @OneToMany
     private List<Unit> relatedUnits;

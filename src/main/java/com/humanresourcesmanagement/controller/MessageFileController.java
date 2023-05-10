@@ -1,8 +1,12 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.MessageFileService;
+
+import java.util.Map;
 
 public class MessageFileController {
     //  ---------SINGLETON---------------------------------------------------------------
@@ -21,17 +25,21 @@ public class MessageFileController {
             String filePath,
             Message msg,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         MessageFile messageFile = new MessageFile(
                 sender,
                 filePath,
-                msg)
-                ;
-
-        try {
-            return MessageFileService.getFileDirectionService().save(messageFile,user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                msg);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(messageFile);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return MessageFileService.getFileDirectionService().save(messageFile, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 

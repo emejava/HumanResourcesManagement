@@ -8,7 +8,7 @@ import com.humanresourcesmanagement.model.entity.enums.ShiftWork;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
-import java.sql.Timestamp;
+
 import java.time.LocalDate;
 
 @Getter
@@ -70,7 +70,7 @@ public class Employment {
 
     @JsonProperty("عکس قرارداد")
     @OneToOne
-    private File CV;
+    private Attachment CV;
 
     public Employment(
             Long personnelCode,

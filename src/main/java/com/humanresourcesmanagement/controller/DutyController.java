@@ -1,11 +1,14 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.DutyService;
 
 
 import java.util.List;
+import java.util.Map;
 
 public class DutyController {
     //  ---------SINGLETON---------------------------------------------------------------
@@ -24,31 +27,41 @@ public class DutyController {
             String dutyExplanation,
             User user) {
 
-        Duty duty = new Duty(position,dutyExplanation);
-
-        try {
-            return DutyService.getDutyService().save(duty, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------CREATE-OBJECT-----------------
+        Duty duty = new Duty(position, dutyExplanation);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(duty);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return DutyService.getDutyService().save(duty, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
-
     //  ---------UPDATE-DATA--------------------------------------------------------
     public String edit(
             Long id,
             Position position,
             String dutyExplanation,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Duty duty = new Duty(
                 id,
                 position,
                 dutyExplanation);
-
-        try {
-            return DutyService.getDutyService().edit(duty, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(duty);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return DutyService.getDutyService().edit(duty, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 

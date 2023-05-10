@@ -57,7 +57,7 @@ public class Message {
 
     @JsonProperty("پیام")
     @NonNull
-    @Column(name = "message",columnDefinition = "NVARCHAR2(1000)")
+    @Column(name = "message",columnDefinition = "CLOB")
     private String msg;
 
     @JsonProperty("پیوست ها")

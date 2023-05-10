@@ -54,37 +54,37 @@ public class Recruitment {
     @JsonProperty("مرکز تحصیلی")
     @NonNull
     @NotBlank(message = "نام دانشگاه را وارد کنید")
-    @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name = "education_place", columnDefinition = "NVARCHAR2(40)")
     private String educationPlace;
 
     @JsonProperty("تجربه کاری")
     @NonNull
-    @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name = "work_experience", columnDefinition = "NVARCHAR2(100)")
     private String workExperience;
 
     @JsonProperty("کار قبلی")
     @NonNull
-    @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name = "last_job", columnDefinition = "NVARCHAR2(20)")
     private String lastJob;
 
     @JsonProperty("دلیل خروج از محل کار قبلی")
     @NonNull
-    @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name = "last_jb_exit_reason", columnDefinition = "NVARCHAR2(100)")
     private String lastJobExitReason;
 
     @JsonProperty("آدرس محل کار قبلی")
     @NonNull
-    @Pattern(regexp = "[آ-ی\\s]", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name = "last_job_address", columnDefinition = "NVARCHAR2(255)")
     private String lastJobAddress;
 
     @JsonProperty("شماره تماس کار قبلی")
     @NonNull
-    @Pattern(regexp = "[0-9]{11}", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "^\\d{11}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @Column(name = "last_job_no", columnDefinition = "NVARCHAR2(11)")
     private String lastJobNo;
 
@@ -104,7 +104,7 @@ public class Recruitment {
 
     @JsonProperty("حقوق درخواستی")
     @NonNull
-    @Pattern(regexp = "[0-9]{8}", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "^\\d{8}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @NotBlank(message = "حقوق درخواستی وارد نشده")
     @Column(name = "requested_salary", columnDefinition = "NVARCHAR2(8)")
     private String requestedSalary;

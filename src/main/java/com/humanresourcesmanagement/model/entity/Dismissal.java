@@ -36,7 +36,7 @@ public class Dismissal {
     @JsonProperty("دلیل")
     @NonNull
     @NotBlank(message = "دلیل اخراج وارد نشده")
-    @Pattern(regexp = "[0-9]*[آ-ی\\s]*", message = "لطفا از حروف فارسی و اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "^*[ا-ی 0-9\\s/.+_-]$", message = "لطفا از حروف فارسی و اعداد انگلیسی استفاده کنید")
     @Column(name = "reason",columnDefinition = "nvarchar2(255)")
     private String reason;
 
@@ -56,7 +56,7 @@ public class Dismissal {
     @NonNull
     @NotBlank(message = "فایل ضمیمه آپلود نشده")
     @OneToOne
-    private File attachment;
+    private Attachment attachment;
 
     public Dismissal(
             Long id,

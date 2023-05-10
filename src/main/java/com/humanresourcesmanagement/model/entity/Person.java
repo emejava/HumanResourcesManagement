@@ -1,15 +1,13 @@
 package com.humanresourcesmanagement.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.*;
 import com.google.gson.Gson;
 import com.humanresourcesmanagement.model.entity.enums.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import jakarta.persistence.*;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.time.*;
 
 @Getter
 @Setter
@@ -56,14 +54,14 @@ public class Person {
     @JsonProperty("کد ملی")
     @NonNull
     @NotBlank(message = "کد ملی وارد نشده")
-    @Pattern(regexp = "[0-9]{10}", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "^\\d{10}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @Column(name = "national_Code", columnDefinition = "NUMBER(10)")
     private String nationalCode;
 
     @JsonProperty("شماره شناسنامه")
     @NonNull
     @NotBlank(message = "شماره شناسنامه وارد نشده")
-    @Pattern(regexp = "[0-9]{15}", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "^\\d{15}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @Column(name = "birth_Certificate_Code", columnDefinition = "NUMBER(15)")
     private String birthCertificateCode;
 
@@ -71,7 +69,7 @@ public class Person {
     @NonNull
     @NotBlank(message = "تاریخ تولد وارد نشده")
     @Column(name = "birthday")
-    private Date birthday;
+    private LocalDate birthday;
 
     @JsonProperty("جنسیت")
     @NonNull
@@ -83,7 +81,7 @@ public class Person {
     @JsonProperty("سن")
     @NonNull
     @NotBlank(message = "")
-    @Pattern(regexp = "[0-9]{2}", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "^\\d{2}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @Column(name = "age", columnDefinition = "NVARCHAR2(2)")
     private Integer age;
 
@@ -109,14 +107,14 @@ public class Person {
     @JsonProperty("نشانی")
     @NonNull
     @NotBlank(message = "نشانی وارد نشده")
-    @Pattern(regexp = "، [آ-ی \\s]*", message = "لطفا از حروف فارسی استفاده کنید")
+    @Pattern(regexp = "[، آ-ی\\s]*", message = "لطفا از حروف فارسی استفاده کنید")
     @Column(name = "address", columnDefinition = "NVARCHAR2(70)")
     private String address;
 
     @JsonProperty("کد پستی")
     @NonNull
     @NotBlank(message = "کد پستی وارد نشده")
-    @Pattern(regexp = "[0-9]{10}", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "^\\d{10}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @Column(name = "post_Code", columnDefinition = "NVARCHAR2(10)")
     private String postCode;
 
@@ -130,14 +128,14 @@ public class Person {
     @JsonProperty("تلفن همراه")
     @NonNull
     @NotBlank(message = "تلفن همراه وارد نشده")
-    @Pattern(regexp = "[0-9]{11}", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "^\\d{11}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @Column(name = "phone_no",columnDefinition = "NVARCHAR2(11)")
     private String phoneNo;
 
     @JsonProperty("تلفن ثابت")
     @NonNull
     @NotBlank(message = "تلفن ثابت وارد نشده")
-    @Pattern(regexp = "[0-9]{11}", message = "لطفا از اعداد انگلیسی استفاده کنید")
+    @Pattern(regexp = "^\\d{11}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @Column(name = "landLine_no",columnDefinition = "NVARCHAR2(11)")
     private String landLineNo;
 
@@ -150,20 +148,21 @@ public class Person {
     @JsonProperty("ایمیل")
     @NonNull
     @Email
+    @Pattern(regexp = "/[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,4}/",message = "ایمیل به درستی وارد نشده")
     @Column(name = "email",columnDefinition = "NVARCHAR2(40)")
     private String email;
 
     @JsonProperty("عکس کارت ملی")
     @NonNull
     @NotBlank
-    @OneToOne
-    private File nationalCardPicture;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Attachment nationalCardPicture;
 
     @JsonProperty("عکس پرسنلی")
     @NonNull
     @NotBlank
-    @OneToOne
-    private File personnelPicture;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Attachment personnelPicture;
 
     @JsonProperty("تاریخ ثبت نام")
     private Timestamp signUp;
@@ -173,7 +172,6 @@ public class Person {
     @Column(name = "status", columnDefinition = "NVARCHAR2(10)")
     private Status status;
 
-    @JsonIgnore
     @OneToOne
     private Employment employment;
 
@@ -190,7 +188,7 @@ public class Person {
             @NonNull String lastName,
             @NonNull String nationalCode,
             @NonNull String birthCertificateCode,
-            @NonNull Date birthday,
+            @NonNull LocalDate birthday,
             @NonNull Gender gender,
             @NonNull Integer age,
             @NonNull String father,
@@ -203,8 +201,8 @@ public class Person {
             @NonNull String landLineNo,
             @NonNull Short children,
             @NonNull String email,
-            @NonNull File nationalCardPicture,
-            @NonNull File personnelPicture){
+            @NonNull Attachment nationalCardPicture,
+            @NonNull Attachment personnelPicture){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

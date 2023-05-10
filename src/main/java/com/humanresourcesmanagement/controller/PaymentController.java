@@ -1,6 +1,8 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.enums.Gender;
 import com.humanresourcesmanagement.model.entity.enums.MaritalStatus;
@@ -10,12 +12,17 @@ import com.humanresourcesmanagement.model.service.PaymentService;
 import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.Year;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PaymentController {
     //  ---------SINGLETON---------------------------------------------------------------
     private static final PaymentController paymentController = new PaymentController();
+    private Map<Boolean, Object> result = new HashMap<>();
+    Map<String, String> errors;
 
     private PaymentController() {
     }
@@ -27,13 +34,13 @@ public class PaymentController {
     //  ---------INSERT-DATA--------------------------------------------------------
     public String save(
             Year year,
-            Date from,
-            Date till,
+            LocalDate from,
+            LocalDate till,
             Person person,
             Double BasicSalary,
-            Time overTime,
-            Time absenceTime,
-            Time operationTime,
+            Long overTime,
+            Long absenceTime,
+            Long operationTime,
             Double overTimePayCount,
             Double absenceTimePayCount,
             Double operationTimePayCount,
@@ -47,8 +54,7 @@ public class PaymentController {
             Double insurance,
             Double tax,
             User user) {
-        Double debt = absenceTimePayCount + leaveDaysPayDeduction + insurance + tax;
-        Double totalPayment = BasicSalary + overTimePayCount + operationTimePayCount + housing + benefits + managementBonus + childrenPay + severancePay - debt;
+        //  ---------CREATE-OBJECT-----------------
         Payment payment = new Payment(
                 year,
                 from,
@@ -69,13 +75,17 @@ public class PaymentController {
                 childrenPay,
                 severancePay,
                 insurance,
-                tax,
-                debt,
-                totalPayment);
-        try {
-            return PaymentService.getPaymentService().save(payment, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                tax);
+        errors.clear();
+        errors = Validation.getValidation().doValidation(payment);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return PaymentService.getPaymentService().edit(payment, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
@@ -83,13 +93,13 @@ public class PaymentController {
     public String edit(
             Long id,
             Year year,
-            Date from,
-            Date till,
+            LocalDate from,
+            LocalDate till,
             Person person,
             Double BasicSalary,
-            Time overTime,
-            Time absenceTime,
-            Time operationTime,
+            Long overTime,
+            Long absenceTime,
+            Long operationTime,
             Double overTimePayCount,
             Double absenceTimePayCount,
             Double operationTimePayCount,
@@ -107,7 +117,7 @@ public class PaymentController {
             Long transactionNumber,
             Status status,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Payment payment = new Payment(
                 id,
                 year,
@@ -134,28 +144,38 @@ public class PaymentController {
                 totalPayment,
                 transactionNumber,
                 status);
-
-        try {
-            return PaymentService.getPaymentService().edit(payment, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        errors.clear();
+        errors = Validation.getValidation().doValidation(payment);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                return PaymentService.getPaymentService().edit(payment, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
     //  ---------SUBMIT-TRANSACTION-NUMBER-------------------------------------------------------
-    public String submitTransactionNumber(
+    public Map<Boolean, Object> submitTransactionNumber(
             Long id,
             Long transactionNumber,
+            Status status,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         Payment payment = new Payment(
                 id,
-                transactionNumber);
-        payment.setStatus(Status.Payed);
+                transactionNumber,
+                status);
+        result.clear();
         try {
-            return PaymentService.getPaymentService().edit(payment, user).toString();
+            result.put(true,PaymentService.getPaymentService().edit(payment, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        } finally {
+            return result;
         }
     }
 
@@ -196,11 +216,14 @@ public class PaymentController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id, User user) {
+    public Map<Boolean, Object> findById(Long id, User user) {
+        result.clear();
         try {
-            return PaymentService.getPaymentService().findById(id, user).toString();
+            result.put(true, PaymentService.getPaymentService().findById(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        } finally {
+            return result;
         }
     }
 
@@ -232,11 +255,20 @@ public class PaymentController {
     }
 
     //  ---------SELECT-BY-YEAR-AND-MONTH--------------------------------------------
-    public String findByYearAndMonth(Year year, Date from, Date till, User user) {
+    public String findByYearAndMonth(Year year, LocalDate from, LocalDate till, User user) {
         try {
             return PaymentService.getPaymentService().findByYearAndMonth(year, from, till, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        }
+    }
+
+    //  ---------SELECT-BY-END-TIME-OF-PAYMENT--------------------------------------------
+    public Payment findByPersonnelCodeAndEndTime(Long personnelCode, LocalDate till, User user) {
+        try {
+            return PaymentService.getPaymentService().findByPersonnelCodeAndEndTime(personnelCode, till, user);
+        } catch (Exception e) {
+            return null; // TODO: How return error with returning object
         }
     }
 

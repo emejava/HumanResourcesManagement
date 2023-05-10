@@ -1,11 +1,15 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.AccessLevel;
 import com.humanresourcesmanagement.model.entity.Person;
 import com.humanresourcesmanagement.model.entity.Role;
 import com.humanresourcesmanagement.model.entity.User;
 import com.humanresourcesmanagement.model.service.UserService;
+
+import java.util.Map;
 
 public class UserController {
 
@@ -29,18 +33,25 @@ public class UserController {
             AccessLevel accessLevel,
             User user) {
 
+        //  ---------CREATE-OBJECT-----------------
         User newUser = new User(
                 username,
                 password,
                 person,
                 role,
                 accessLevel);
-        try {
-            return UserService.getUserService().save(newUser,user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-        }
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> userErrors = Validation.getValidation().doValidation(user);
+        if (userErrors != null) {
+            return new Gson().toJson(userErrors);
+        } else {
+            try {
+                return UserService.getUserService().save(newUser, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
 
+        }
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
@@ -50,42 +61,46 @@ public class UserController {
             Person person,
             AccessLevel accessLevel,
             User user) {
-
+        //  ---------CREATE-OBJECT-----------------
         User newUser = new User(
                 username,
                 password,
                 person,
                 accessLevel);
-
-        try {
-            return UserService.getUserService().edit(newUser,user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        Map<String, String> userErrors = Validation.getValidation().doValidation(user);
+        if (userErrors != null) {
+            return new Gson().toJson(userErrors);
+        } else {
+            try {
+                return UserService.getUserService().edit(newUser, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
     //  ----------DELETE------------------------------------------------------------
-    public String delete(Long id,User user) {
+    public String delete(Long id, User user) {
         try {
-            return UserService.getUserService().delete(id,user).toString();
+            return UserService.getUserService().delete(id, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id,User user) {
+    public String deactivate(Long id, User user) {
         try {
-            return UserService.getUserService().deactivate(id,user).toString();
+            return UserService.getUserService().deactivate(id, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
 
     //  ---------ACTIVE-STATUS------------------------------------------------------
-    public String activate(Long id,User user) {
+    public String activate(Long id, User user) {
         try {
-            return UserService.getUserService().activate(id,user).toString();
+            return UserService.getUserService().activate(id, user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
@@ -101,25 +116,25 @@ public class UserController {
     }
 
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
-    public String findAllActive(User user){
+    public String findAllActive(User user) {
         try {
             return UserService.getUserService().findAllActive(user).toString();
-        }catch (Exception e){
+        } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
 
     //  ---------SELECT-BY-USERNAME---------------------------------------------------
-    public User findByUsername(String username,User user){
+    public User findByUsername(String username, User user) {
         try {
-            return UserService.getUserService().findByUsername(username,user);
-        }catch (Exception e){
+            return UserService.getUserService().findByUsername(username, user);
+        } catch (Exception e) {
             ExceptionWrapper.getExceptionWrapper().getMessage(e);
             return null;
         }
     }
 
-//    ------------VALIDATE-LOGIN-DATA------------------------------------------------
+    //    ------------VALIDATE-LOGIN-DATA------------------------------------------------
     public User isValidate(String username, String password) {
         try {
             return UserService.getUserService().isValidate(username, password);

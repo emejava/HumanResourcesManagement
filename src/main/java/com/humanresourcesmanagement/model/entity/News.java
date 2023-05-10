@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -47,6 +49,14 @@ public class News {
     @Column(name = "news_report", columnDefinition = "NVARCHAR2(255)")
     private String newsReport;
 
+    @JsonProperty("ضمیمه 1")
+    @OneToOne(cascade = CascadeType.ALL)
+    private Attachment mainAttachment;
+
+    @JsonProperty("ضمیمه 2")
+    @OneToOne(cascade = CascadeType.ALL)
+    private Attachment secondAttachment;
+
     @JsonProperty("وضعیت")
     @Enumerated(EnumType.STRING)
     @Column(name = "status", columnDefinition = "NVARCHAR2(15)")
@@ -58,14 +68,31 @@ public class News {
     }
 
     public News(
+            @NonNull String subject,
+            @NonNull String title,
+            @NonNull String newsReport,
+            Attachment mainAttachment,
+            Attachment secondAttachment) {
+        this.subject = subject;
+        this.title = title;
+        this.newsReport = newsReport;
+        this.mainAttachment = mainAttachment;
+        this.secondAttachment = secondAttachment;
+    }
+
+    public News(
             Long id,
             @NonNull String subject,
             @NonNull String title,
-            @NonNull String newsReport) {
+            @NonNull String newsReport,
+            Attachment mainAttachment,
+            Attachment secondAttachment) {
         this.id = id;
         this.subject = subject;
         this.title = title;
         this.newsReport = newsReport;
+        this.mainAttachment = mainAttachment;
+        this.secondAttachment = secondAttachment;
     }
 
     @Override

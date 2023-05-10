@@ -37,14 +37,14 @@ public class User {
     @JsonProperty("نام کاربری")
     @NonNull
     @NotBlank(message = "نام کاربری وارد نشده")
-    @Pattern(regexp = "[@_.&]*[a-z A-Z]*[0-9]", message = "کاراکتر های مجاز: (اعداد و حروف انگلیسی)(@)(_)(.)(&)")
+    @Pattern(regexp = "^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$", message = "کاراکتر های مجاز: (اعداد و حروف انگلیسی)(@)(_)(.)(&)")
     @Column(columnDefinition = "NVARCHAR2(20)")
     private String username;
 
     @JsonProperty("رمز عبور")
     @NonNull
     @NotBlank(message = "رمز عبور وارد نشده")
-    @Pattern(regexp = "[@_.&]*[a-z A-Z]*[0-9]{8,20}", message = "کاراکتر های مجاز: (اعداد و حروف انگلیسی)(@)(_)(.)(&) و حداقل 8 کاراکتر")
+    @Pattern(regexp = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$", message = "کاراکتر های مجاز: (اعداد و حروف انگلیسی)(@)(_)(.)(&) و حداقل 8 کاراکتر")
     @Column(columnDefinition = "NVARCHAR2(20)")
     private String password;
 

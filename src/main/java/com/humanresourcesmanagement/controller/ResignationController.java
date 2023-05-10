@@ -1,12 +1,15 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.enums.Status;
 import com.humanresourcesmanagement.model.service.PersonService;
 import com.humanresourcesmanagement.model.service.ResignationService;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 public class ResignationController {
     //  ---------SINGLETON---------------------------------------------------------------
@@ -23,85 +26,105 @@ public class ResignationController {
     public String save(
             Person person,
             LocalDate date,
-            File attachment,
+            String reason,
+            Attachment attachment,
+            Payment lastPayment,
             User user) {
+        //  ---------CREATE-OBJECT-----------------
         Resignation resignation = new Resignation(
                 person,
                 date,
-                attachment);
-
-        try {
-            return ResignationService.getResignationService().save(resignation, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-        }
-    }
-
-    //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
-            Long id,
-            Person person,
-            File attachment,
-            Payment lastPayment,
-            User user) {
-        Resignation resignation = new Resignation(
-                id,
-                person,
+                reason,
                 attachment,
-                lastPayment);
+                lastPayment
+        );
 
-        try {
-            return ResignationService.getResignationService().edit(resignation, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(resignation);
+        if (errors != null) {
+            return new Gson().toJson(errors);
+        } else {
+            try {
+                PersonController.getPersonController().changeStatus(person, Status.Pending, user);
+                return ResignationService.getResignationService().save(resignation, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
-    //  ---------ACCEPT-RESIGN-------------------------------------------------------
-    public String edit(
-            Long id,
-            Person person,
-            Status status,
-            User user) {
-        person.setStatus(Status.Retired);
-        Resignation resignation = new Resignation(
-                id,
-                person,
-                status);
+        //  ---------UPDATE-DATA--------------------------------------------------------
+        public String edit (
+                Long id,
+                Person person,
+                Attachment attachment,
+                Payment lastPayment,
+                User user) {
+            //  ---------CREATE-OBJECT-----------------
+            Resignation resignation = new Resignation(
+                    id,
+                    person,
+                    attachment,
+                    lastPayment);
+            //  ---------VALIDATING-DATA---------------
+            Map<String, String> errors = Validation.getValidation().doValidation(resignation);
+            if (errors != null) {
+                return new Gson().toJson(errors);
+            } else {
+                try {
+                    return ResignationService.getResignationService().edit(resignation, user).toString();
+                } catch (Exception e) {
+                    return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                }
+            }
+        }
 
-        try {
-            PersonService.getPersonService().edit(person, user);
-            return ResignationService.getResignationService().edit(resignation, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+
+        //  ---------ACCEPT-RESIGN-------------------------------------------------------
+        public String edit (
+                Long id,
+                Person person,
+                Status status,
+                User user){
+            person.setStatus(Status.Retired);
+            Resignation resignation = new Resignation(
+                    id,
+                    person,
+                    status);
+
+            try {
+                PersonService.getPersonService().edit(person, user);
+                return ResignationService.getResignationService().edit(resignation, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
+        }
+
+        //  ---------SELECT-ALL---------------------------------------------------------
+        public String findAll (User user){
+            try {
+                return ResignationService.getResignationService().findAll(user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
+        }
+
+        //  ---------SELECT-BY-PERSONNEL-CODE-------------------------------------------
+        public String findByPersonnelCode (Long personnelCode, User user){
+
+            try {
+                return ResignationService.getResignationService().findByPersonnelCode(personnelCode, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
+        }
+
+        //  ---------SELECT-BY-DATE------------------------------------------------------
+        public String findByDate (LocalDate date, User user){
+            try {
+                return ResignationService.getResignationService().findByDate(date, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
-
-    //  ---------SELECT-ALL---------------------------------------------------------
-    public String findAll(User user) {
-        try {
-            return ResignationService.getResignationService().findAll(user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-        }
-    }
-
-    //  ---------SELECT-BY-PERSONNEL-CODE-------------------------------------------
-    public String findByPersonnelCode(Long personnelCode, User user) {
-
-        try {
-            return ResignationService.getResignationService().findByPersonnelCode(personnelCode, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-        }
-    }
-
-    //  ---------SELECT-BY-DATE------------------------------------------------------
-    public String findByDate(LocalDate date, User user) {
-        try {
-            return ResignationService.getResignationService().findByDate(date, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-        }
-    }
-}

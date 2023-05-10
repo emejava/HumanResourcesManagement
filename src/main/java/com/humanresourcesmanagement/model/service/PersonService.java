@@ -193,6 +193,18 @@ public class PersonService {
         }
     }
 
+    //  ---------CHANGE-STATUS---------------------------------------------------------
+    public Person changeStatus(Person person,Status status, User user) throws Exception {
+        try (CrudRepository<Person, Long> personDa = new CrudRepository<>()) {
+            person.setStatus(status);
+            personDa.edit(person);
+            Log log = new Log(Action.Update, person.toString(), user);
+            LogService.getLogService().save(log);
+            return person;
+        }
+    }
+
+
     //  ---------RUN-NAMED-QUERIES----------------------------------------------------
     public List<Person> executeQuery(String namedQuery, Map<String, Object> params) throws Exception {
         return null;

@@ -1,15 +1,15 @@
 package com.humanresourcesmanagement.controller;
 
+import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
+import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.enums.EmploymentType;
 import com.humanresourcesmanagement.model.entity.enums.ShiftWork;
 import com.humanresourcesmanagement.model.service.EmploymentService;
-import com.humanresourcesmanagement.model.service.EmploymentService;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Map;
 
 public class EmploymentController {
 
@@ -34,6 +34,7 @@ public class EmploymentController {
             LocalDate startWorkingDate,
             ShiftWork shiftWork,
             User user) {
+        //  ---------CREATE-OBJECT-----------------
         Employment employment = new Employment(
                 personnelCode,
                 person,
@@ -42,12 +43,20 @@ public class EmploymentController {
                 duty,
                 position,
                 startWorkingDate,
-                shiftWork);
+                shiftWork
+        );
 
-        try {
-            return EmploymentService.getEmploymentService().save(employment, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> employmentErrors = Validation.getValidation().doValidation(employment);
+        if (employmentErrors != null) {
+            return new Gson().toJson(employmentErrors);
+        } else {
+            try {
+                PersonController.getPersonController().setPersonEmployment(person, employment, user);
+                return EmploymentService.getEmploymentService().save(employment, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
@@ -61,7 +70,7 @@ public class EmploymentController {
             Position position,
             LocalDate startWorkingDate,
             ShiftWork shiftWork,
-            File CV,
+            Attachment CV,
             User user) {
 
         Employment employment = new Employment(
@@ -74,37 +83,42 @@ public class EmploymentController {
                 startWorkingDate,
                 shiftWork,
                 CV);
-
-        try {
-            return EmploymentService.getEmploymentService().edit(employment, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-        }
-    }
-    //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String delete(Long id, User user) {
-        try {
-            return EmploymentService.getEmploymentService().delete(id, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        Map<String, String> employmentErrors = Validation.getValidation().doValidation(employment);
+        if (employmentErrors != null) {
+            return new Gson().toJson(employmentErrors);
+        } else {
+            try {
+                return EmploymentService.getEmploymentService().edit(employment, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
 
-    //  ---------SELECT-ALL---------------------------------------------------------
-    public String findAll(User user) {
-        try {
-            return EmploymentService.getEmploymentService().findAll(user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------LOGICAL-DELETE-----------------------------------------------------
+        public String delete (Long id, User user){
+            try {
+                return EmploymentService.getEmploymentService().delete(id, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
-    }
 
-    //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long personnelCode, User user) {
-        try {
-            return EmploymentService.getEmploymentService().findById(personnelCode, user).toString();
-        } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        //  ---------SELECT-ALL---------------------------------------------------------
+        public String findAll (User user){
+            try {
+                return EmploymentService.getEmploymentService().findAll(user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
+        }
+
+        //  ---------SELECT-BY-ID-------------------------------------------------------
+        public String findById (Long personnelCode, User user){
+            try {
+                return EmploymentService.getEmploymentService().findById(personnelCode, user).toString();
+            } catch (Exception e) {
+                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            }
         }
     }
-}
