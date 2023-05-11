@@ -9,17 +9,17 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(urlPatterns = "dismissal.do")
+@WebServlet(urlPatterns = "/application/dismissal.do")
 public class DismissalFormServlet extends HttpServlet {
 
     //      ---------FIND-PERSONS-------------------------------------doGET
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User doer = (User) req.getSession().getAttribute("user");
-        //    doPOST---------PERSON-LIST---------
+        //    doGET---------PERSON-LIST---------
         req.getSession().setAttribute("EmploymentList", PersonController.getPersonController().findAllActive(doer));
 
-        resp.sendRedirect("/Dismissal.jsp");
+        resp.sendRedirect("/application/Dismissal.jsp");
     }
 
     //      ---------INSERT-DATA-------------------------------------doPOST
@@ -27,12 +27,13 @@ public class DismissalFormServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User doer = (User) req.getSession().getAttribute("user");
         //    doPOST---------EMPLOYMENT-DATA------
-        Person person = PersonController.getPersonController().findById(Long.valueOf(req.getParameter("PersonId")), doer);
-        Long personnelCode = person.getEmployment().getPersonnelCode();         //TODO: Front return the person id to servlet but show id, first and last name
+        Person person = (Person) PersonController.getPersonController().findById(
+                Long.valueOf(req.getParameter("PersonId")), doer).get(true);
+        Long personnelCode = person.getEmployment().getPersonnelCode();
         String reason = req.getParameter("Reason");
         LocalDate date = LocalDate.parse(req.getParameter("date"));
-        Payment lastPayment = PaymentController.getPaymentController().findByPersonnelCodeAndEndTime(
-                personnelCode, LocalDate.parse(req.getParameter("LastPayment")), doer);
+        Payment lastPayment = (Payment) PaymentController.getPaymentController().findByPersonnelCodeAndEndTime(
+                personnelCode, LocalDate.parse(req.getParameter("LastPayment")), doer).get(true);
 
         //      doPOST---------SAVE-FILES---------
         //            -----------------File1
@@ -55,6 +56,6 @@ public class DismissalFormServlet extends HttpServlet {
                 doer
         );
         //  doPOST------RESPONSE---------------------
-        resp.sendRedirect("/Dismissal.jsp");
+        resp.sendRedirect("/application/Dismissal.jsp");
     }
 }

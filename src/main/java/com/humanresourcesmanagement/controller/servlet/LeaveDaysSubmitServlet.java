@@ -16,7 +16,8 @@ public class LeaveDaysSubmitServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User doer = (User) req.getSession().getAttribute("user");
-        Person person = PersonController.getPersonController().findByPersonnelCode(Long.valueOf(req.getParameter("PersonnelCode")),doer).get("true");
+        Person person = (Person) PersonController.getPersonController().findByPersonnelCode(
+                Long.valueOf(req.getParameter("PersonnelCode")),doer).get(true);
         LocalDate till = LocalDate.parse(req.getParameter("Till"));
         LocalDate from = LocalDate.parse(req.getParameter("From"));
         Byte daysCount = Byte.valueOf(req.getParameter("DaysCount"));
@@ -32,7 +33,7 @@ public class LeaveDaysSubmitServlet extends HttpServlet {
                 doer);
 
         //  doPOST------RESPONSE---------------------
-        resp.sendRedirect("/LeaveDays.jsp");
+        resp.sendRedirect("/application/LeaveDays.jsp");
 
     }
 }

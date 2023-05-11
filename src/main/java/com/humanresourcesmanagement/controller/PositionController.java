@@ -4,14 +4,18 @@ import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
 import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.Duty;
+import com.humanresourcesmanagement.model.entity.ErrorsTO;
 import com.humanresourcesmanagement.model.entity.Position;
 import com.humanresourcesmanagement.model.entity.User;
 import com.humanresourcesmanagement.model.service.PositionService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class PositionController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
     //  ---------SINGLETON---------------------------------------------------------------
     private static PositionController positionController = new PositionController();
 
@@ -23,62 +27,73 @@ public class PositionController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             String name,
-            Duty duty,
             User user) {
         //  ---------CREATE-OBJECT-----------------
-        Position position = new Position(name, duty);
+        Position position = new Position(name);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(position);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return PositionService.getPositionService().save(position, user).toString();
+                result.put(true, PositionService.getPositionService().save(position, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             Long id,
             String name,
-            Duty duty,
             User user) {
         //  ---------CREATE-OBJECT-----------------
         Position position = new Position(
                 id,
-                name,
-                duty);
+                name);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(position);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return PositionService.getPositionService().edit(position, user).toString();
+                result.put(true, PositionService.getPositionService().edit(position, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
     //  ---------DELETE-------------------------------------------------------------
-    public String delete(Long id, User user) {
+    public Map<Boolean,Object> delete(Long id, User user) {
+        result.clear();
         try {
-            return PositionService.getPositionService().delete(id, user).toString();
+            result.put(true, PositionService.getPositionService().delete(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id, User user) {
+    public Map<Boolean,Object> deactivate(Long id, User user) {
+        result.clear();
         try {
-            return PositionService.getPositionService().deactivate(id, user).toString();
+            result.put(true, PositionService.getPositionService().deactivate(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
@@ -101,21 +116,26 @@ public class PositionController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public Position findById(Long id, User user) {
-
+    public Map<Boolean,Object> findById(Long id, User user) {
+        result.clear();
         try {
-            return PositionService.getPositionService().findById(id, user);
+            result.put(true, PositionService.getPositionService().findById(id, user));
         } catch (Exception e) {
-            return null;  // TODO: How return error with returning object
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-NAME--------------------------------------------
-    public String findByName(String name, User user) {
+    public Map<Boolean,Object> findByName(String name, User user) {
+        result.clear();
         try {
-            return PositionService.getPositionService().findByName(name, user).toString();
+            result.put(true, PositionService.getPositionService().findByName(name, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

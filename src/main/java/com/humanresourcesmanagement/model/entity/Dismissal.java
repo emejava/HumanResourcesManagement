@@ -30,7 +30,7 @@ public class Dismissal {
 
     @JsonProperty("شخص")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Person person;
 
     @JsonProperty("دلیل")
@@ -49,13 +49,13 @@ public class Dismissal {
     @JsonProperty("آخرین فیش حقوقی")
     @NonNull
     @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Payment lastPayment;
 
     @JsonProperty("ضمیمه")
     @NonNull
     @NotBlank(message = "فایل ضمیمه آپلود نشده")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Attachment attachment;
 
     public Dismissal(

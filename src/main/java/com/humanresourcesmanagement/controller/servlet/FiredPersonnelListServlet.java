@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/FiredPersonnel")
+@WebServlet(urlPatterns = "/firedPersonnel")
 public class FiredPersonnelListServlet extends HttpServlet {
 
     //      ---------FIRED-PERSONNEL-LIST------------------------------------doGET
@@ -20,7 +20,7 @@ public class FiredPersonnelListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User doer = (User) req.getSession().getAttribute("user");
         req.getSession().setAttribute("firedPersonnelList", DismissalController.getDismissalController().findAll(doer));
-        resp.sendRedirect("/firedPersonnel");
+        resp.sendRedirect("/application/firedPersonnel.jsp");
 
     }
 }

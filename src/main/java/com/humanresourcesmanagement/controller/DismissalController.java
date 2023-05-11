@@ -8,9 +8,12 @@ import com.humanresourcesmanagement.model.entity.enums.Status;
 import com.humanresourcesmanagement.model.service.DismissalService;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 public class DismissalController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
     //  ---------SINGLETON---------------------------------------------------------------
     private static DismissalController dismissalController = new DismissalController();
 
@@ -22,7 +25,7 @@ public class DismissalController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean, Object> save(
             Person person,
             String reason,
             LocalDate date,
@@ -38,22 +41,25 @@ public class DismissalController {
                 attachment
         );
 
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(dismissal);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
                 PersonController.getPersonController().changeStatus(person, Status.Fired, user);
-                return DismissalService.getDismissalService().save(dismissal, user).toString();
+                result.put(true, DismissalService.getDismissalService().save(dismissal, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean, Object> edit(
             Long id,
             Person person,
             String reason,
@@ -67,48 +73,56 @@ public class DismissalController {
                 reason,
                 date,
                 lastPayment);
+        result.clear();
 
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(dismissal);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
 
             try {
-                return DismissalService.getDismissalService().edit(dismissal, user).toString();
+                result.put(true, DismissalService.getDismissalService().edit(dismissal, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
+        }
+        return result;
+    }
+
+    //  ---------SELECT-ALL---------------------------------------------------------
+    public String findAll(User user) {
+        try {
+            return DismissalService.getDismissalService().findAll(user).toString();
+        } catch (Exception e) {
+            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
 
-        //  ---------SELECT-ALL---------------------------------------------------------
-        public String findAll (User user){
-            try {
-                return DismissalService.getDismissalService().findAll(user).toString();
-            } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-            }
+    //  ---------SELECT-BY-PERSONNEL-CODE-------------------------------------------
+    public Map<Boolean, Object> findByPersonnelCode(Long personnelCode, User user) {
+        result.clear();
+        try {
+            result.put(true, DismissalService.getDismissalService().findByPersonnelCode(personnelCode, user));
+        } catch (Exception e) {
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        } finally {
+            return result;
         }
-
-        //  ---------SELECT-BY-PERSONNEL-CODE-------------------------------------------
-        public String findByPersonnelCode (Long personnelCode, User user){
-
-            try {
-                return DismissalService.getDismissalService().findByPersonnelCode(personnelCode, user).toString();
-            } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-            }
-        }
-
-        //  ---------SELECT-BY-DATE------------------------------------------------------
-        public String findByDate (LocalDate date, User user){
-            try {
-                return DismissalService.getDismissalService().findByDate(date, user).toString();
-            } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
-            }
-        }
-
     }
+
+    //  ---------SELECT-BY-DATE------------------------------------------------------
+    public Map<Boolean, Object> findByDate(LocalDate date, User user) {
+        result.clear();
+        try {
+            result.put(true, DismissalService.getDismissalService().findByDate(date, user));
+        } catch (Exception e) {
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        } finally {
+            return result;
+        }
+    }
+
+}
 

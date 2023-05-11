@@ -36,7 +36,7 @@ public class Recruitment {
 
     @JsonProperty("شخص")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Person person;
 
     @JsonProperty("تحصیلات")

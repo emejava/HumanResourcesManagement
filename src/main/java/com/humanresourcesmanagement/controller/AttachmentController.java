@@ -6,10 +6,13 @@ import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.AttachmentService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
 public class AttachmentController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
     //  ---------SINGLETON---------------------------------------------------------------
     private static AttachmentController attachmentController = new AttachmentController();
 
@@ -21,7 +24,7 @@ public class AttachmentController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean, Object> save(
             String name,
             User uploader,
             String path,
@@ -31,20 +34,23 @@ public class AttachmentController {
                 name,
                 uploader,
                 path);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(attachment);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return AttachmentService.getFileService().save(attachment, user).toString();
+                result.put(true, AttachmentService.getFileService().save(attachment, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
-        }
+        }return result;
     }
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean, Object> edit(
             Long id,
             String name,
             User uploader,
@@ -56,33 +62,42 @@ public class AttachmentController {
                 name,
                 uploader,
                 path);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(attachment);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return AttachmentService.getFileService().edit(attachment, user).toString();
+                result.put(true,AttachmentService.getFileService().edit(attachment, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
-        }
+        }return result;
     }
     //  ---------DELETE-------------------------------------------------------------
-    public String delete(Long id,User user) {
+    public Map<Boolean, Object> delete(Long id,User user) {
+        result.clear();
         try {
-            return AttachmentService.getFileService().delete(id,user).toString();
+            result.put(true, AttachmentService.getFileService().delete(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id,User user) {
+    public Map<Boolean, Object> deactivate(Long id,User user) {
+        result.clear();
         try {
-            return AttachmentService.getFileService().deactivate(id,user).toString();
+            result.put(true, AttachmentService.getFileService().deactivate(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
@@ -105,32 +120,38 @@ public class AttachmentController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id,User user) {
-
+    public Map<Boolean, Object> findById(Long id,User user) {
+        result.clear();
         try {
-            return AttachmentService.getFileService().findById(id,user).toString();
+            result.put(true, AttachmentService.getFileService().findById(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-ALL-BY-UPLOADER--------------------------------------------
-    public String findAllByUploader(User uploader,User user) {
-
+    public Map<Boolean, Object> findAllByUploader(User uploader,User user) {
+        result.clear();
         try {
-            return AttachmentService.getFileService().findAllByUploader(uploader,user).toString();
+            result.put(true, AttachmentService.getFileService().findAllByUploader(uploader,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-NAME-AND-UPLOADER-----------------------------------------
-    public String findByNameAndUploader(String name,User uploader,User user) {
-
+    public Map<Boolean, Object> findByNameAndUploader(String name,User uploader,User user) {
+        result.clear();
         try {
-            return AttachmentService.getFileService().findByNameAndUploader(name,uploader,user).toString();
+            result.put(true, AttachmentService.getFileService().findByNameAndUploader(name,uploader,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

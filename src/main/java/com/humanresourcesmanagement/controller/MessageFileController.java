@@ -6,9 +6,12 @@ import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.MessageFileService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class MessageFileController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
     //  ---------SINGLETON---------------------------------------------------------------
     private static MessageFileController messageFileController = new MessageFileController();
 
@@ -20,7 +23,7 @@ public class MessageFileController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             User sender,
             String filePath,
             Message msg,
@@ -30,50 +33,61 @@ public class MessageFileController {
                 sender,
                 filePath,
                 msg);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(messageFile);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return MessageFileService.getFileDirectionService().save(messageFile, user).toString();
+                result.put(true, MessageFileService.getFileDirectionService().save(messageFile, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------UNUSED
-    public String edit() {
+    public Map<Boolean,Object> edit() {
         return null;
     }
 
     //  ----------DELETE-----------------------------------------------------------
-    public String delete(Long id,
+    public Map<Boolean,Object> delete(Long id,
                              User user) {
+        result.clear();
         try {
-            return MessageFileService.getFileDirectionService().delete(id,user).toString();
+            result.put(true, MessageFileService.getFileDirectionService().delete(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE----------------------------------------------------
-    public String deactivate(Long id,
+    public Map<Boolean,Object> deactivate(Long id,
                              User user) {
+        result.clear();
         try {
-            return MessageFileService.getFileDirectionService().deactivate(id,user).toString();
+            result.put(true, MessageFileService.getFileDirectionService().deactivate(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-ALL---------------------------------------------------------
     public String findAll(User user) {
+        result.clear();
         try {
             return MessageFileService.getFileDirectionService().findAll(user).toString();
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
 
@@ -87,12 +101,14 @@ public class MessageFileController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id,User user) {
-
+    public Map<Boolean,Object> findById(Long id,User user) {
+        result.clear();
         try {
-            return MessageFileService.getFileDirectionService().findById(id,user).toString();
+            result.put(true, MessageFileService.getFileDirectionService().findById(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 

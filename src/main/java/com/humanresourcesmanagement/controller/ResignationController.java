@@ -9,9 +9,13 @@ import com.humanresourcesmanagement.model.service.PersonService;
 import com.humanresourcesmanagement.model.service.ResignationService;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ResignationController {
+
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
     //  ---------SINGLETON---------------------------------------------------------------
     private static ResignationController resignationController = new ResignationController();
 
@@ -23,7 +27,7 @@ public class ResignationController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             Person person,
             LocalDate date,
             String reason,
@@ -39,22 +43,25 @@ public class ResignationController {
                 lastPayment
         );
 
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(resignation);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
                 PersonController.getPersonController().changeStatus(person, Status.Pending, user);
-                return ResignationService.getResignationService().save(resignation, user).toString();
+                result.put(true, ResignationService.getResignationService().save(resignation, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
         //  ---------UPDATE-DATA--------------------------------------------------------
-        public String edit (
+        public Map<Boolean,Object> edit (
                 Long id,
                 Person person,
                 Attachment attachment,
@@ -66,22 +73,26 @@ public class ResignationController {
                     person,
                     attachment,
                     lastPayment);
+
+            result.clear();
             //  ---------VALIDATING-DATA---------------
             Map<String, String> errors = Validation.getValidation().doValidation(resignation);
             if (errors != null) {
-                return new Gson().toJson(errors);
+                errorsTO.setErrors(errors);
+                result.put(false, errorsTO);
             } else {
                 try {
-                    return ResignationService.getResignationService().edit(resignation, user).toString();
+                    result.put(true, ResignationService.getResignationService().edit(resignation, user));
                 } catch (Exception e) {
-                    return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                    result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
                 }
             }
+            return result;
         }
 
 
         //  ---------ACCEPT-RESIGN-------------------------------------------------------
-        public String edit (
+        public Map<Boolean,Object> accept (
                 Long id,
                 Person person,
                 Status status,
@@ -92,12 +103,14 @@ public class ResignationController {
                     person,
                     status);
 
+            result.clear();
             try {
                 PersonService.getPersonService().edit(person, user);
-                return ResignationService.getResignationService().edit(resignation, user).toString();
+                result.put(true, ResignationService.getResignationService().edit(resignation, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
+            return result;
         }
 
         //  ---------SELECT-ALL---------------------------------------------------------
@@ -110,21 +123,26 @@ public class ResignationController {
         }
 
         //  ---------SELECT-BY-PERSONNEL-CODE-------------------------------------------
-        public String findByPersonnelCode (Long personnelCode, User user){
-
+        public Map<Boolean,Object> findByPersonnelCode (Long personnelCode, User user){
+            result.clear();
             try {
-                return ResignationService.getResignationService().findByPersonnelCode(personnelCode, user).toString();
+                result.put(true, ResignationService.getResignationService().findByPersonnelCode(personnelCode, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+            }finally {
+                return result;
             }
         }
 
         //  ---------SELECT-BY-DATE------------------------------------------------------
-        public String findByDate (LocalDate date, User user){
+        public Map<Boolean,Object> findByDate (LocalDate date, User user){
+            result.clear();
             try {
-                return ResignationService.getResignationService().findByDate(date, user).toString();
+                result.put(true, ResignationService.getResignationService().findByDate(date, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+            }finally {
+                return result;
             }
         }
     }

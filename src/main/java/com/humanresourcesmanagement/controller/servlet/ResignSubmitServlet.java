@@ -9,7 +9,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(urlPatterns = "resignSubmit.do")
+@WebServlet(urlPatterns = "/resignSubmit.do")
 public class ResignSubmitServlet extends HttpServlet {
 
     //      ---------FIND-PERSONS-------------------------------------doGET
@@ -19,7 +19,7 @@ public class ResignSubmitServlet extends HttpServlet {
         //    doGET---------PERSON-LIST---------
         req.getSession().setAttribute("personList", PersonController.getPersonController().findAll(doer));
 
-        resp.sendRedirect("/Resignation.jsp");
+        resp.sendRedirect("/application/Resignation.jsp");
     }
 
     //      ---------INSERT-DATA-------------------------------------doPOST
@@ -28,12 +28,13 @@ public class ResignSubmitServlet extends HttpServlet {
         User doer = (User) req.getSession().getAttribute("user");
 
         //    doPOST---------RETIREMENT-DATA------
-        Person person = PersonController.getPersonController().findById(Long.valueOf(req.getParameter("PersonId")), doer);
-        Long personnelCode = person.getEmployment().getPersonnelCode();         //TODO: Front return the person id to servlet but show id, first and last name
+        Person person = (Person) PersonController.getPersonController().findById(
+                Long.valueOf(req.getParameter("PersonId")), doer).get(true);
+        Long personnelCode = person.getEmployment().getPersonnelCode();
         LocalDate date = LocalDate.parse(req.getParameter("Date"));
         String reason = req.getParameter("Reason");
-        Payment lastPayment = PaymentController.getPaymentController().findByPersonnelCodeAndEndTime(
-                personnelCode, LocalDate.parse(req.getParameter("LastPayment")), doer);
+        Payment lastPayment = (Payment) PaymentController.getPaymentController().findByPersonnelCodeAndEndTime(
+                personnelCode, LocalDate.parse(req.getParameter("LastPayment")), doer).get(true);
 
         //      doPOST---------SAVE-FILES---------
         //            -----------------File1
@@ -55,6 +56,6 @@ public class ResignSubmitServlet extends HttpServlet {
                 doer
         );
         //  doPOST------RESPONSE---------------------
-        resp.sendRedirect("Retirement.jsp");
+        resp.sendRedirect("/application/Resignation.jsp");
     }
 }

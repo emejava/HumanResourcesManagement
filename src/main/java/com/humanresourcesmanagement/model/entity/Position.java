@@ -40,12 +40,6 @@ public class Position {
     @Enumerated(EnumType.STRING)
     private Status status;
 
-    @JsonProperty("وظیفه")
-    @NonNull
-    @NotBlank(message = "وظیفه را انتخاب کنید")
-    @OneToOne
-    private Duty duty;
-
     @PrePersist
     public void StatusSet(){
         status = Status.Active;
@@ -53,11 +47,9 @@ public class Position {
 
     public Position(
             Long id,
-            @NonNull String name,
-            @NonNull Duty duty) {
+            @NonNull String name) {
         this.id = id;
         this.name = name;
-        this.duty = duty;
     }
 
     @Override

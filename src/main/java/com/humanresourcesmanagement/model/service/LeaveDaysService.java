@@ -3,10 +3,12 @@ package com.humanresourcesmanagement.model.service;
 
 import com.humanresourcesmanagement.model.entity.LeaveDays;
 import com.humanresourcesmanagement.model.entity.Log;
+import com.humanresourcesmanagement.model.entity.Payment;
 import com.humanresourcesmanagement.model.entity.User;
 import com.humanresourcesmanagement.model.entity.enums.Action;
 import com.humanresourcesmanagement.model.repository.CrudRepository;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -88,8 +90,21 @@ public class LeaveDaysService {
             return allAcceptedLeaveDays;
         }
     }
-    //  ---------RUN-NAMED-QUERIES----------------------------------------------------
-    public List<LeaveDays> executeQuery(String namedQuery, Map<String, Object> params) throws Exception {
-        return null;
+
+    //  ---------SELECT-BY-PERSONNEL-CODE-IN-TIME-PERIOD----------------------------------
+    public List<LeaveDays> findByPersonnelCodeAndBetweenTime(
+            Long personnelCode, LocalDate from, LocalDate till , User user) throws Exception {
+        try (CrudRepository<LeaveDays, Long> leaveDaysDa = new CrudRepository<>()) {
+            Map<String, Object> params = new HashMap<>();
+            params.put("personnelCode", personnelCode);
+            params.put("from", from);
+            params.put("till", till);
+            params.put("accepted",true);
+            List<LeaveDays> leaveDaysList =
+                    leaveDaysDa.executeQuery("leaveDays.findByPersonnelCodeAndBetweenTime", params);
+            Log log = new Log(Action.Search, leaveDaysList.toString(), user);
+            LogService.getLogService().save(log);
+            return leaveDaysList;
+        }
     }
 }

@@ -3,15 +3,15 @@ package com.humanresourcesmanagement.controller;
 import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
 import com.humanresourcesmanagement.controller.validation.Validation;
-import com.humanresourcesmanagement.model.entity.AccessLevel;
-import com.humanresourcesmanagement.model.entity.Person;
-import com.humanresourcesmanagement.model.entity.Role;
-import com.humanresourcesmanagement.model.entity.User;
+import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.UserService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class UserController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
 
     //    ---------SINGLETON---------------------------------------------------------
     private static UserController userController = new UserController();
@@ -25,7 +25,7 @@ public class UserController {
 
     //  ---------INSERT-DATA--------------------------------------------------------
 
-    public String save(
+    public Map<Boolean,Object> save(
             String username,
             String password,
             Person person,
@@ -40,22 +40,25 @@ public class UserController {
                 person,
                 role,
                 accessLevel);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
-        Map<String, String> userErrors = Validation.getValidation().doValidation(user);
-        if (userErrors != null) {
-            return new Gson().toJson(userErrors);
+        Map<String, String> errors = Validation.getValidation().doValidation(user);
+        if (errors != null) {
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return UserService.getUserService().save(newUser, user).toString();
+                result.put(true, UserService.getUserService().save(newUser, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
-
         }
+        return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             String username,
             String password,
             Person person,
@@ -67,49 +70,63 @@ public class UserController {
                 password,
                 person,
                 accessLevel);
-        Map<String, String> userErrors = Validation.getValidation().doValidation(user);
-        if (userErrors != null) {
-            return new Gson().toJson(userErrors);
+
+        result.clear();
+        //  ---------VALIDATING-DATA---------------
+        Map<String, String> errors = Validation.getValidation().doValidation(user);
+        if (errors != null) {
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return UserService.getUserService().edit(newUser, user).toString();
+                result.put(true, UserService.getUserService().edit(newUser, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ----------DELETE------------------------------------------------------------
-    public String delete(Long id, User user) {
+    public Map<Boolean,Object> delete(Long id, User user) {
+        result.clear();
         try {
-            return UserService.getUserService().delete(id, user).toString();
+            result.put(true, UserService.getUserService().delete(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id, User user) {
+    public Map<Boolean,Object> deactivate(Long id, User user) {
+        result.clear();
         try {
-            return UserService.getUserService().deactivate(id, user).toString();
+            result.put(true, UserService.getUserService().deactivate(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------ACTIVE-STATUS------------------------------------------------------
-    public String activate(Long id, User user) {
+    public Map<Boolean,Object> activate(Long id, User user) {
+        result.clear();
         try {
-            return UserService.getUserService().activate(id, user).toString();
+            result.put(true, UserService.getUserService().activate(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-ALL---------------------------------------------------------
     public String findAll(User user) {
         try {
-            return UserService.getUserService().findAll(user).toString();
+           return UserService.getUserService().findAll(user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
@@ -125,32 +142,38 @@ public class UserController {
     }
 
     //  ---------SELECT-BY-USERNAME---------------------------------------------------
-    public User findByUsername(String username, User user) {
+    public Map<Boolean,Object> findByUsername(String username, User user) {
+        result.clear();
         try {
-            return UserService.getUserService().findByUsername(username, user);
+            result.put(true, UserService.getUserService().findByUsername(username, user));
         } catch (Exception e) {
-            ExceptionWrapper.getExceptionWrapper().getMessage(e);
-            return null;
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //    ------------VALIDATE-LOGIN-DATA------------------------------------------------
-    public User isValidate(String username, String password) {
+    public Map<Boolean,Object> isValidate(String username, String password) {
+        result.clear();
         try {
-            return UserService.getUserService().isValidate(username, password);
+            result.put(true, UserService.getUserService().isValidate(username, password));
         } catch (Exception e) {
-            ExceptionWrapper.getExceptionWrapper().getMessage(e);
-            return null;
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //    ----------CHECK-USER-ACCESS------------------------------------------------
-    public String hasAccess(String username) {
+    public Map<Boolean,Object> hasAccess(String username) {
+        result.clear();
         try {
-            return UserService.getUserService().hasAccess(username);
+            result.put(true, UserService.getUserService().hasAccess(username));
         } catch (Exception e) {
-            ExceptionWrapper.getExceptionWrapper().getMessage(e);
-            return null;
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

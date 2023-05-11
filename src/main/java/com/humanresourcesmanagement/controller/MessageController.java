@@ -6,10 +6,13 @@ import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.MessageService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class MessageController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
     //  ---------SINGLETON---------------------------------------------------------------
     private static MessageController messageController = new MessageController();
 
@@ -21,7 +24,7 @@ public class MessageController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             String subject,
             User sender,
             User receiver,
@@ -37,20 +40,24 @@ public class MessageController {
                 receiverRole,
                 msg,
                 messageFiles);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(message);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return MessageService.getMessageService().save(message, user).toString();
+                result.put(true, MessageService.getMessageService().save(message, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             Long id,
             String subject,
             User sender,
@@ -70,32 +77,42 @@ public class MessageController {
                 msg,
                 forwarded,
                 forwardedTo);
+
+        result.clear();
         Map<String, String> errors = Validation.getValidation().doValidation(message);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return MessageService.getMessageService().edit(message, user).toString();
+                result.put(true, MessageService.getMessageService().edit(message, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
     //  ---------DELETE-------------------------------------------------------------
-    public String delete(Long id,User user) {
+    public Map<Boolean,Object> delete(Long id,User user) {
+        result.clear();
         try {
-            return MessageService.getMessageService().delete(id,user).toString();
+            result.put(true, MessageService.getMessageService().delete(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id,User user) {
+    public Map<Boolean,Object> deactivate(Long id,User user) {
+        result.clear();
         try {
-            return MessageService.getMessageService().deactivate(id,user).toString();
+            result.put(true, MessageService.getMessageService().deactivate(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
@@ -111,49 +128,57 @@ public class MessageController {
     //  ---------SELECT-ALL-ACTIVE---------------------------------------------------
     public String findAllActive(User user) {
         try {
-            return MessageService.getMessageService().findAllActive(user).toString();
+           return MessageService.getMessageService().findAllActive(user).toString();
         } catch (Exception e) {
             return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id,User user) {
-
+    public Map<Boolean,Object> findById(Long id,User user) {
+        result.clear();
         try {
-            return MessageService.getMessageService().findById(id,user).toString();
+            result.put(true, MessageService.getMessageService().findById(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-SENDER-AND-RECEIVER--------------------------------------
-    public String findBySenderAndReceiver(User sender, User receiver,User user) {
-
+    public Map<Boolean,Object> findBySenderAndReceiver(User sender, User receiver,User user) {
+        result.clear();
         try {
-            return MessageService.getMessageService().findBySenderAndReceiver(sender, receiver,user).toString();
+            result.put(true, MessageService.getMessageService().findBySenderAndReceiver(sender, receiver,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-ALL-BY-SENDER--------------------------------------SENT-BOX
-    public String findAllBySender(User sender,User user) {
-
+    public Map<Boolean,Object> findAllBySender(User sender,User user) {
+        result.clear();
         try {
-            return MessageService.getMessageService().findAllBySender(sender,user).toString();
+            result.put(true, MessageService.getMessageService().findAllBySender(sender,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-ALL-BY-RECEIVER----------------------------------------INBOX
-    public String findAllByReceiver(User receiver,User user) {
-
+    public Map<Boolean,Object> findAllByReceiver(User receiver,User user) {
+        result.clear();
         try {
-            return MessageService.getMessageService().findAllByReceiver(receiver,user).toString();
+            result.put(true, MessageService.getMessageService().findAllByReceiver(receiver,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

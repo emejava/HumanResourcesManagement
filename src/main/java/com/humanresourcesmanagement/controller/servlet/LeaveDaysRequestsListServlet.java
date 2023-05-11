@@ -19,6 +19,6 @@ public class LeaveDaysRequestsListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User doer = (User) req.getSession().getAttribute("user");
         req.getSession().setAttribute("LeaveDaysRequestsList", LeaveDaysController.getLeaveDaysController().findAll(doer));
-        resp.sendRedirect("/LeaveDaysRequestsList");
+        resp.sendRedirect("/application/LeaveDaysRequestsList");
     }
 }

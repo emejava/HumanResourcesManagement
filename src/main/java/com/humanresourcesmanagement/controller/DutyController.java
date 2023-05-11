@@ -7,10 +7,14 @@ import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.DutyService;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class DutyController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
+
     //  ---------SINGLETON---------------------------------------------------------------
     private static DutyController dutyController = new DutyController();
 
@@ -22,27 +26,31 @@ public class DutyController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             Position position,
             String dutyExplanation,
             User user) {
 
         //  ---------CREATE-OBJECT-----------------
         Duty duty = new Duty(position, dutyExplanation);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(duty);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return DutyService.getDutyService().save(duty, user).toString();
+                result.put(true, DutyService.getDutyService().save(duty, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             Long id,
             Position position,
             String dutyExplanation,
@@ -52,34 +60,44 @@ public class DutyController {
                 id,
                 position,
                 dutyExplanation);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(duty);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return DutyService.getDutyService().edit(duty, user).toString();
+                result.put(true, DutyService.getDutyService().edit(duty, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------DELETE-------------------------------------------------------------
-    public String delete(Long id, User user) {
+    public Map<Boolean,Object> delete(Long id, User user) {
+        result.clear();
         try {
-            return DutyService.getDutyService().delete(id, user).toString();
+            result.put(true, DutyService.getDutyService().delete(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id, User user) {
+    public Map<Boolean,Object> deactivate(Long id, User user) {
+        result.clear();
         try {
-            return DutyService.getDutyService().deactivate(id, user).toString();
+            result.put(true, DutyService.getDutyService().deactivate(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
@@ -102,21 +120,26 @@ public class DutyController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id, User user) {
-
+    public Map<Boolean,Object> findById(Long id, User user) {
+        result.clear();
         try {
-            return DutyService.getDutyService().findById(id, user).toString();
+            result.put(true, DutyService.getDutyService().findById(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-POSITION-------------------------------------------------
-    public String findByPosition(Position position, User user) {
+    public Map<Boolean,Object> findByPosition(Position position, User user) {
+        result.clear();
         try {
-            return DutyService.getDutyService().findByPosition(position, user).toString();
+            result.put(true, DutyService.getDutyService().findByPosition(position, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

@@ -31,7 +31,7 @@ public class Resignation {
 
     @JsonProperty("شخص")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Person person;
 
     @JsonProperty("تاریخ")
@@ -51,13 +51,13 @@ public class Resignation {
 
     @JsonProperty
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Attachment attachment;
 
     @JsonProperty("آخرین فیش حقوقی")
     @NonNull
     @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Payment lastPayment;
 
     @PrePersist

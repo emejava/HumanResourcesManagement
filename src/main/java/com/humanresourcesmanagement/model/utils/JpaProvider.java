@@ -18,7 +18,7 @@ public class JpaProvider {
 
 
     //  -------CREATE-FACTORY----------------------
-    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("vaqf");
+    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("eme");
 
 
     //  -------RETURN-AND-CREATE-ENTITY-MANAGER-----

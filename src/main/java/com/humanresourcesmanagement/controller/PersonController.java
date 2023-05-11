@@ -12,9 +12,12 @@ import com.humanresourcesmanagement.model.service.PersonService;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 public class PersonController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
 
     //  ---------SINGLETON---------------------------------------------------------------
     private static final PersonController personController = new PersonController();
@@ -27,7 +30,7 @@ public class PersonController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             String firstName,
             String lastName,
             String nationalCode,
@@ -71,22 +74,25 @@ public class PersonController {
                 nationalCardPicture,
                 birthCertificatePicture
         );
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(person);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         }else{
             try {
-              Person newPerson = PersonService.getPersonService().save(person, user);
-              return newPerson.getId().toString();
+                result.put(true, PersonService.getPersonService().save(person, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             Long id,
             String firstName,
             String lastName,
@@ -130,43 +136,56 @@ public class PersonController {
                 email,
                 nationalCardPicture,
                 birthCertificatePicture);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(person);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return PersonService.getPersonService().edit(person, user).toString();
+                result.put(true, PersonService.getPersonService().edit(person, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
-    //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String delete(Long personnelCode, User user) {
+    //  ----------DELETE-----------------------------------------------------
+    public Map<Boolean,Object> delete(Long personnelCode, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().delete(personnelCode, user).toString();
+            result.put(true, PersonService.getPersonService().delete(personnelCode, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long personnelCode, User user) {
+    public Map<Boolean,Object> deactivate(Long personnelCode, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().deactivate(personnelCode, user).toString();
+            result.put(true, PersonService.getPersonService().deactivate(personnelCode, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------ACTIVE-STATUS------------------------------------------------------
-    public String activate(Long personnelCode, User user) {
+    public Map<Boolean,Object> activate(Long personnelCode, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().activate(personnelCode, user).toString();
+            result.put(true, PersonService.getPersonService().activate(personnelCode, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
@@ -189,75 +208,99 @@ public class PersonController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public Person findById(Long id, User user) {
+    public Map<Boolean,Object> findById(Long id, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().findById(id, user);
+            result.put(true, PersonService.getPersonService().findById(id, user));
         } catch (Exception e) {
-            return null; // TODO: How return error with returning object
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-FIRSTNAME-AND-LASTNAME-------------------------------------
-    public Person findByFirstAndLastName(String firstName, String lastName, User user) {
+    public Map<Boolean,Object> findByFirstAndLastName(String firstName, String lastName, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().findByFirstAndLastName(firstName, lastName, user);
+            result.put(true, PersonService.getPersonService().findByFirstAndLastName(firstName, lastName, user));
         } catch (Exception e) {
-            return null; // TODO: How return error with returning object
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-NATIONAL-CODE----------------------------------------------
-    public String findByNationalCode(String nationalCode, User user) {
+    public Map<Boolean,Object> findByNationalCode(String nationalCode, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().findByNationalCode(nationalCode, user).toString();
+            result.put(true, PersonService.getPersonService().findByNationalCode(nationalCode, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-PHONE-NO---------------------------------------------------
-    public String findByPhoneNo(String phoneNo, User user) {
+    public Map<Boolean,Object> findByPhoneNo(String phoneNo, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().findByPhoneNo(phoneNo, user).toString();
+            result.put(true, PersonService.getPersonService().findByPhoneNo(phoneNo, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-BIRTHDATE--------------------------------------------------
-    public String findByBirthDay(Timestamp birthDay, User user) {
+    public Map<Boolean,Object> findByBirthDay(Timestamp birthDay, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().findByBirthDay(birthDay, user).toString();
+            result.put(true, PersonService.getPersonService().findByBirthDay(birthDay, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-PERSONNEL-CODE----------------------------------------------
-    public String findByPersonnelCode(Long personnelCode, User user) {
+    public Map<Boolean,Object> findByPersonnelCode(Long personnelCode, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().findByPersonnelCode(personnelCode, user).toString();
+            result.put(true, PersonService.getPersonService().findByPersonnelCode(personnelCode, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SET-EMPLOYMENT--------------------------------------------------------
-    public String setPersonEmployment(Person person,Employment employment, User user) {
+    public Map<Boolean,Object> setPersonEmployment(Person person,Employment employment, User user) {
+        result.clear();
         try {
             person.setEmployment(employment);
-            return PersonService.getPersonService().edit(person, user).toString();
+            result.put(true, PersonService.getPersonService().edit(person, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------CHANGE-STATUS---------------------------------------------------------
-    public String changeStatus(Person person, Status status, User user) {
+    public Map<Boolean,Object> changeStatus(Person person, Status status, User user) {
+        result.clear();
         try {
-            return PersonService.getPersonService().changeStatus(person,status, user).toString();
+            result.put(true, PersonService.getPersonService().changeStatus(person,status, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

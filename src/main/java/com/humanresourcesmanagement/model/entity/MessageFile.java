@@ -29,7 +29,7 @@ public class MessageFile {
 
     @JsonProperty("نام فرستنده")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User sender;
 
     @JsonProperty("آدرس فایل")
@@ -39,7 +39,7 @@ public class MessageFile {
 
     @JsonProperty("پیام")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Message msg;
 
     @JsonProperty("وضعیت")

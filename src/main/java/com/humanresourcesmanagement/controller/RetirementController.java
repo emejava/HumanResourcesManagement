@@ -8,9 +8,12 @@ import com.humanresourcesmanagement.model.entity.enums.Status;
 import com.humanresourcesmanagement.model.service.RetirementService;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 public class RetirementController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
     //  ---------SINGLETON---------------------------------------------------------------
     private static RetirementController retirementController = new RetirementController();
 
@@ -22,7 +25,7 @@ public class RetirementController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object>  save(
             Person person,
             LocalDate date,
             Payment lastPayment,
@@ -37,22 +40,25 @@ public class RetirementController {
                 attachment
         );
 
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(retirement);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
                 PersonController.getPersonController().changeStatus(person, Status.Retired, user);
-                return RetirementService.getRetirementService().save(retirement, user).toString();
+                result.put(true, RetirementService.getRetirementService().save(retirement, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object>  edit(
             Long id,
             Person person,
             LocalDate date,
@@ -64,21 +70,25 @@ public class RetirementController {
                 person,
                 date,
                 lastPayment);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(retirement);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return RetirementService.getRetirementService().edit(retirement, user).toString();
+                result.put(true, RetirementService.getRetirementService().edit(retirement, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------SELECT-ALL---------------------------------------------------------
-    public String findAll(User user) {
+    public String  findAll(User user) {
         try {
             return RetirementService.getRetirementService().findAll(user).toString();
         } catch (Exception e) {
@@ -87,21 +97,26 @@ public class RetirementController {
     }
 
     //  ---------SELECT-BY-PERSONNEL-CODE-------------------------------------------
-    public String findByPersonnelCode(Long personnelCode, User user) {
-
+    public Map<Boolean,Object>  findByPersonnelCode(Long personnelCode, User user) {
+        result.clear();
         try {
-            return RetirementService.getRetirementService().findByPersonnelCode(personnelCode, user).toString();
+            result.put(true, RetirementService.getRetirementService().findByPersonnelCode(personnelCode, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-DATE------------------------------------------------------
-    public String findByDate(LocalDate date, User user) {
+    public Map<Boolean,Object>  findByDate(LocalDate date, User user) {
+        result.clear();
         try {
-            return RetirementService.getRetirementService().findByDate(date, user).toString();
+            result.put(true, RetirementService.getRetirementService().findByDate(date, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

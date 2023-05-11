@@ -21,6 +21,6 @@ public class PaySlipsServlet extends HttpServlet {
 
         req.getSession().setAttribute("paySlips", PaymentController.getPaymentController().findAll(doer));
 
-        resp.sendRedirect("paySlips.jsp");
+        resp.sendRedirect("/application/paySlips.jsp");
     }
 }

@@ -12,7 +12,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "recruitment.do")
+@WebServlet(urlPatterns = "/recruitment.do")
 public class RecruitmentFormServlet extends HttpServlet {
 
     //      ---------FIND-PERSONS-------------------------------------doGET
@@ -21,6 +21,7 @@ public class RecruitmentFormServlet extends HttpServlet {
         User doer = (User) req.getSession().getAttribute("user");
         //    doPOST---------PERSON-LIST---------
         req.getSession().setAttribute("personList", PersonController.getPersonController().findAll(doer));
+        resp.sendRedirect("/application/Recruitment.jsp");
     }
 
     //      ---------INSERT-DATA-------------------------------------doPOST
@@ -61,7 +62,7 @@ public class RecruitmentFormServlet extends HttpServlet {
         );
 
         //  doPOST------RESPONSE---------------------
-        resp.sendRedirect("/recruitment.jsp");
+        resp.sendRedirect("/application/Recruitment.jsp");
     }
 }
 

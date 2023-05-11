@@ -10,7 +10,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(urlPatterns = "signUp.do")
+@WebServlet(urlPatterns = "/application/signUp.do")
 public class SignUpServlet extends HttpServlet {
 
     //      ---------INSERT-DATA-------------------------------------doPOST
@@ -24,7 +24,7 @@ public class SignUpServlet extends HttpServlet {
         String nationalCode = req.getParameter("NationalCode");
         String birthCertificateCode = req.getParameter("BirthCertificateCode");
         LocalDate birthday = LocalDate.parse(req.getParameter("Birthday"));
-        Integer age = Integer.valueOf(req.getParameter("FirstName"));
+        Integer age = Integer.valueOf(req.getParameter("Age"));
         String father = req.getParameter("FatherName");
         String state = req.getParameter("State");
         String city = req.getParameter("City");
@@ -64,7 +64,7 @@ public class SignUpServlet extends HttpServlet {
 
 
         //  -----VALIDATE-AND-SAVE-DATA-WITH-CONTROLLER-----
-        PersonController.getPersonController().save(
+        Person person = (Person) PersonController.getPersonController().save(
                 firstName,
                 lastName,
                 nationalCode,
@@ -85,8 +85,7 @@ public class SignUpServlet extends HttpServlet {
                 nationalCardPic,
                 personnelPic,
                 doer
-        );
-        Person person = PersonController.getPersonController().findByFirstAndLastName(firstName,lastName,doer);
+        ).get(true);
         UserController.getUserController().save(
                 username,
                 password,
@@ -96,6 +95,6 @@ public class SignUpServlet extends HttpServlet {
                 doer
         );
         //  doPOST------RESPONSE---------------------
-        resp.sendRedirect("/signUp.jsp");
+        resp.sendRedirect("/application/signUp.jsp");
     }
 }

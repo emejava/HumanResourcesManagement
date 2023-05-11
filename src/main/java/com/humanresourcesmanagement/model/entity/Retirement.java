@@ -31,7 +31,7 @@ public class Retirement {
 
     @JsonProperty("شخص")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Person person;
 
     @JsonProperty("تاریخ")
@@ -42,12 +42,12 @@ public class Retirement {
     @JsonProperty("آخرین فیش حقوقی")
     @NonNull
     @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Payment lastPayment;
 
     @JsonProperty("استعفا نامه")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Attachment attachment;
 
     public Retirement(Long id,

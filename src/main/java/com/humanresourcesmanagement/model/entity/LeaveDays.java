@@ -18,8 +18,18 @@ import java.time.LocalDate;
 
 @Entity(name = "leaveDaysEntity")
 @Table(name = "tb_leaveDays")
-@NamedQueries({@NamedQuery(name = "person.findByPersonnelCode", query = "SELECT l FROM leaveDaysEntity l WHERE l.person.employment.personnelCode=:personnelCode"),
-        @NamedQuery(name = "leave.findByAccepted", query = "SELECT l FROM leaveDaysEntity l WHERE l.accepted=true")})
+@NamedQueries({
+        @NamedQuery(
+                name = "leaveDays.findByPersonnelCode",
+                query = "SELECT l FROM leaveDaysEntity l WHERE l.person.employment.personnelCode=:personnelCode"),
+        @NamedQuery(
+                name = "leave.findByAccepted",
+                query = "SELECT l FROM leaveDaysEntity l WHERE l.accepted=true"),
+        @NamedQuery(
+                name = "leaveDays.findByPersonnelCodeAndBetweenTime",
+                query = "SELECT l FROM leaveDaysEntity l WHERE " +
+                        "l.person.employment.personnelCode =:personnelCode" +
+                        " AND l.accepted=:accepted AND l.from BETWEEN :from AND :till ")})
 public class LeaveDays {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +38,7 @@ public class LeaveDays {
 
     @JsonProperty("شخص")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Person person;
 
     @JsonProperty("از تاریخ")
@@ -55,7 +65,7 @@ public class LeaveDays {
     private LocalDate date;
 
     @JsonProperty("پذیرفته شده")
-    @Column(name = "accepted_status",columnDefinition = "NUMBER(1)")
+    @Column(name = "accepted_status")
     private Boolean accepted;
 
     @PrePersist

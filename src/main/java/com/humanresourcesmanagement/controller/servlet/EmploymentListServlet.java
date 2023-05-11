@@ -18,6 +18,6 @@ public class EmploymentListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User doer = (User) req.getSession().getAttribute("user");
         req.getSession().setAttribute("employmentList",EmploymentController.getEmploymentController().findAll(doer));
-        resp.sendRedirect("/employmentList.jsp");
+        resp.sendRedirect("/application/employmentList.jsp");
     }
 }

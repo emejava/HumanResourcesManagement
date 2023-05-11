@@ -40,7 +40,7 @@ public class Log {
     private Timestamp timestamp;
 
     @JsonProperty("عامل")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @NonNull
     private User user;
 

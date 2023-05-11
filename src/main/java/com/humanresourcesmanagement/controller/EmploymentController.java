@@ -9,9 +9,12 @@ import com.humanresourcesmanagement.model.entity.enums.ShiftWork;
 import com.humanresourcesmanagement.model.service.EmploymentService;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 public class EmploymentController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
 
     //  ---------SINGLETON---------------------------------------------------------------
     private static final EmploymentController employmentController = new EmploymentController();
@@ -24,7 +27,7 @@ public class EmploymentController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             Long personnelCode,
             Person person,
             EmploymentType employmentType,
@@ -46,22 +49,25 @@ public class EmploymentController {
                 shiftWork
         );
 
+        result.clear();
         //  ---------VALIDATING-DATA---------------
-        Map<String, String> employmentErrors = Validation.getValidation().doValidation(employment);
-        if (employmentErrors != null) {
-            return new Gson().toJson(employmentErrors);
+        Map<String, String> errors = Validation.getValidation().doValidation(employment);
+        if (errors != null) {
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
                 PersonController.getPersonController().setPersonEmployment(person, employment, user);
-                return EmploymentService.getEmploymentService().save(employment, user).toString();
+                result.put(true, EmploymentService.getEmploymentService().save(employment, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             Long personnelCode,
             Person person,
             EmploymentType employmentType,
@@ -83,24 +89,31 @@ public class EmploymentController {
                 startWorkingDate,
                 shiftWork,
                 CV);
-        Map<String, String> employmentErrors = Validation.getValidation().doValidation(employment);
-        if (employmentErrors != null) {
-            return new Gson().toJson(employmentErrors);
+
+        result.clear();
+        Map<String, String> errors = Validation.getValidation().doValidation(employment);
+        if (errors != null) {
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return EmploymentService.getEmploymentService().edit(employment, user).toString();
+                result.put(true, EmploymentService.getEmploymentService().edit(employment, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
-        //  ---------LOGICAL-DELETE-----------------------------------------------------
-        public String delete (Long id, User user){
+        //  ----------DELETE-----------------------------------------------------
+        public Map<Boolean,Object> delete (Long id, User user){
+            result.clear();
             try {
-                return EmploymentService.getEmploymentService().delete(id, user).toString();
+                result.put(true, EmploymentService.getEmploymentService().delete(id, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+            }finally {
+                return result;
             }
         }
 
@@ -114,11 +127,14 @@ public class EmploymentController {
         }
 
         //  ---------SELECT-BY-ID-------------------------------------------------------
-        public String findById (Long personnelCode, User user){
+        public Map<Boolean,Object> findById (Long personnelCode, User user){
+            result.clear();
             try {
-                return EmploymentService.getEmploymentService().findById(personnelCode, user).toString();
+                result.put(true, EmploymentService.getEmploymentService().findById(personnelCode, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+            }finally {
+                return result;
             }
         }
     }

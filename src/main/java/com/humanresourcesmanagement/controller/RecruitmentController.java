@@ -12,10 +12,13 @@ import com.humanresourcesmanagement.model.service.RecruitmentService;
 import com.humanresourcesmanagement.model.service.RecruitmentService;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class RecruitmentController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
 
     //  ---------SINGLETON---------------------------------------------------------------
     private static final RecruitmentController recruitmentController = new RecruitmentController();
@@ -28,7 +31,7 @@ public class RecruitmentController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             Person person,
             String education,
             String fieldOfStudy,
@@ -58,21 +61,25 @@ public class RecruitmentController {
                 shiftWork,
                 requestedSalary
         );
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
-        Map<String, String> recruitmentErrors = Validation.getValidation().doValidation(recruitment);
-        if (recruitmentErrors != null) {
-            return new Gson().toJson(recruitmentErrors);
+        Map<String, String> errors = Validation.getValidation().doValidation(recruitment);
+        if (errors != null) {
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return RecruitmentService.getRecruitmentService().save(recruitment, user).toString();
+                result.put(true, RecruitmentService.getRecruitmentService().save(recruitment, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             Long id,
             Person person,
             String education,
@@ -102,43 +109,56 @@ public class RecruitmentController {
                 jobGoal,
                 shiftWork,
                 requestedSalary);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
-        Map<String, String> recruitmentErrors = Validation.getValidation().doValidation(recruitment);
-        if (recruitmentErrors != null) {
-            return new Gson().toJson(recruitmentErrors);
+        Map<String, String> errors = Validation.getValidation().doValidation(recruitment);
+        if (errors != null) {
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return RecruitmentService.getRecruitmentService().edit(recruitment, user).toString();
+                result.put(true, RecruitmentService.getRecruitmentService().edit(recruitment, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String delete(Long id, User user) {
+    public Map<Boolean,Object> delete(Long id, User user) {
+        result.clear();
         try {
-            return RecruitmentService.getRecruitmentService().delete(id, user).toString();
+            result.put(true, RecruitmentService.getRecruitmentService().delete(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id, User user) {
+    public Map<Boolean,Object> deactivate(Long id, User user) {
+        result.clear();
         try {
-            return RecruitmentService.getRecruitmentService().deactivate(id, user).toString();
+            result.put(true, RecruitmentService.getRecruitmentService().deactivate(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------ACTIVE-STATUS------------------------------------------------------
-    public String activate(Long id, User user) {
+    public Map<Boolean,Object> activate(Long id, User user) {
+        result.clear();
         try {
-            return RecruitmentService.getRecruitmentService().activate(id, user).toString();
+            result.put(true, RecruitmentService.getRecruitmentService().activate(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
@@ -152,29 +172,38 @@ public class RecruitmentController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id, User user) {
+    public Map<Boolean,Object> findById(Long id, User user) {
+        result.clear();
         try {
-            return RecruitmentService.getRecruitmentService().findById(id, user).toString();
+            result.put(true, RecruitmentService.getRecruitmentService().findById(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-FIELD-OF-STUDY-------------------------------------------
-    public String findByFieldOfStudy(String fieldOfStudy, User user) {
+    public Map<Boolean,Object> findByFieldOfStudy(String fieldOfStudy, User user) {
+        result.clear();
         try {
-            return RecruitmentService.getRecruitmentService().findByFieldOfStudy(fieldOfStudy, user).toString();
+            result.put(true, RecruitmentService.getRecruitmentService().findByFieldOfStudy(fieldOfStudy, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-UNIVERSITY------------------------------------------------
-    public String findByUniversity(String university, User user) {
+    public Map<Boolean,Object> findByUniversity(String university, User user) {
+        result.clear();
         try {
-            return RecruitmentService.getRecruitmentService().findByUniversity(university, user).toString();
+            result.put(true, RecruitmentService.getRecruitmentService().findByUniversity(university, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

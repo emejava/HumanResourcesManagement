@@ -27,17 +27,23 @@ import java.util.List;
 @Table(name = "tb_payment")
 @NamedQueries({
         @NamedQuery(
-                name = "payment.findAllActive",query = "SELECT p FROM paymentEntity p WHERE p.status =:status"),
+                name = "payment.findAllActive",
+                query = "SELECT p FROM paymentEntity p WHERE p.status =:status"),
         @NamedQuery(
-                name = "payment.findByNationalCode",query = "SELECT p FROM paymentEntity p WHERE p.person.nationalCode =:nationalCode"),
+                name = "payment.findByNationalCode",
+                query = "SELECT p FROM paymentEntity p WHERE p.person.nationalCode =:nationalCode"),
         @NamedQuery(
-                name = "payment.findByPersonnelCode",query = "SELECT p FROM paymentEntity p WHERE p.person.employment.personnelCode =:personnelCode"),
+                name = "payment.findByPersonnelCode",
+                query = "SELECT p FROM paymentEntity p WHERE p.person.employment.personnelCode =:personnelCode"),
         @NamedQuery(
-                name = "payment.findByYear",query = "SELECT p FROM paymentEntity p WHERE p.year =:year"),
+                name = "payment.findByYear",
+                query = "SELECT p FROM paymentEntity p WHERE p.year =:year"),
         @NamedQuery(
-                name = "payment.findByYearAndMonth",query = "SELECT p FROM paymentEntity p WHERE p.year =:year AND p.from =:from AND p.till =:till"),
+                name = "payment.findByYearAndMonth",
+                query = "SELECT p FROM paymentEntity p WHERE p.year =:year AND p.from =:from AND p.till =:till"),
         @NamedQuery(
-                name = "payment.findByPersonnelCodeAndEndTime",query = "SELECT p FROM paymentEntity p WHERE p.person.employment.personnelCode =:personnelCode AND p.till =:till")
+                name = "payment.findByPersonnelCodeAndEndTime",
+                query = "SELECT p FROM paymentEntity p WHERE p.person.employment.personnelCode =:personnelCode AND p.till =:till")
 })
 public class Payment {
     @Id
@@ -62,7 +68,7 @@ public class Payment {
 
     @JsonProperty("شخص")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Person person;
 
     @JsonProperty("حقوق پایه")
@@ -119,7 +125,7 @@ public class Payment {
 
     @JsonProperty("مرخصی")
     @NonNull
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<LeaveDays> leaveDays;
 
     @JsonProperty("مبلغ کسر بابت مرخصی")

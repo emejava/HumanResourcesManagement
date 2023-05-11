@@ -11,7 +11,7 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/newsSubmit.do")
+@WebServlet(urlPatterns = "/application/newsSubmit.do")
 public class NewsSubmitServlet extends HttpServlet {
 
     //      ---------INSERT-DATA-------------------------------------doPOST
@@ -51,6 +51,6 @@ public class NewsSubmitServlet extends HttpServlet {
         );
 
         //  doPOST------RESPONSE---------------------
-        resp.sendRedirect("/News.jsp");
+        resp.sendRedirect("/application/News.jsp");
     }
 }

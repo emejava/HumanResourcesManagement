@@ -42,12 +42,12 @@ public class Message {
 
     @JsonProperty("فرستنده")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User sender;
 
     @JsonProperty("گیرنده")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User receiver;
 
     @JsonProperty("رونوشت")
@@ -61,7 +61,7 @@ public class Message {
     private String msg;
 
     @JsonProperty("پیوست ها")
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<MessageFile> messageFiles;
 
     @JsonProperty("زمان ارسال")
@@ -71,11 +71,11 @@ public class Message {
     private boolean forwarded;
 
     @JsonProperty("فوروارد شده به")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User forwardedTo;
 
     @JsonProperty("پاسخ به")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Message replyTo;
 
     @JsonProperty("وضعیت")

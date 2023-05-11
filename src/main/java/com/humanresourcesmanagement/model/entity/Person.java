@@ -172,7 +172,7 @@ public class Person {
     @Column(name = "status", columnDefinition = "NVARCHAR2(10)")
     private Status status;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Employment employment;
 
 

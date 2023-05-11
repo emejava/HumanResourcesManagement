@@ -40,7 +40,7 @@ public class Attachment {
 
     @JsonProperty("شخص")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private User uploader;
 
     @JsonProperty("محل ذخیره")

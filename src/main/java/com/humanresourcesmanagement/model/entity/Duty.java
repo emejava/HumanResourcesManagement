@@ -34,7 +34,7 @@ public class Duty {
     @JsonProperty("سمت")
     @NonNull
     @NotBlank(message = "سمت را انتخاب کنید")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Position position;
 
     @JsonProperty("شرح وظیفه")

@@ -24,8 +24,8 @@ public class PaymentSubmitServlet extends HttpServlet {
         Year year = Year.parse(req.getParameter("Year"));
         LocalDate from = LocalDate.parse(req.getParameter("From"));
         LocalDate till = LocalDate.parse(req.getParameter("Till"));
-        Person person = PersonController.getPersonController().findByPersonnelCode(
-                Long.valueOf(req.getParameter("PersonnelCode")), doer).get("true");
+        Person person = (Person) PersonController.getPersonController().findByPersonnelCode(
+                Long.valueOf(req.getParameter("PersonnelCode")), doer).get(true);
         Double basicSalary = Double.valueOf(req.getParameter("BasicSalary"));
         Long overTime = Long.valueOf(req.getParameter("OverTime"));
         Long absenceTime = Long.valueOf(req.getParameter("AbsenceTime"));
@@ -35,8 +35,8 @@ public class PaymentSubmitServlet extends HttpServlet {
         Double operationPayCount = Double.valueOf(req.getParameter("OperationPayCount"));
         Double housing = Double.valueOf(req.getParameter("Housing"));
         List<LeaveDays> leaveDays = new ArrayList<>();
-        leaveDays.add(PaymentController.getPaymentController().findByPersonnelCodeAndBetweenTime(
-                Long.valueOf(req.getParameter("PersonnelCode")),from,till,doer));
+        leaveDays.add((LeaveDays) LeaveDaysController.getLeaveDaysController().findByPersonnelCodeAndBetweenTime(
+                Long.valueOf(req.getParameter("PersonnelCode")),from,till,doer).get(true));
         Double leaveDaysPayDeduction = Double.valueOf(req.getParameter("LeaveDaysPayDeduction"));
         Double benefits = Double.valueOf(req.getParameter("Benefits"));
         Double managementBonus = Double.valueOf(req.getParameter("ManagementBonus"));
@@ -71,7 +71,7 @@ public class PaymentSubmitServlet extends HttpServlet {
         );
 
         //  doPOST------RESPONSE---------------------
-        resp.sendRedirect("/Payment.jsp");
+        resp.sendRedirect("/application/Payment.jsp");
 
     }
 }

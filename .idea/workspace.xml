@@ -1,108 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="HumanResourcesManagement:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="last changes still without view">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/attachmentSaver/PartGetter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DismissalFormServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentFormServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentListServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/FiredPersonnelListServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysRequestsListServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysSubmitServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/NewsSubmitServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaySlipsServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaymentSubmitServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentFormServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ResignSubmitServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetireEmployeeForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SignUpServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/AttachmentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Dismissal.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Employment.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/EmploymentList.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/FiredDismissalShow.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/LeaveDays.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/LeaveDaysConfirmationList.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/News.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Payment.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/PaymentShow.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Recruitment.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/RecruitmentList.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/ResignConfirmationList.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Resignation.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/RetiredPersonalsList.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/Retirement.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/ShowUnitWithDutyAndPosition.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/SignUp.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/SinglePayment.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/UnitAndDuty.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/css/fonts/Shabnam.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleNews.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleOne.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleSignUp.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/Dismissal.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/Employment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/LeaveDays.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/News.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/Payment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/Recruitment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/Resignation.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/Retirement.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/SignUp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/html/UnitAndDuty.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/asetes/js/nextBTN.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/customer1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/customer2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/customer3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/customer4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/customer5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/customer6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/centralRecruitment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/dashboard1.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/dashboard1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Delbar2 Bold .ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Digikala -_font.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Gasq.otf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Shabnam-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Shabnam.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Sultan Adan 2Line .ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Trashin.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/amin.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/hadye.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard2/dashboard2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard2/dashboard2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/dashboard/user.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/navbar/navbar1.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/navbar/navbar1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/navbar/navbar1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles1.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles2.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles3.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles3.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/selectMenu/selectMenu1/selectMenu1.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/selectMenu/selectMenu1/selectMenu1.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/selectMenu/selectMenu1/selectMenu1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/sidebar/sidebar1/sidebar1.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/sidebar/sidebar1/sidebar1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LoginServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentListServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ResignConfirmationServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetiredPersonnelList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SinglePaySlipServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/UnitAndDutyListServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/UnitAndDutySubmitServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/ErrorsTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboard1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardForm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardNews.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTable.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTwoPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/css/font-awesome.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/css/font-awesome.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/fonts/FontAwesome.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/fonts/fontawesome-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/fonts/fontawesome-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/fonts/fontawesome-webfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/fonts/fontawesome-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/fonts/fontawesome-webfont.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/fonts/Delbar2 Bold .ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/fonts/Digikala -_font.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/fonts/Gasq.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/fonts/Shabnam-Medium.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/fonts/Sultan Adan 2Line .ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/fonts/Trashin.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/fonts/amin.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/fonts/hadye.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/particles1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/styleSelect.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLDashboard/centralRecruitment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLDashboard/dashboard1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/Dismissal.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/Employment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/LeaveDays.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/News.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/Payment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/Recruitment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/Resignation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/Retirement.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/SignUp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLForm/UnitAndDuty.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLTable/EmploymentList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLTable/FiredDismissalShow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLTable/LeaveDaysConfirmationList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLTable/PaymentShow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLTable/RecruitmentList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLTable/ResignConfirmationList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLTable/RetiredPersonalsList.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLTable/ShowUnitWithDutyAndPosition.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/HTMLTable/SinglePayment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/JAVASCRIPT/nextBTN.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/customer1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/customer2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/customer3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/customer4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/customer5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/customer6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/fonts/Shabnam.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/user.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/CentralRecruitment.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/Dashboard.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/Dismissal.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/Employment.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/EmploymentList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/FiredPersonnel.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/LeaveDays.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/LeaveDaysConfirmationList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/News.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/PaySlips.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/Payment.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/Recruitment.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/RecruitmentList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/ResignConfirmationList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/Resignation.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/RetiredPersonalsList.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/Retirement.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/ShowUnitWithDutyAndPosition.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/SignUp.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/SinglePayment.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/application/UnitAndDuty.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/customer1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/customer2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/customer3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/customer4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/customer5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/customer6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/user.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/12643206-e2fc-406d-aafb-9e9a709423ff.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/12643206-e2fc-406d-aafb-9e9a709423ff/storage_v2/_src_/schema/PUBLIC.aaZQjQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/12643206-e2fc-406d-aafb-9e9a709423ff/storage_v2/_src_/schema/SYS.rUIBAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/12643206-e2fc-406d-aafb-9e9a709423ff/storage_v2/_src_/schema/SYSTEM.L2avkg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2310b7a0-1e48-470e-bd03-8851298e6cfd.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2310b7a0-1e48-470e-bd03-8851298e6cfd/storage_v2/_src_/schema/SYS.rUIBAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2310b7a0-1e48-470e-bd03-8851298e6cfd/storage_v2/_src_/schema/SYSTEM.L2avkg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/debug.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/AccessLevelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/AccessLevelController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/AttachmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/AttachmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/DismissalController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/DismissalController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/DutyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/DutyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/EmploymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/EmploymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/FileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/AttachmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/LeaveDaysController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/LeaveDaysController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/MessageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/MessageFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/MessageFileController.java" afterDir="false" />
@@ -115,38 +131,59 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/RetirementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/RetirementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/UnitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/UnitController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ComposeServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DismissalDepServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DutyServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/InboxServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/MainPageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/MainServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PersonEmploymentServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PersonServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentSupplyDepServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetirementDepServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SignUp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SingleMessage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/UnitServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/session/SessionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/session/SessionManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/validation/ServletValidation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/validation/Validation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Dismissal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Dismissal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Duty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Duty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Employment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Employment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Attachment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/filter/ServerFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/filter/ServerFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/filter/ServletFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/filter/ServletFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DismissalFormServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DismissalFormServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentFormServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentFormServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/FiredPersonnelListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/FiredPersonnelListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysRequestsListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysRequestsListServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysSubmitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysSubmitServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/MainServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/MainServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/NewsSubmitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/NewsSubmitServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaySlipsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaySlipsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaymentSubmitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaymentSubmitServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentFormServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentFormServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ResignSubmitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ResignSubmitServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetireEmployeeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetireEmployeeForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SignUpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SignUpServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/LeaveDays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/LeaveDays.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/News.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Payment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Person.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Recruitment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Recruitment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Resignation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Resignation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Retirement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Retirement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Unit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/FileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/LeaveDaysService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/LeaveDaysService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PaymentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PaymentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PersonService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/service/PersonService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/utils/JpaProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/utils/JpaProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Dismissal.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Employment.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/EmploymentList.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/FiredDismissalShow.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/LeaveDays.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/LeaveDaysConfirmationList.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/News.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Payment.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/PaymentShow.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Recruitment.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/RecruitmentList.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ResignConfirmationList.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Resignation.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/RetiredPersonalsList.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/Retirement.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ShowUnitWithDutyAndPosition.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/SignUp.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/SinglePayment.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/UnitAndDuty.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/css/fonts/Shabnam.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/fonts/Shabnam.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleNews.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleNews.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleOne.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleOne.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleSignUp.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleSignUp.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles1.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles1.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,6 +198,7 @@
         <option value="com.haulmont.jpb.JpaEntity" />
         <option value="HTML File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -169,6 +207,13 @@
   </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="ProjectErrors" />
@@ -182,50 +227,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "TODO_SCOPE": "All Places",
-    "WebServerToolWindowFactoryState": "false",
-    "full.screen.before.presentation.mode": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "F:/Java EE/Projects/SE/mh/src/Two/Fibonacci.java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15234375",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Java EE/Projects/EE/HumanResourcesManagement/src/main/webapp/HCJ/CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15234375&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "oracle"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;oracle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.humanresourcesmanagement.model.entity.enums" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Java EE\Projects\EE\HumanResourcesManagement\src\main\webapp\HCJ\CSS" />
+      <recent name="F:\Java EE\Projects\EE\HumanResourcesManagement\src\main\webapp\WEB-INF\lib" />
       <recent name="F:\Java EE\Projects\EE\HumanResourcesManagement\src\main\webapp" />
+      <recent name="F:\Java EE\Projects\EE\HumanResourcesManagement\src\main\webapp\asetes\css" />
       <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller\servlet" />
-      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller" />
-      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model\service" />
-      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Java EE\Projects\EE\HumanResourcesManagement\src\main\webapp\HCJ\CSS" />
+      <recent name="F:\Java EE\Projects\EE\HumanResourcesManagement\src\main\webapp" />
+      <recent name="F:\Java EE\Projects\EE\HumanResourcesManagement\src\main\webapp\application" />
+      <recent name="F:\Java EE\Projects\EE\HumanResourcesManagement\src\main\webapp\HCJ" />
       <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller" />
-      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model\service" />
-      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\model\entity" />
-      <recent name="F:\Java EE\Projects\HumanResourcesManagement\src\main\java\com\humanresourcesmanagement\controller\servlet" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.humanresourcesmanagement.controller" />
@@ -236,16 +282,17 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 10.1.5" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.5" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat 10.1.5" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.5" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="11">
       <deployment>
         <artifact name="HumanResourcesManagement:war exploded">
           <settings>
-            <option name="CONTEXT_PATH" value="/HumanResourcesManagement_war_exploded" />
+            <option name="CONTEXT_PATH" value="/" />
           </settings>
         </artifact>
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="1b2a934c-4096-446b-a4aa-79ebf8276065" />
+        <option name="HTTP_PORT" value="80" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />

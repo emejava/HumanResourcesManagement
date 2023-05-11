@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "main")
+@WebServlet(urlPatterns = "/main")
 public class MainServlet extends HttpServlet {
     //      ---------GET-DATA-------------------------------------doGET
     @Override
@@ -18,6 +18,6 @@ public class MainServlet extends HttpServlet {
         //    doPOST---------NEWS-------------
         req.getSession().setAttribute("newsList",NewsController.getNewsController().findAllActive(doer));
 
-        resp.sendRedirect("/main.jsp");
+        resp.sendRedirect("/application/main.jsp");
     }
 }

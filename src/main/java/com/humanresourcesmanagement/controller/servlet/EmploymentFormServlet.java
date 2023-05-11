@@ -26,7 +26,7 @@ public class EmploymentFormServlet extends HttpServlet {
         req.getSession().setAttribute("unitList", PersonController.getPersonController().findAll(doer));
         req.getSession().setAttribute("positionList", PersonController.getPersonController().findAll(doer));
 
-        resp.sendRedirect("/Employment.jsp");
+        resp.sendRedirect("/application/Employment.jsp");
     }
 
     //      ---------INSERT-DATA-------------------------------------doPOST
@@ -36,15 +36,16 @@ public class EmploymentFormServlet extends HttpServlet {
 
         //    doPOST---------EMPLOYMENT-DATA------
         Long personId = Long.valueOf(req.getParameter("PersonId"));
-        Person person = PersonController.getPersonController().findById(personId, doer);
+        Person person = (Person) PersonController.getPersonController().findById(personId, doer).get(true);
         //TODO: Front return the person id to servlet but show id, first and last name //TODO: CYCLE OF CHANGING THE CODE
         EmploymentType employmentType = EmploymentType.valueOf(req.getParameter("EmploymentType"));
         Unit unit = new Unit();
         Long unitId = Long.valueOf(req.getParameter("Unit"));
         unit.setId(unitId);             //TODO: Front return the unit id to servlet but show id and name
-        Position position = PositionController.getPositionController().findById(Long.valueOf(req.getParameter("Position")), doer);
+        Position position = (Position) PositionController.getPositionController().findById(
+                Long.valueOf(req.getParameter("Position")), doer).get(true);
         //TODO: Front return the position id to servlet but show id and name
-        Duty duty = position.getDuty();
+        Duty duty = (Duty) DutyController.getDutyController().findByPosition(position,doer).get(true);
         LocalDate startWorkingDate = LocalDate.parse(req.getParameter("StartWorkingDate"));
         ShiftWork shiftWork = ShiftWork.valueOf(req.getParameter("ShiftWork"));
 
@@ -63,6 +64,6 @@ public class EmploymentFormServlet extends HttpServlet {
                 doer
         );
         //  doPOST------RESPONSE---------------------
-        resp.sendRedirect("/Employment.jsp");
+        resp.sendRedirect("/application/Employment.jsp");
     }
 }

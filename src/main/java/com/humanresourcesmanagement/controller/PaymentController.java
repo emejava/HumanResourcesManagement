@@ -19,10 +19,12 @@ import java.util.List;
 import java.util.Map;
 
 public class PaymentController {
+
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
+
     //  ---------SINGLETON---------------------------------------------------------------
     private static final PaymentController paymentController = new PaymentController();
-    private Map<Boolean, Object> result = new HashMap<>();
-    Map<String, String> errors;
 
     private PaymentController() {
     }
@@ -32,7 +34,7 @@ public class PaymentController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean, Object> save(
             Year year,
             LocalDate from,
             LocalDate till,
@@ -76,21 +78,23 @@ public class PaymentController {
                 severancePay,
                 insurance,
                 tax);
-        errors.clear();
-        errors = Validation.getValidation().doValidation(payment);
+        result.clear();
+        Map<String,String> errors = Validation.getValidation().doValidation(payment);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return PaymentService.getPaymentService().edit(payment, user).toString();
+                result.put(true, PaymentService.getPaymentService().edit(payment, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             Long id,
             Year year,
             LocalDate from,
@@ -144,18 +148,21 @@ public class PaymentController {
                 totalPayment,
                 transactionNumber,
                 status);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
-        errors.clear();
-        errors = Validation.getValidation().doValidation(payment);
+        Map<String,String> errors = Validation.getValidation().doValidation(payment);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return PaymentService.getPaymentService().edit(payment, user).toString();
+                result.put(true, PaymentService.getPaymentService().edit(payment, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------SUBMIT-TRANSACTION-NUMBER-------------------------------------------------------
@@ -169,6 +176,7 @@ public class PaymentController {
                 id,
                 transactionNumber,
                 status);
+
         result.clear();
         try {
             result.put(true,PaymentService.getPaymentService().edit(payment, user));
@@ -180,25 +188,32 @@ public class PaymentController {
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String delete(Long id, User user) {
+    public Map<Boolean,Object> delete(Long id, User user) {
+        result.clear();
         try {
-            return PaymentService.getPaymentService().delete(id, user).toString();
+            result.put(true, PaymentService.getPaymentService().delete(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id, User user) {
+    public Map<Boolean,Object> deactivate(Long id, User user) {
+        result.clear();
         try {
-            return PaymentService.getPaymentService().deactivate(id, user).toString();
+            result.put(true, PaymentService.getPaymentService().deactivate(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-ALL---------------------------------------------------------
     public String findAll(User user) {
+        result.clear();
         try {
             return PaymentService.getPaymentService().findAll(user).toString();
         } catch (Exception e) {
@@ -228,47 +243,62 @@ public class PaymentController {
     }
 
     //  ---------SELECT-BY-PERSONNEL-CODE---------------------------------------------
-    public String findByPersonnelCode(Long personnelCode, User user) {
+    public Map<Boolean,Object> findByPersonnelCode(Long personnelCode, User user) {
+        result.clear();
         try {
-            return PaymentService.getPaymentService().findByPersonnelCode(personnelCode, user).toString();
+            result.put(true, PaymentService.getPaymentService().findByPersonnelCode(personnelCode, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-NATIONAL-CODE----------------------------------------------
-    public String findByNationalCode(String nationalCode, User user) {
+    public Map<Boolean,Object> findByNationalCode(String nationalCode, User user) {
+        result.clear();
         try {
-            return PaymentService.getPaymentService().findByNationalCode(nationalCode, user).toString();
+            result.put(true, PaymentService.getPaymentService().findByNationalCode(nationalCode, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-YEAR------------------------------------------------------
-    public String findByYear(Year year, User user) {
+    public Map<Boolean,Object> findByYear(Year year, User user) {
+        result.clear();
         try {
-            return PaymentService.getPaymentService().findByYear(year, user).toString();
+            result.put(true, PaymentService.getPaymentService().findByYear(year, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-YEAR-AND-MONTH--------------------------------------------
-    public String findByYearAndMonth(Year year, LocalDate from, LocalDate till, User user) {
+    public Map<Boolean,Object> findByYearAndMonth(Year year, LocalDate from, LocalDate till, User user) {
+        result.clear();
         try {
-            return PaymentService.getPaymentService().findByYearAndMonth(year, from, till, user).toString();
+            result.put(true, PaymentService.getPaymentService().findByYearAndMonth(year, from, till, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-END-TIME-OF-PAYMENT--------------------------------------------
-    public Payment findByPersonnelCodeAndEndTime(Long personnelCode, LocalDate till, User user) {
+    public Map<Boolean,Object> findByPersonnelCodeAndEndTime(Long personnelCode, LocalDate till, User user) {
+        result.clear();
         try {
-            return PaymentService.getPaymentService().findByPersonnelCodeAndEndTime(personnelCode, till, user);
+            result.put(true, PaymentService.getPaymentService().findByPersonnelCodeAndEndTime(personnelCode, till, user));
         } catch (Exception e) {
-            return null; // TODO: How return error with returning object
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 

@@ -49,18 +49,18 @@ public class User {
     private String password;
 
     @JsonProperty("شخص")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @NonNull
     private Person person;
 
     @JsonProperty("نوع کاربری")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Role role;
 
     @JsonProperty("سطح دسترسسی")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private AccessLevel accessLevel;
 
     @JsonProperty("آخرین بازدید")

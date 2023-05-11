@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins",sans-serif;
+}
+.select option{
+    border-radius: 9px;
+    border: 1px solid #aaa;
+    background-color: #aaaaaa;
+    color: white;
+    font-size: 14px;
+}
+.select:is(:focus , :valid) {
+    box-shadow: 0 6px 6px rgba(0, 0, 0, 0.11);
+}
+.select{
+    border-radius: 9px;
+    border: 1px solid #aaa;
+    padding: 0 20px;
+    height: 45px;
+    margin: 8px 0;
+}
+.fields a{
+}

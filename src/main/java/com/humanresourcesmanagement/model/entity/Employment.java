@@ -28,7 +28,7 @@ public class Employment {
     
     @JsonProperty("شخص")
     @NonNull
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Person person;
 
     @JsonProperty("نوع استخدام")
@@ -41,19 +41,19 @@ public class Employment {
     @JsonProperty("بخش")
     @NonNull
     @NotBlank(message = "بخش راانتخاب کنید")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Unit unit;
 
     @JsonProperty("وظایف")
     @NonNull
     @NotBlank(message = "وظایف را وارد کنید")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Duty duty;
 
     @JsonProperty("سمت")
     @NonNull
     @NotBlank(message = "سمت به درستی انتخاب نشده")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Position position;
 
     @JsonProperty("تاریخ آمادگی شروع به کار")
@@ -69,7 +69,7 @@ public class Employment {
     private ShiftWork shiftWork;
 
     @JsonProperty("عکس قرارداد")
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Attachment CV;
 
     public Employment(

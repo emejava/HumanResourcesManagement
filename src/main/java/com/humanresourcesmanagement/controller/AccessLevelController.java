@@ -4,12 +4,17 @@ import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
 import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.AccessLevel;
+import com.humanresourcesmanagement.model.entity.ErrorsTO;
 import com.humanresourcesmanagement.model.entity.User;
 import com.humanresourcesmanagement.model.service.AccessLevelService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class AccessLevelController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
+
     //  ---------SINGLETON---------------------------------------------------------------
     private static AccessLevelController accessLevelController = new AccessLevelController();
 
@@ -21,7 +26,7 @@ public class AccessLevelController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean, Object> save(
             String title,
             Boolean canInsert,
             Boolean canUpdate,
@@ -38,21 +43,23 @@ public class AccessLevelController {
                 canFind,
                 canFindAll);
 
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(accessLevel);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return AccessLevelService.getAccessLevelService().save(accessLevel, user).toString();
+                result.put(true,AccessLevelService.getAccessLevelService().save(accessLevel, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
-        }
+        }return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean, Object> edit(
             Long id,
             String title,
             Boolean canInsert,
@@ -71,25 +78,30 @@ public class AccessLevelController {
                 canFind,
                 canFindAll);
 
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(accessLevel);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return AccessLevelService.getAccessLevelService().edit(accessLevel, user).toString();
+                result.put(true,AccessLevelService.getAccessLevelService().edit(accessLevel, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
-        }
+        }return result;
     }
 
     //  ---------DELETE-------------------------------------------------------------
-    public String delete(Long id, User user) {
+    public Map<Boolean, Object> delete(Long id, User user) {
+        result.clear();
         try {
-            return AccessLevelService.getAccessLevelService().delete(id, user).toString();
+            result.put(true,AccessLevelService.getAccessLevelService().delete(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
@@ -103,12 +115,15 @@ public class AccessLevelController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id, User user) {
+    public Map<Boolean, Object> findById(Long id, User user) {
+        result.clear();
 
         try {
-            return AccessLevelService.getAccessLevelService().findById(id, user).toString();
+            result.put(true,AccessLevelService.getAccessLevelService().findById(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

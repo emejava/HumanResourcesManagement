@@ -9,7 +9,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(urlPatterns = "retireEmployee.do")
+@WebServlet(urlPatterns = "/retireEmployee.do")
 public class RetireEmployeeForm extends HttpServlet {
 
     //      ---------FIND-PERSONS-------------------------------------doGET
@@ -28,11 +28,12 @@ public class RetireEmployeeForm extends HttpServlet {
         User doer = (User) req.getSession().getAttribute("user");
 
         //    doPOST---------RETIREMENT-DATA------
-        Person person = PersonController.getPersonController().findById(Long.valueOf(req.getParameter("PersonId")), doer);
-        Long personnelCode = person.getEmployment().getPersonnelCode();         //TODO: Front return the person id to servlet but show id, first and last name
+        Person person = (Person) PersonController.getPersonController().findById(
+                Long.valueOf(req.getParameter("PersonId")), doer).get(true);
+        Long personnelCode = person.getEmployment().getPersonnelCode();
         LocalDate date = LocalDate.parse(req.getParameter("Date"));
-        Payment lastPayment = PaymentController.getPaymentController().findByPersonnelCodeAndEndTime(
-                personnelCode, LocalDate.parse(req.getParameter("LastPayment")), doer);
+        Payment lastPayment = (Payment) PaymentController.getPaymentController().findByPersonnelCodeAndEndTime(
+                personnelCode, LocalDate.parse(req.getParameter("LastPayment")), doer).get(true);
 
         //      doPOST---------SAVE-FILES---------
         //            -----------------File1
@@ -53,7 +54,7 @@ public class RetireEmployeeForm extends HttpServlet {
                 doer
         );
         //  doPOST------RESPONSE---------------------
-        resp.sendRedirect("Retirement.jsp");
+        resp.sendRedirect("/application/Retirement.jsp");
     }
 
 }

@@ -1,8 +1,10 @@
 package com.humanresourcesmanagement.controller;
 
+import com.fasterxml.jackson.databind.ObjectReader;
 import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
 import com.humanresourcesmanagement.controller.validation.Validation;
+import com.humanresourcesmanagement.model.entity.ErrorsTO;
 import com.humanresourcesmanagement.model.entity.LeaveDays;
 import com.humanresourcesmanagement.model.entity.Person;
 import com.humanresourcesmanagement.model.entity.User;
@@ -10,9 +12,13 @@ import com.humanresourcesmanagement.model.service.LeaveDaysService;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.Map;
 
 public class LeaveDaysController {
+
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
 
     //  ---------SINGLETON---------------------------------------------------------------
     private static LeaveDaysController leaveDaysController = new LeaveDaysController();
@@ -23,8 +29,9 @@ public class LeaveDaysController {
     public static LeaveDaysController getLeaveDaysController() {
         return leaveDaysController;
     }
+
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             Person person,
             LocalDate from,
             LocalDate till,
@@ -38,28 +45,33 @@ public class LeaveDaysController {
                 till,
                 daysCount,
                 request);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(leaveDays);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return LeaveDaysService.getLeaveDaysService().save(leaveDays, user).toString();
+                result.put(true, LeaveDaysService.getLeaveDaysService().save(leaveDays, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
+
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
-        Long id,
-        Person person,
-        LocalDate from,
-        LocalDate till,
-        Byte daysCount,
-        String request,
-        Boolean accepted,
-        User user) {
+    public Map<Boolean, Object> edit(
+            Long id,
+            Person person,
+            LocalDate from,
+            LocalDate till,
+            Byte daysCount,
+            String request,
+            Boolean accepted,
+            User user) {
         //  ---------CREATE-OBJECT-----------------
         LeaveDays leaveDays = new LeaveDays(
                 id,
@@ -69,56 +81,91 @@ public class LeaveDaysController {
                 daysCount,
                 request,
                 accepted);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(leaveDays);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return LeaveDaysService.getLeaveDaysService().edit(leaveDays, user).toString();
+                result.put(true,LeaveDaysService.getLeaveDaysService().edit(leaveDays, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
-        }
+        }return result;
+
     }
+
     //  ---------DELETE-------------------------------------------------------------
-    public String delete(Long id , User user){
+    public Map<Boolean, Object> delete(Long id, User user) {
+        result.clear();
         try {
-            return LeaveDaysService.getLeaveDaysService().delete(id,user).toString();
-        }catch (Exception e){
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(true,LeaveDaysService.getLeaveDaysService().delete(id, user));
+        } catch (Exception e) {
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
+
     //  ---------SELECT-ALL---------------------------------------------------------
-    public String findAll(User user){
+    public String findAll(User user) {
         try {
             return LeaveDaysService.getLeaveDaysService().findAll(user).toString();
-        }catch (Exception e){
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+        } catch (Exception e) {
+           return ExceptionWrapper.getExceptionWrapper().getMessage(e);
         }
     }
+
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id,User user){
+    public Map<Boolean, Object> findById(Long id, User user) {
+        result.clear();
         try {
-            return LeaveDaysService.getLeaveDaysService().findById(id,user).toString();
-        }catch (Exception e){
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(true,LeaveDaysService.getLeaveDaysService().findById(id, user));
+        } catch (Exception e) {
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
+
     //  ---------SELECT-BY-REQUEST-STATUS--------------------------------------------
-    public String findByAccepted(Boolean accepted, User user){
+    public Map<Boolean, Object> findByAccepted(Boolean accepted, User user) {
+        result.clear();
         try {
-            return LeaveDaysService.getLeaveDaysService().findByAccepted(accepted,user).toString();
-        }catch (Exception e){
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(true,LeaveDaysService.getLeaveDaysService().findByAccepted(accepted, user));
+        } catch (Exception e) {
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
+
     //  ---------SELECT-BY-PERSONNEL-CODE-------------------------------------------
-    public String findByPersonnelCode(String personnelCode, User user){
+    public Map<Boolean, Object> findByPersonnelCode(String personnelCode, User user) {
+        result.clear();
         try {
-            return LeaveDaysService.getLeaveDaysService().findByPersonnelCode(personnelCode,user).toString();
+            result.put(true,LeaveDaysService.getLeaveDaysService().findByPersonnelCode(personnelCode, user));
+        } catch (Exception e) {
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
+        }
+    }
+
+    //  ---------SELECT-BY-PERSONNEL-CODE-IN-TIME-PERIOD----------------------------------
+    public Map<Boolean,Object> findByPersonnelCodeAndBetweenTime(
+            Long personnelCode,LocalDate from,LocalDate till,User user){
+        result.clear();
+        try {
+            result.put(true,LeaveDaysService.getLeaveDaysService().findByPersonnelCodeAndBetweenTime(
+                    personnelCode,from,till,user));
         }catch (Exception e){
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false,ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

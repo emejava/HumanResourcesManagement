@@ -4,13 +4,17 @@ import com.google.gson.Gson;
 import com.humanresourcesmanagement.controller.exceptions.ExceptionWrapper;
 import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.Attachment;
+import com.humanresourcesmanagement.model.entity.ErrorsTO;
 import com.humanresourcesmanagement.model.entity.News;
 import com.humanresourcesmanagement.model.entity.User;
 import com.humanresourcesmanagement.model.service.NewsService;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class NewsController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
     //  ---------SINGLETON---------------------------------------------------------------
     private static NewsController newsController = new NewsController();
 
@@ -22,7 +26,7 @@ public class NewsController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             String subject,
             String title,
             String newsReport,
@@ -36,20 +40,24 @@ public class NewsController {
                 newsReport,
                 mainAttachment,
                 secondAttachment);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(news);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return NewsService.getNewsService().save(news, user).toString();
+                result.put(true, NewsService.getNewsService().save(news, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             Long id,
             String subject,
             String title,
@@ -65,42 +73,55 @@ public class NewsController {
                 newsReport,
                 mainAttachment,
                 secondAttachment);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(news);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return NewsService.getNewsService().edit(news, user).toString();
+                result.put(true, NewsService.getNewsService().edit(news, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
     //  ---------DELETE-------------------------------------------------------------
-    public String delete(Long id,User user) {
+    public Map<Boolean,Object> delete(Long id,User user) {
+        result.clear();
         try {
-            return NewsService.getNewsService().delete(id,user).toString();
+            result.put(true, NewsService.getNewsService().delete(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id,User user) {
+    public Map<Boolean,Object> deactivate(Long id,User user) {
+        result.clear();
         try {
-            return NewsService.getNewsService().deactivate(id,user).toString();
+            result.put(true, NewsService.getNewsService().deactivate(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------ACTIVE-STATUS------------------------------------------------------
-    public String activate(Long id,User user) {
+    public Map<Boolean,Object> activate(Long id,User user) {
+        result.clear();
         try {
-            return NewsService.getNewsService().activate(id,user).toString();
+            result.put(true, NewsService.getNewsService().activate(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
@@ -123,12 +144,14 @@ public class NewsController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id,User user) {
-
+    public Map<Boolean,Object> findById(Long id,User user) {
+        result.clear();
         try {
-            return NewsService.getNewsService().findById(id,user).toString();
+            result.put(true, NewsService.getNewsService().findById(id,user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }

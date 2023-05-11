@@ -6,10 +6,13 @@ import com.humanresourcesmanagement.controller.validation.Validation;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.service.UnitService;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class UnitController {
+    Map<Boolean, Object> result = new HashMap<>();
+    ErrorsTO errorsTO = new ErrorsTO();
     //  ---------SINGLETON---------------------------------------------------------------
     private static UnitController unitController = new UnitController();
 
@@ -21,7 +24,7 @@ public class UnitController {
     }
 
     //  ---------INSERT-DATA--------------------------------------------------------
-    public String save(
+    public Map<Boolean,Object> save(
             String name,
             String city,
             List<Duty> duties,
@@ -31,21 +34,25 @@ public class UnitController {
                 name,
                 city,
                 duties);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(unit);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return UnitService.getUnitService().save(unit, user).toString();
+                result.put(true, UnitService.getUnitService().save(unit, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------UPDATE-DATA--------------------------------------------------------
-    public String edit(
+    public Map<Boolean,Object> edit(
             Long id,
             String name,
             List<Unit> relatedUnits,
@@ -59,34 +66,44 @@ public class UnitController {
                 relatedUnits,
                 city,
                 duties);
+
+        result.clear();
         //  ---------VALIDATING-DATA---------------
         Map<String, String> errors = Validation.getValidation().doValidation(unit);
         if (errors != null) {
-            return new Gson().toJson(errors);
+            errorsTO.setErrors(errors);
+            result.put(false, errorsTO);
         } else {
             try {
-                return UnitService.getUnitService().edit(unit, user).toString();
+                result.put(true, UnitService.getUnitService().edit(unit, user));
             } catch (Exception e) {
-                return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+                result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
             }
         }
+        return result;
     }
 
     //  ---------DELETE-------------------------------------------------------------
-    public String delete(Long id, User user) {
+    public Map<Boolean,Object> delete(Long id, User user) {
+        result.clear();
         try {
-            return UnitService.getUnitService().delete(id, user).toString();
+            result.put(true, UnitService.getUnitService().delete(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------LOGICAL-DELETE-----------------------------------------------------
-    public String deactivate(Long id, User user) {
+    public Map<Boolean,Object> deactivate(Long id, User user) {
+        result.clear();
         try {
-            return UnitService.getUnitService().deactivate(id, user).toString();
+            result.put(true, UnitService.getUnitService().deactivate(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
@@ -109,30 +126,38 @@ public class UnitController {
     }
 
     //  ---------SELECT-BY-ID-------------------------------------------------------
-    public String findById(Long id, User user) {
-
+    public Map<Boolean,Object> findById(Long id, User user) {
+        result.clear();
         try {
-            return UnitService.getUnitService().findById(id, user).toString();
+            result.put(true, UnitService.getUnitService().findById(id, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-NAME--------------------------------------------
-    public String findByName(String name, User user) {
+    public Map<Boolean,Object> findByName(String name, User user) {
+        result.clear();
         try {
-            return UnitService.getUnitService().findByName(name, user).toString();
+            result.put(true, UnitService.getUnitService().findByName(name, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 
     //  ---------SELECT-BY-CITY--------------------------------------------
-    public String findByCity(String city, User user) {
+    public Map<Boolean,Object> findByCity(String city, User user) {
+        result.clear();
         try {
-            return UnitService.getUnitService().findByName(city, user).toString();
+            result.put(true, UnitService.getUnitService().findByName(city, user));
         } catch (Exception e) {
-            return ExceptionWrapper.getExceptionWrapper().getMessage(e);
+            result.put(false, ExceptionWrapper.getExceptionWrapper().getMessage(e));
+        }finally {
+            return result;
         }
     }
 }
