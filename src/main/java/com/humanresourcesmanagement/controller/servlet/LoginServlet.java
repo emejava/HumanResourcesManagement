@@ -22,10 +22,7 @@ public class LoginServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String rememberMe = req.getParameter("rememberMe");
-        System.out.println(username);
-        System.out.println(password);
 
-        System.out.println(UserController.getUserController().isValidate(username,password).get(true));
         User user = (User) UserController.getUserController().isValidate(username,password).get(true);
         if( user != null){
             SessionManager.addHttpSession(req.getSession());
@@ -36,7 +33,7 @@ public class LoginServlet extends HttpServlet {
             resp.addCookie(uCookie);
             resp.addCookie(pCookie);
             }
-            req.getRequestDispatcher("/dashboard.jsp").forward(req,resp);
+            req.getRequestDispatcher("/application/Dashboard.jsp").forward(req,resp);
         }else{
             resp.sendRedirect("/login.jsp");
             resp.getWriter().write("Invalid Username and Password");

@@ -33,7 +33,7 @@ public class Duty {
 
     @JsonProperty("سمت")
     @NonNull
-    @NotBlank(message = "سمت را انتخاب کنید")
+//    @NotBlank(message = "سمت را انتخاب کنید")
     @OneToOne(cascade = CascadeType.ALL)
     private Position position;
 

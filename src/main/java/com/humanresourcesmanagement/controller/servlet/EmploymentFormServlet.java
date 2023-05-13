@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 
-@WebServlet(urlPatterns = "/employmentForm.do")
+@WebServlet(urlPatterns = "/application/employmentForm.do")
 public class EmploymentFormServlet extends HttpServlet {
 
     //      ---------FIND-PERSONS-------------------------------------doGET
@@ -37,14 +37,12 @@ public class EmploymentFormServlet extends HttpServlet {
         //    doPOST---------EMPLOYMENT-DATA------
         Long personId = Long.valueOf(req.getParameter("PersonId"));
         Person person = (Person) PersonController.getPersonController().findById(personId, doer).get(true);
-        //TODO: Front return the person id to servlet but show id, first and last name //TODO: CYCLE OF CHANGING THE CODE
         EmploymentType employmentType = EmploymentType.valueOf(req.getParameter("EmploymentType"));
         Unit unit = new Unit();
         Long unitId = Long.valueOf(req.getParameter("Unit"));
-        unit.setId(unitId);             //TODO: Front return the unit id to servlet but show id and name
+        unit.setId(unitId);
         Position position = (Position) PositionController.getPositionController().findById(
                 Long.valueOf(req.getParameter("Position")), doer).get(true);
-        //TODO: Front return the position id to servlet but show id and name
         Duty duty = (Duty) DutyController.getDutyController().findByPosition(position,doer).get(true);
         LocalDate startWorkingDate = LocalDate.parse(req.getParameter("StartWorkingDate"));
         ShiftWork shiftWork = ShiftWork.valueOf(req.getParameter("ShiftWork"));

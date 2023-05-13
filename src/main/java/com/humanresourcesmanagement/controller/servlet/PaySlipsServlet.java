@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/paymentShow")
+@WebServlet(urlPatterns = "/application/paymentShow")
 public class PaySlipsServlet extends HttpServlet {
 
     //      ---------FIND-PAYMENTS-------------------------------------doGET

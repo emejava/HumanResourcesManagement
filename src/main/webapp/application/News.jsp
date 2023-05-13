@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="Dashboard.jsp">
+                <a href="/application/Dashboard.jsp">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="title">داشبورد</span>
                 </a>
@@ -52,14 +52,14 @@
             </li>
 
             <li>
-                <a href="SignUp.jsp">
+                <a href="/application/SignUp.jsp">
                     <span class="icon"><ion-icon name="cog-outline"></ion-icon></span>
                     <span class="title">ثبت نام</span>
                 </a>
             </li>
 
             <li>
-                <a href="CentralRecruitment.jsp">
+                <a href="/application/CentralRecruitment.jsp">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <span class="title">کارگزینی مرکزی</span>
                 </a>
@@ -99,7 +99,7 @@
 
         <div class="container1" dir="rtl">
             <header>گزارش اخبار</header>
-            <form action="newsSubmit.do" method="post">
+            <form action="application/newsSubmit.do" method="post">
                 <div class="form">
                     <div class="personal">
 

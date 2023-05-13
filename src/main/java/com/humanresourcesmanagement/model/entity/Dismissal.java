@@ -42,19 +42,19 @@ public class Dismissal {
 
     @JsonProperty("تاریخ")
     @NonNull
-    @NotBlank(message = "تاریخ اخراج وارد نشده")
+//    @NotBlank(message = "تاریخ اخراج وارد نشده")
     @Column(name = "date",columnDefinition = "nvarchar2(30)")
     private LocalDate date;
 
     @JsonProperty("آخرین فیش حقوقی")
     @NonNull
-    @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
+//    @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
     @OneToOne(cascade = CascadeType.ALL)
     private Payment lastPayment;
 
     @JsonProperty("ضمیمه")
     @NonNull
-    @NotBlank(message = "فایل ضمیمه آپلود نشده")
+//    @NotBlank(message = "فایل ضمیمه آپلود نشده")
     @OneToOne(cascade = CascadeType.ALL)
     private Attachment attachment;
 

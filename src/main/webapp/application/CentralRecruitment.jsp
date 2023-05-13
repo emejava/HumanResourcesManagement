@@ -19,7 +19,7 @@
                 </a>
             </li>
             <li>
-                <a href="Dashboard.jsp">
+                <a href="/application/Dashboard.jsp">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="title">داشبورد</span>
                 </a>
@@ -50,14 +50,14 @@
             </li>
 
             <li>
-                <a href="SignUp.jsp">
+                <a href="/application/SignUp.jsp">
                     <span class="icon"><ion-icon name="cog-outline"></ion-icon></span>
                     <span class="title">ثبت نام</span>
                 </a>
             </li>
 
             <li>
-                <a href="CentralRecruitment.jsp">
+                <a href="/application/CentralRecruitment.jsp">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <span class="title">کارگزینی مرکزی</span>
                 </a>
@@ -103,25 +103,25 @@
             <li><a href="#"><i class="fa fa-chevron-left" aria-hidden="true">پرونده ها</i>
             </a>
                 <ul>
-                    <li><a href="EmploymentList.jsp">استخدامی ها</a></li>
-                    <li><a href="FiredPersonnel.jsp">اخراجی ها</a></li>
-                    <li><a href="ResignConfirmationList.jsp">استعفا ها</a></li>
-                    <li><a href="RetiredPersonalsList.jsp">بازنشتگان</a></li>
-                    <li><a href="LeaveDaysConfirmationList.jsp">مرخصیات</a></li>
-                    <li><a href="PaySlips.jsp">فیشهای حقوقی</a></li>
-                    <li><a href="ShowUnitWithDutyAndPosition.jsp">واحدات و وظایف</a></li>
+                    <li><a href="/application/EmploymentList.jsp">استخدامی ها</a></li>
+                    <li><a href="/application/FiredPersonnel.jsp">اخراجی ها</a></li>
+                    <li><a href="/application/ResignConfirmationList.jsp">استعفا ها</a></li>
+                    <li><a href="/application/RetiredPersonalsList.jsp">بازنشتگان</a></li>
+                    <li><a href="/application/LeaveDaysConfirmationList.jsp">مرخصیات</a></li>
+                    <li><a href="/application/PaySlips.jsp">فیشهای حقوقی</a></li>
+                    <li><a href="/application/ShowUnitWithDutyAndPosition.jsp">واحدات و وظایف</a></li>
                 </ul>
             </li>
             <li><a href="#"><i class="fa fa-chevron-left" aria-hidden="true">فرم ها</i>
             </a>
                 <ul>
-                    <li><a href="Dismissal.jsp">اخراج</a></li>
-                    <li><a href="Resignation.jsp">استعفا</a></li>
-                    <li><a href="Employment.jsp">استخدام</a></li>
-                    <li><a href="Retirement.jsp">بازنشتگی</a></li>
-                    <li><a href="Payment.jsp">حقوق و مزایا</a></li>
-                    <li><a href="LeaveDays.jsp">مرخصی ساعتی</a></li>
-                    <li><a href="UnitAndDuty.jsp">واحدات و سمت</a></li>
+                    <li><a href="/application/Dismissal.jsp">اخراج</a></li>
+                    <li><a href="/application/Resignation.jsp">استعفا</a></li>
+                    <li><a href="/application/Employment.jsp">استخدام</a></li>
+                    <li><a href="/application/Retirement.jsp">بازنشتگی</a></li>
+                    <li><a href="/application/Payment.jsp">حقوق و مزایا</a></li>
+                    <li><a href="/application/LeaveDays.jsp">مرخصی ساعتی</a></li>
+                    <li><a href="/application/UnitAndDuty.jsp">واحدات و سمت</a></li>
                 </ul>
             </li>
             <li><a href="#"><i class="fa fa-chevron-left" aria-hidden="true">تاییده ها</i>

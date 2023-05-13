@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/ResignConfirmation")
+@WebServlet(urlPatterns = "/application/ResignConfirmation")
 public class ResignConfirmationServlet extends HttpServlet {
 
     //      ---------RESIGN-CONFIRMATION-LIST------------------------------------doGET

@@ -3,13 +3,19 @@ package com.humanresourcesmanagement.controller.servlet;
 import com.humanresourcesmanagement.controller.*;
 import com.humanresourcesmanagement.model.entity.*;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(urlPatterns = "/resignSubmit.do")
+@WebServlet(urlPatterns = "/application/resignSubmit.do")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 10,
+        maxRequestSize = 1024 * 1024 * 100
+)
 public class ResignSubmitServlet extends HttpServlet {
 
     //      ---------FIND-PERSONS-------------------------------------doGET
@@ -41,9 +47,7 @@ public class ResignSubmitServlet extends HttpServlet {
         Part part = req.getPart("Attachment");
         String attachmentName = part.getSubmittedFileName();
         String path = "C:\\root\\ " + attachmentName;
-        for (Part reqPart : req.getParts()) {
-            part.write(path);
-        }
+        part.write(path);
         Attachment attachment = new Attachment(attachmentName, doer, path);
 
         //  -----VALIDATE-AND-SAVE-DATA-WITH-CONTROLLER-----

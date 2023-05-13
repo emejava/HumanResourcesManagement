@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
                 </a>
             </li>
             <li>
-                <a href="Dashboard.jsp">
+                <a href="/application/Dashboard.jsp">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="title">داشبورد</span>
                 </a>
@@ -50,14 +51,14 @@
             </li>
 
             <li>
-                <a href="SignUp.jsp">
+                <a href="/application/SignUp.jsp">
                     <span class="icon"><ion-icon name="cog-outline"></ion-icon></span>
                     <span class="title">ثبت نام</span>
                 </a>
             </li>
 
             <li>
-                <a href="CentralRecruitment.jsp">
+                <a href="/application/CentralRecruitment.jsp">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <span class="title">کارگزینی مرکزی</span>
                 </a>
@@ -109,17 +110,17 @@
             </div>
             <div class="card">
                 <div>
-                    <div class="numbers">80</div>
-                    <div class="cardName">فروش</div>
+                    <div class="numbers">%49</div>
+                    <div class="cardName">درصد تحقق هدف</div>
                 </div>
                 <div class="iconBx">
-                    <ion-icon name="cart-outline"></ion-icon>
+                    <ion-icon name="infinite-outline"></ion-icon>
                 </div>
             </div>
             <div class="card">
                 <div>
                     <div class="numbers">284</div>
-                    <div class="cardName">نظرات</div>
+                    <div class="cardName">استخدامی ها</div>
                 </div>
                 <div class="iconBx">
                     <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
@@ -128,11 +129,11 @@
 
             <div class="card">
                 <div>
-                    <div class="numbers">$7,842</div>
-                    <div class="cardName">درامد</div>
+                    <div class="numbers">7,842</div>
+                    <div class="cardName">کارمندان</div>
                 </div>
                 <div class="iconBx">
-                    <ion-icon name="cash-outline"></ion-icon>
+                    <ion-icon name="people-outline"></ion-icon>
                 </div>
             </div>
 
@@ -142,98 +143,53 @@
         <div class="details">
             <!--order details list-->
             <div class="recentOrders">
-                <div class="cardHeader">
-                    <h2>سفارشات اخیر</h2>
-                    <a href="#" class="btn">مشاهده همه</a>
-                </div>
+                    <h2 style="font-family: Shabnam">اخبار</h2>
                 <table>
-                    <thead>
-                    <tr>
-                        <td>نام</td>
-                        <td>قیمت</td>
-                        <td>پرداخت ها</td>
-                        <td>وضعیت</td>
-                    </tr>
-                    </thead>
+                    <c:forEach var="news" items="${sessionScope.newsList}">
                     <tbody>
                     <tr>
-                        <td>Star Refrigerator</td>
-                        <td>$1200</td>
-                        <td>paid</td>
-                        <td><span class="status delivered">Delivered</span></td>
-                    </tr>
-                    <tr>
-                        <td>Star Refrigerator</td>
-                        <td>$1200</td>
-                        <td>paid</td>
-                        <td><span class="status pending">Pending</span></td>
-                    </tr>
-                    <tr>
-                        <td>Star Refrigerator</td>
-                        <td>$1200</td>
-                        <td>paid</td>
-                        <td><span class="status return">Return</span></td>
-                    </tr>
-                    <tr>
-                        <td>Star Refrigerator</td>
-                        <td>$1200</td>
-                        <td>paid</td>
-                        <td><span class="status inprogress">In Progress</span></td>
-                    </tr>
-                    <tr>
-                        <td>Star Refrigerator</td>
-                        <td>$1200</td>
-                        <td>paid</td>
-                        <td><span class="status delivered">Delivered</span></td>
-                    </tr>
-                    <tr>
-                        <td>Star Refrigerator</td>
-                        <td>$1200</td>
-                        <td>paid</td>
-                        <td><span class="status inprogress">In Progress</span></td>
-                    </tr>
-                    <tr>
-                        <td>Star Refrigerator</td>
-                        <td>$1200</td>
-                        <td>paid</td>
-                        <td><span class="status pending">Pending</span></td>
+                        <td>${news.subject}</td>
+                        <td>${news.title}</td>
+                        <td><span class="">بیشتر</span><p style="display: none">${news.id}</p></td>
                     </tr>
                     </tbody>
+                    </c:forEach>
+
                 </table>
             </div>
 
             <!--     new customer    -->
-            <div class="recentCustomers">
-                <div class="cardHeader">
-                    <h2>Recent Customers</h2>
-                </div>
-                <table>
-                    <tr>
-                        <td width="60px"><div class="imgBx"><img src="../customer1.jpg"></div></td>
-                        <td><h4>Emily<br><span>Blunt</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td width="60px"><div class="imgBx"><img src="../customer2.png"></div></td>
-                        <td><h4>Jason<br><span>Mcclure</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td width="60px"><div class="imgBx"><img src="../customer3.png"></div></td>
-                        <td><h4>Ashley<br><span>Price</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td width="60px"><div class="imgBx"><img src="../customer4.jpg"></div></td>
-                        <td><h4>Christian<br><span>Mendoza</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td width="60px"><div class="imgBx"><img src="../customer5.png"></div></td>
-                        <td><h4>Megan<br><span>George</span></h4></td>
-                    </tr>
-                    <tr>
-                        <td width="60px"><div class="imgBx"><img src="../customer6.png"></div></td>
-                        <td><h4>Amy<br><span>Rogers</span></h4></td>
-                    </tr>
-                </table>
-            </div>
+<%--            <div class="recentCustomers">--%>
+<%--                <div class="cardHeader">--%>
+<%--                    <h2>Recent Customers</h2>--%>
+<%--                </div>--%>
+<%--                <table>--%>
+<%--                    <tr>--%>
+<%--                        <td width="60px"><div class="imgBx"><img src="../customer1.jpg"></div></td>--%>
+<%--                        <td><h4>Emily<br><span>Blunt</span></h4></td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td width="60px"><div class="imgBx"><img src="../customer2.png"></div></td>--%>
+<%--                        <td><h4>Jason<br><span>Mcclure</span></h4></td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td width="60px"><div class="imgBx"><img src="../customer3.png"></div></td>--%>
+<%--                        <td><h4>Ashley<br><span>Price</span></h4></td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td width="60px"><div class="imgBx"><img src="../customer4.jpg"></div></td>--%>
+<%--                        <td><h4>Christian<br><span>Mendoza</span></h4></td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td width="60px"><div class="imgBx"><img src="../customer5.png"></div></td>--%>
+<%--                        <td><h4>Megan<br><span>George</span></h4></td>--%>
+<%--                    </tr>--%>
+<%--                    <tr>--%>
+<%--                        <td width="60px"><div class="imgBx"><img src="../customer6.png"></div></td>--%>
+<%--                        <td><h4>Amy<br><span>Rogers</span></h4></td>--%>
+<%--                    </tr>--%>
+<%--                </table>--%>
+<%--            </div>--%>
 
 
 

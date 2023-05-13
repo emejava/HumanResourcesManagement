@@ -67,21 +67,21 @@ public class Person {
 
     @JsonProperty("تاریخ تولد")
     @NonNull
-    @NotBlank(message = "تاریخ تولد وارد نشده")
+//    @NotBlank(message = "تاریخ تولد وارد نشده")
     @Column(name = "birthday")
     private LocalDate birthday;
 
     @JsonProperty("جنسیت")
     @NonNull
-    @NotBlank(message = "جنسیت انتخاب نشده")
+//    @NotBlank(message = "جنسیت انتخاب نشده")
     @Column(name = "gender")
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @JsonProperty("سن")
     @NonNull
-    @NotBlank(message = "")
-    @Pattern(regexp = "^\\d{2}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
+//    @NotBlank(message = "")
+//    @Pattern(regexp = "^\\d{2}$", message = "لطفا از اعداد انگلیسی استفاده کنید")
     @Column(name = "age", columnDefinition = "NVARCHAR2(2)")
     private Integer age;
 
@@ -120,7 +120,7 @@ public class Person {
 
     @JsonProperty("وضعیت تاهل")
     @NonNull
-    @NotBlank(message = "وضعیت تاهل انتخاب نشده")
+//    @NotBlank(message = "وضعیت تاهل انتخاب نشده")
     @Column(name = "marital_status")
     @Enumerated(EnumType.STRING)
     private MaritalStatus maritalStatus;
@@ -141,7 +141,7 @@ public class Person {
 
     @JsonProperty("تعداد فرزند")
     @NonNull
-    @NotBlank(message = "تعداد فرزندان وارد نشده")
+//    @NotBlank(message = "تعداد فرزندان وارد نشده")
     @Column(name = "children", columnDefinition = "NUMBER(1)")
     private Short children;
 
@@ -154,13 +154,13 @@ public class Person {
 
     @JsonProperty("عکس کارت ملی")
     @NonNull
-    @NotBlank
+//    @NotBlank
     @OneToOne(cascade = CascadeType.ALL)
     private Attachment nationalCardPicture;
 
     @JsonProperty("عکس پرسنلی")
     @NonNull
-    @NotBlank
+//    @NotBlank
     @OneToOne(cascade = CascadeType.ALL)
     private Attachment personnelPicture;
 

@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/SinglePaySlip")
+@WebServlet(urlPatterns = "/application/SinglePaySlip")
 public class SinglePaySlipServlet extends HttpServlet {
 
     //      ---------SINGLE-PAYSLIP-LIST------------------------------------doGET

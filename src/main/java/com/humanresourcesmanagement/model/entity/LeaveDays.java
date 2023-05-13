@@ -51,7 +51,7 @@ public class LeaveDays {
 
     @JsonProperty("تعداد روز درخواستی")
     @NonNull
-    @Pattern(regexp = "^\\d{2}$", message = "لطفا از عداد استفاده کنید")
+//    @Pattern(regexp = "^\\d{2}$", message = "لطفا از عداد استفاده کنید")
     @Column(name = "days-count",columnDefinition = "NUMBER(2)")
     private Byte daysCount;
 

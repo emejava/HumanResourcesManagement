@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/firedPersonnel")
+@WebServlet(urlPatterns = "/application/firedPersonnel")
 public class FiredPersonnelListServlet extends HttpServlet {
 
     //      ---------FIRED-PERSONNEL-LIST------------------------------------doGET

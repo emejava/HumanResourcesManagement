@@ -12,7 +12,7 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/paymentSubmit.do")
+@WebServlet(urlPatterns = "/application/paymentSubmit.do")
 public class PaymentSubmitServlet extends HttpServlet {
 
     //      ---------INSERT-DATA-------------------------------------doPOST

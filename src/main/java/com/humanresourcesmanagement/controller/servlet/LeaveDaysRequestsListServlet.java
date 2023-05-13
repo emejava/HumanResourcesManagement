@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/leaveDaysRequestsList")
+@WebServlet(urlPatterns = "/application/leaveDaysRequestsList")
 public class LeaveDaysRequestsListServlet extends HttpServlet {
 
     //      ---------FIND-LEAVEDAYS-REQUESTS-----------------------------------doGET

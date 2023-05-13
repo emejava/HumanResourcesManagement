@@ -35,13 +35,13 @@ public class Retirement {
     private Person person;
 
     @JsonProperty("تاریخ")
-    @NotBlank(message = "تاریخ اعلام بازنشتگی وارد نشده")
+//    @NotBlank(message = "تاریخ اعلام بازنشتگی وارد نشده")
     @NonNull
     private LocalDate date;
 
     @JsonProperty("آخرین فیش حقوقی")
     @NonNull
-    @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
+//    @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
     @OneToOne(cascade = CascadeType.ALL)
     private Payment lastPayment;
 

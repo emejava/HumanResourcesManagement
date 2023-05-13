@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li>
-                <a href="Dashboard.jsp">
+                <a href="/application/Dashboard.jsp">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="title">داشبورد</span>
                 </a>
@@ -55,14 +55,14 @@
             </li>
 
             <li>
-                <a href="SignUp.jsp">
+                <a href="/application/SignUp.jsp">
                     <span class="icon"><ion-icon name="cog-outline"></ion-icon></span>
                     <span class="title">ثبت نام</span>
                 </a>
             </li>
 
             <li>
-                <a href="CentralRecruitment.jsp">
+                <a href="/application/CentralRecruitment.jsp">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <span class="title">کارگزینی مرکزی</span>
                 </a>
@@ -102,29 +102,29 @@
 
         <div class="container1"  dir="rtl">
             <header>فرم استعفا</header>
-            <form action="resignSubmit.do" method="post">
+            <form action="application/resignSubmit.do" method="post">
                 <div class="form first">
                     <div class="personal">
 
                         <div class="fields">
                             <div class="input-field">
                                 <label>علت</label>
-                                <input type="text" name="reason" placeholder="شماره پرسنلی خود را وارد کنید" required>
+                                <input type="text" name="Reason" placeholder="شماره پرسنلی خود را وارد کنید" required>
                             </div>
                             <div class="input-field">
                                 <label>تاریخ</label>
-                                <input type="date" name="date" required>
+                                <input type="date" name="Date" required>
                             </div>
                             <div class="input-field">
                                 <label>شماره پرسنلی</label>
-                                <input type="number" name="person"  placeholder="علت را وارد نمایید" required>
+                                <input type="number" name="PersonId"  placeholder="علت را وارد نمایید" required>
                             </div>
                             <div class="input-field">
                                 <label>پیوست</label>
                                 <input type="text" name="Attachment" placeholder="پیوست مربوطه را وارد کنید" required>
                             </div>
                             <div class="input-field">
-                                <select class="select" name="personalId">
+                                <select class="select" name="PersonalId">
                                     <c:forEach var="person" items="${sessionScope.person}">
                                     <option value="personalOfDismissal">
                                         Personal Of Resignation

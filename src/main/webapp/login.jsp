@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="HCJ/CSS/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
-<div id="particles-js" style="font-family: 'B Kamran'">
+<div id="particles-js">
     <div id="login" dir="rtl">
         <form action="/login.do" method="post">
                 <i class="fa fa-user"></i><label>نام کاربری</label>
@@ -26,7 +26,7 @@
                 <input type="password" id="password" name="password" placeholder="password" required>
             <br>
                 <i class="fa fa-cloud" ></i><label> مرا بخاطر بسپار</label>
-                <input type="checkbox" name="rememberMe" value="rememberMe">
+                <input type="checkbox" name="rememberMe" value="true">
             <br>
             <button type="submit">ورود</button>
 

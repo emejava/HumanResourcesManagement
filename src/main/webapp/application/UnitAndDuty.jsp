@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="Dashboard.jsp">
+                <a href="/application/Dashboard.jsp">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="title">داشبورد</span>
                 </a>
@@ -52,14 +52,14 @@
             </li>
 
             <li>
-                <a href="SignUp.jsp">
+                <a href="/application/SignUp.jsp">
                     <span class="icon"><ion-icon name="cog-outline"></ion-icon></span>
                     <span class="title">ثبت نام</span>
                 </a>
             </li>
 
             <li>
-                <a href="CentralRecruitment.jsp">
+                <a href="/application/CentralRecruitment.jsp">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <span class="title">کارگزینی مرکزی</span>
                 </a>
@@ -99,7 +99,7 @@
 
         <div class="container1" dir="rtl">
             <header>بخش/وظیفه</header>
-            <form action="UnitAndDutySubmit.do" method="post">
+            <form action="application/UnitAndDutySubmit.do" method="post">
                 <div class="form first">
                     <div class="personal">
                         <span class="title">بخش</span>
@@ -115,7 +115,7 @@
                             </div>
                             <div class="input-field">
                                 <label> نام بخش</label>
-                                <input type="text" name="NameUnit" placeholder="نام بخش خود را وارد نمایید" required>
+                                <input type="text" name="Name" placeholder="نام بخش خود را وارد نمایید" required>
                             </div>
                             <div class="input-field">
                                 <label>وظایف</label>

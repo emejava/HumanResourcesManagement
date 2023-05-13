@@ -56,7 +56,7 @@ public class Resignation {
 
     @JsonProperty("آخرین فیش حقوقی")
     @NonNull
-    @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
+//    @NotBlank(message = "کد آخرین فیش حقوقی وارد نشده")
     @OneToOne(cascade = CascadeType.ALL)
     private Payment lastPayment;
 

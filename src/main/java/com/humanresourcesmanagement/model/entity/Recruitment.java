@@ -97,7 +97,7 @@ public class Recruitment {
 
     @JsonProperty("شیفت مورد نظر")
     @NonNull
-    @NotBlank(message = "شیفت کاری را انتخاب کنید")
+//    @NotBlank(message = "شیفت کاری را انتخاب کنید")
     @Column(name = "shift_work", columnDefinition = "NVARCHAR2(15)")
     @Enumerated(EnumType.STRING)
     private ShiftWork shiftWork;

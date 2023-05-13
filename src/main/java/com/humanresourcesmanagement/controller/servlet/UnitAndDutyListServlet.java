@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import javax.net.ssl.HttpsURLConnection;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/UnitAndDutyList")
+@WebServlet(urlPatterns = "/application/UnitAndDutyList")
 public class UnitAndDutyListServlet extends HttpServlet {
 
     //      ---------UNIT-AND-DUTY-LIST-----------------------------------doGET

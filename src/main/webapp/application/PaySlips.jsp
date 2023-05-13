@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li>
-                <a href="Dashboard.jsp">
+                <a href="/application/Dashboard.jsp">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="title">داشبورد</span>
                 </a>
@@ -51,14 +51,14 @@
             </li>
 
             <li>
-                <a href="SignUp.jsp">
+                <a href="/application/SignUp.jsp">
                     <span class="icon"><ion-icon name="cog-outline"></ion-icon></span>
                     <span class="title">ثبت نام</span>
                 </a>
             </li>
 
             <li>
-                <a href="CentralRecruitment.jsp">
+                <a href="/application/CentralRecruitment.jsp">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <span class="title">کارگزینی مرکزی</span>
                 </a>
@@ -104,49 +104,19 @@
                     <th>سال</th>
                     <th>از تاریخ</th>
                     <th>تا تاریخ</th>
-                    <th>حقوق پایه</th>
-                    <th>اضافه کاری</th>
-                    <th>غیبت</th>
-                    <th>زمان عملی</th>
-                    <th>تعداد حقوق اضافه کاری</th>
-                    <th>تعداد حقوق غیبت</th>
-                    <th>تعداد حقوق عملی</th>
-                    <th>مسکن</th>
-                    <th>بهره</th>
-                    <th>پاداش</th>
-                    <th>پرداختی فرزندان</th>
-                    <th>پرداختی جدایی</th>
-                    <th>بیمه</th>
-                    <th>مالیات</th>
-                    <th>وام</th>
                     <th>مجموع پرداختی</th>
                     <th>شماره تراکنش</th>
                     <th>جزئیات</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="payment" items="${sessionScope.paySlips}">
+                <c:forEach var="Payment" items="${sessionScope.paySlips}">
                 <tr class="active-row">
                     <td>${Payment.id}</td>
-                    <td>${Payment.person}</td>
+                    <td>${Payment.person.employment.personnelCode}</td>
                     <td>${Payment.year}</td>
                     <td>${Payment.from}</td>
                     <td>${Payment.till}</td>
-                    <td>${Payment.basicSalary}</td>
-                    <td>${Payment.overTime}</td>
-                    <td>${Payment.absenceTime}</td>
-                    <td>${Payment.operationTime}</td>
-                    <td>${Payment.overTimePayCount}</td>
-                    <td>${Payment.absencePayCount}</td>
-                    <td>${Payment.operationPayCount}</td>
-                    <td>${Payment.housing}</td>
-                    <td>${Payment.benefits}</td>
-                    <td>${Payment.managementBonus}</td>
-                    <td>${Payment.childrenPay}</td>
-                    <td>${Payment.severancePay}</td>
-                    <td>${Payment.insurance}</td>
-                    <td>${Payment.tax}</td>
-                    <td>${Payment.debt}</td>
                     <td>${Payment.totalPayment}</td>
                     <td>${Payment.transactionNumber}</td>
                     <td class="Details"><div class="input3"><input type="submit" value="جزئیات"></div></td>

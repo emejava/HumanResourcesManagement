@@ -6,10 +6,17 @@ body {
     justify-content: center;
     align-items: center;
 }
+@font-face {
+    font-family: 'shabnam';
+    src: url("fonts/Shabnam.ttf");
+    src: url("fonts/Shabnam.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
 #particles-js {
     height: 100%;
-    background: rgba(111, 183, 111, 0.85);
+    background: rgb(2, 148, 61);
 }
 
 #login {
@@ -58,11 +65,10 @@ body {
     border: 1px #ccc solid;
     border-radius: 1em;
     width: 100px;
-    font-family: 'B Kamran';
-    font-size: 1.3em;
+    font-family: Shabnam;
 }
 
-#login input[type="submit"]:hover {
+#login button[type="submit"]:hover {
     background-color: rgba(227, 227, 227, 0.55);
 }
 
@@ -71,14 +77,9 @@ i {
     padding: 4px;
 }
 
-label {
-    font-size: 1.5em;
-}
-
 a {
     text-decoration: none;
     color: white;
-    font-size: 1.3em;
 }
 
 a:hover {
@@ -87,7 +88,6 @@ a:hover {
 
 #login input[type="chechbox"] {
     color: white;
-    font-size: 1.3em;
 }
 
 #login input[type="chechbox"]:hover {

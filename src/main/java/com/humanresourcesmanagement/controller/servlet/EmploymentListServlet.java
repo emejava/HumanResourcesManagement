@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/employmentList")
+@WebServlet(urlPatterns = "/application/employmentList")
 public class EmploymentListServlet extends HttpServlet {
 
     //      ---------FIND-EMPLOYMENTS-------------------------------------doGET

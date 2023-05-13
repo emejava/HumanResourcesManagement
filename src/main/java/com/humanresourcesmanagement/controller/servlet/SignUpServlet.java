@@ -4,6 +4,7 @@ import com.humanresourcesmanagement.controller.*;
 import com.humanresourcesmanagement.model.entity.*;
 import com.humanresourcesmanagement.model.entity.enums.*;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
@@ -11,6 +12,11 @@ import java.io.IOException;
 import java.time.LocalDate;
 
 @WebServlet(urlPatterns = "/application/signUp.do")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 10,
+        maxRequestSize = 1024 * 1024 * 100
+)
 public class SignUpServlet extends HttpServlet {
 
     //      ---------INSERT-DATA-------------------------------------doPOST
@@ -41,17 +47,15 @@ public class SignUpServlet extends HttpServlet {
         Part nationalCardPicture = req.getPart("NationalCardPicture");
         String nationalCardPicName = nationalCardPicture.getSubmittedFileName();
         String nationalCardPicPath = "c:\\root\\" + nationalCardPicName;
-        for (Part part : req.getParts()) {
-            part.write(nationalCardPicPath);
-        }
+        nationalCardPicture.write(nationalCardPicPath);
+
         Attachment nationalCardPic = new Attachment("nationalCardPic", doer, nationalCardPicPath);
+
         //            -----------------File2
         Part personnelPicture = req.getPart("PersonnelPicture");
         String personnelPicName = nationalCardPicture.getSubmittedFileName();
         String personnelPicPath = "c:\\root\\" + personnelPicName;
-        for (Part part : req.getParts()) {
-            part.write(personnelPicPath);
-        }
+        personnelPicture.write(personnelPicPath);
         Attachment personnelPic = new Attachment("personnelPic", doer, personnelPicPath);
 
         //    doPOST---------USER-DATA-----------

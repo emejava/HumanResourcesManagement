@@ -45,7 +45,7 @@ public class Unit {
     private String name;
 
     @JsonProperty("بخش های مرتبط")
-    @NotBlank(message = "بخش های مربوطه را انتخاب کنید")
+//    @NotBlank(message = "بخش های مربوطه را انتخاب کنید")
     @OneToMany
     private List<Unit> relatedUnits;
 
@@ -57,7 +57,7 @@ public class Unit {
 
     @JsonProperty("وظایف")
     @NonNull
-    @NotBlank(message = "وظایف مربوطه را انتخاب کنید")
+//    @NotBlank(message = "وظایف مربوطه را انتخاب کنید")
     @OneToMany(targetEntity = Duty.class)
     private List<Duty> duties;
 

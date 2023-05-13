@@ -12,7 +12,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet(urlPatterns = "/recruitment.do")
+@WebServlet(urlPatterns = "/application/recruitment.do")
 public class RecruitmentFormServlet extends HttpServlet {
 
     //      ---------FIND-PERSONS-------------------------------------doGET
@@ -31,7 +31,7 @@ public class RecruitmentFormServlet extends HttpServlet {
 
         //    doPOST---------RECRUITMENT-DATA---------
         Person person = new Person();
-        person.setId(Long.valueOf(req.getParameter("PersonId"))); //TODO: Front return the person id to servlet but show id, first and last name
+        person.setId(Long.valueOf(req.getParameter("PersonId")));
         String education = req.getParameter("Education");
         String fieldOfStudy = req.getParameter("FieldOfStudy");
         String educationPlace = req.getParameter("EducationPlace");

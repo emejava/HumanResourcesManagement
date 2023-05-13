@@ -24,7 +24,7 @@
                 </a>
             </li>
             <li>
-                <a href="Dashboard.jsp">
+                <a href="/application/Dashboard.jsp">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="title">داشبورد</span>
                 </a>
@@ -55,14 +55,14 @@
             </li>
 
             <li>
-                <a href="SignUp.jsp">
+                <a href="/application/SignUp.jsp">
                     <span class="icon"><ion-icon name="cog-outline"></ion-icon></span>
                     <span class="title">ثبت نام</span>
                 </a>
             </li>
 
             <li>
-                <a href="CentralRecruitment.jsp">
+                <a href="/application/CentralRecruitment.jsp">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <span class="title">کارگزینی مرکزی</span>
                 </a>
@@ -102,7 +102,7 @@
 
         <div class="container1"  dir="rtl">
             <header>فرم استخدام</header>
-            <form action="employmentForm.do" method="post">
+            <form action="application/employmentForm.do" method="post">
                 <div class="form first">
                     <div class="personal">
                         <div class="fields">
@@ -138,13 +138,10 @@
                                 <input type="text" name="ShiftWork" placeholder="شیفت خود را انتخماب کنید"  required>
                             </div>
                             <div class="input-field">
-                                <select class="select" name="personalId">
-                                    <c:forEach var="person" items="${sessionScope.person}">
-                                    <option value="personalOfDismissal">
-                                        Personal Of Employment
-                                    </option>
-                                    <option value="personalOfDismissal">
-                                            ${person.firstName}${" "}${person.lastName}${" "}${person.id}
+                                <select class="select" name="PersonId">
+                                    <c:forEach var="person" items="${sessionScope.personList}">
+                                    <option value="${person.id}">
+                                            ${person.firstName} + " " + ${person.lastName}
                                     </option>
                                     </c:forEach>
                                 </select>

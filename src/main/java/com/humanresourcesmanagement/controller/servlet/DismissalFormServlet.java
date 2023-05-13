@@ -4,12 +4,18 @@ package com.humanresourcesmanagement.controller.servlet;
 import com.humanresourcesmanagement.controller.*;
 import com.humanresourcesmanagement.model.entity.*;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
 @WebServlet(urlPatterns = "/application/dismissal.do")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 10,
+        maxRequestSize = 1024 * 1024 * 100
+)
 public class DismissalFormServlet extends HttpServlet {
 
     //      ---------FIND-PERSONS-------------------------------------doGET
@@ -40,9 +46,7 @@ public class DismissalFormServlet extends HttpServlet {
         Part CVParts = req.getPart("Attachment");
         String CVName = CVParts.getSubmittedFileName();
         String path = "c:\\root\\" + CVName;
-        for (Part part : req.getParts()) {
-            part.write(path);
-        }
+        CVParts.write(path);
         Attachment CV = new Attachment(CVName, doer, path);
 
 

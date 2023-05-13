@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/UnitAndDutySubmit.do")
+@WebServlet(urlPatterns = "/application/UnitAndDutySubmit.do")
 public class UnitAndDutySubmitServlet extends HttpServlet {
 
     //      ---------DUTY-AND-POSITION------------------------------------doGET

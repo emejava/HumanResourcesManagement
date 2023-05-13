@@ -9,7 +9,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(urlPatterns = "/leaveDaysSubmit")
+@WebServlet(urlPatterns = "/application/leaveDaysSubmit")
 public class LeaveDaysSubmitServlet extends HttpServlet {
 
     //      ---------INSERT-DATA-------------------------------------doPOST

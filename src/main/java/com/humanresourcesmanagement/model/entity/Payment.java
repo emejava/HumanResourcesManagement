@@ -53,17 +53,17 @@ public class Payment {
 
     @JsonProperty("سال")
     @NonNull
-    @NotBlank(message = "سال وارد نشده")
+//    @NotBlank(message = "سال وارد نشده")
     private Year year;
 
     @JsonProperty("از تاریخ")
     @NonNull
-    @NotBlank(message = "تاریخ شروع وارد نشده")
+//    @NotBlank(message = "تاریخ شروع وارد نشده")
     private LocalDate from;
 
     @JsonProperty("تا تاریخ")
     @NonNull
-    @NotBlank(message = "تاریخ پایان وارد نشده")
+//    @NotBlank(message = "تاریخ پایان وارد نشده")
     private LocalDate till;
 
     @JsonProperty("شخص")
@@ -73,53 +73,53 @@ public class Payment {
 
     @JsonProperty("حقوق پایه")
     @NonNull
-    @NotBlank(message = "حقوق پایه وارد نشده")
-    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @NotBlank(message = "حقوق پایه وارد نشده")
+//    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="basic_Salary",columnDefinition = "NUMBER(10)")
     private Double basicSalary;
 
     @JsonProperty("اضافه کاری")
     @NonNull
-    @NotBlank(message = "اضافه کاری وارد نشده")
+//    @NotBlank(message = "اضافه کاری وارد نشده")
     @Column(name="over_Time")
     private Long overTime;
 
     @JsonProperty("غیبت")
     @NonNull
-    @NotBlank(message = "زمان غیبت وارد نشده")
+//    @NotBlank(message = "زمان غیبت وارد نشده")
     @Column(name="absence_time")
     private Long absenceTime;
 
     @JsonProperty("کارکرد")
     @NonNull
-    @NotBlank(message = "کارکد وارد نشده")
+//    @NotBlank(message = "کارکد وارد نشده")
     @Column(name="operation_time")
     private Long operationTime;
 
     @JsonProperty("مبلغ اضافه کاری")
     @NonNull
-    @NotBlank
+//    @NotBlank
     @Column(name="over_time_count",columnDefinition = "NUMBER(10)")
     private Double overTimePayCount;
 
     @JsonProperty("کسری غیبت")
     @NonNull
-    @NotBlank
-    @Pattern(regexp = "^\\d$")
+//    @NotBlank
+//    @Pattern(regexp = "^\\d$")
     @Column(name="absence_count",columnDefinition = "NUMBER(10)")
     private Double absencePayCount;
 
     @JsonProperty("ملبغ کارکرد")
     @NonNull
-    @NotBlank
-    @Pattern(regexp = "^\\d$")
+//    @NotBlank
+//    @Pattern(regexp = "^\\d$")
     @Column(name="operation_count",columnDefinition = "NUMBER(10)")
     private Double operationPayCount;
 
     @JsonProperty("حق مسکن")
     @NonNull
-    @NotBlank(message = "حق مسکن را وارد کنید")
-    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @NotBlank(message = "حق مسکن را وارد کنید")
+//    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="housing",columnDefinition = "NUMBER(10)")
     private Double housing;
 
@@ -130,53 +130,53 @@ public class Payment {
 
     @JsonProperty("مبلغ کسر بابت مرخصی")
     @NonNull
-    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="leave_days_pay_deduction",columnDefinition = "NUMBER(10)")
     private Double leaveDaysPayDeduction;
 
     @JsonProperty("مزایا")
     @NonNull
-    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="benefits",columnDefinition = "NUMBER(10)")
     private Double benefits;
 
     @JsonProperty("پاداش مدیرتی")
     @NonNull
-    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="management_bonus",columnDefinition = "NUMBER(10)")
     private Double managementBonus;
 
     @JsonProperty("حق فرزند")
     @NonNull
-    @NotBlank(message = "حق فرزند وارد نشده")
-    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @NotBlank(message = "حق فرزند وارد نشده")
+//    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="children_pay",columnDefinition = "NUMBER(10)")
     private Double childrenPay;
 
     @JsonProperty("سنوات")
     @NonNull
-    @NotBlank(message = "سنوات وارد نشده")
-    @Pattern(regexp = "^[\\d.]{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @NotBlank(message = "سنوات وارد نشده")
+//    @Pattern(regexp = "^[\\d.]{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="severance_pay",columnDefinition = "NUMBER(10)")
     private Double severancePay;
 
     @JsonProperty("حق بیمه")
     @NonNull
-    @NotBlank(message = "حق بیمه وارد نشده")
-    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @NotBlank(message = "حق بیمه وارد نشده")
+//    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="insurance",columnDefinition = "NUMBER(10)")
     private Double insurance;
 
     @JsonProperty("مالیات")
     @NonNull
-    @NotBlank(message = "مالیات وارد نشده")
-    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @NotBlank(message = "مالیات وارد نشده")
+//    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="tax",columnDefinition = "NUMBER(10)")
     private Double tax;
 
     @JsonProperty("کسورات")
-    @NotBlank(message = "کسورات وارد نشده")
-    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
+//    @NotBlank(message = "کسورات وارد نشده")
+//    @Pattern(regexp = "^\\d{10}$",message = "از اعداد انگلیسی استفاده کنید")
     @Column(name="debt",columnDefinition = "NUMBER(10)")
     private Double debt;
 
@@ -185,7 +185,7 @@ public class Payment {
     private Double totalPayment;
 
     @JsonProperty("شماره تراکنش")
-    @NotBlank
+//    @NotBlank
     @Column(name = "transaction_number",columnDefinition = "NUMBER(15)")
     private Long transactionNumber;
 

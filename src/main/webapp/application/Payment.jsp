@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="Dashboard.jsp">
+                <a href="/application/Dashboard.jsp">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span class="title">داشبورد</span>
                 </a>
@@ -52,14 +52,14 @@
             </li>
 
             <li>
-                <a href="SignUp.jsp">
+                <a href="/application/SignUp.jsp">
                     <span class="icon"><ion-icon name="cog-outline"></ion-icon></span>
                     <span class="title">ثبت نام</span>
                 </a>
             </li>
 
             <li>
-                <a href="CentralRecruitment.jsp">
+                <a href="/application/CentralRecruitment.jsp">
                     <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                     <span class="title">کارگزینی مرکزی</span>
                 </a>
@@ -99,18 +99,18 @@
 
         <div class="container1" dir="rtl">
             <header> فرم پرداخت</header>
-            <form action="paymentSubmit.do" method="post">
+            <form action="application/paymentSubmit.do" method="post">
                 <div class="form first">
                     <div class="personal">
 
                         <div class="fields">
                             <div class="input-field">
                                 <label>تا تاریخ</label>
-                                <input type="datetime-local" name="DateTill" required>
+                                <input type="datetime-local" name="Till" required>
                             </div>
                             <div class="input-field">
                                 <label>از تاریخ</label>
-                                <input type="datetime-local" name="dateForm" required>
+                                <input type="datetime-local" name="From" required>
                             </div>
                             <div class="input-field">
                                 <label>سال</label>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="input-field">
                                 <label>شماره پرسنلی</label>
-                                <input type="number" name="Person" placeholder="شماره پرسنلی خود را وارد کنید" required>
+                                <input type="number" name="PersonnelCode" placeholder="شماره پرسنلی خود را وارد کنید" required>
                             </div>
                         </div>
                     </div>
@@ -221,7 +221,7 @@
                             </div>
                             <div class="input-field">
                                 <label>شماره تراکنش</label>
-                                <input type="number" name="Transaction Number" placeholder="شماره تراکنش را وراد نمایید" required>
+                                <input type="number" name="TransactionNumber" placeholder="شماره تراکنش را وراد نمایید" required>
                             </div>
                             <!--                    <div class="input-field">-->
                             <!--                        <label>رنگ وضعیت</label>-->
