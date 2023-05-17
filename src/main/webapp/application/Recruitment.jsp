@@ -153,12 +153,12 @@
                             <div class="input-field">
                                 <select class="select" name="personalId">
                                     <c:forEach var="person" items="${sessionScope.person}">
-                                    <option value="personalOfDismissal">
-                                        Personal Of Recruitment
-                                    </option>
-                                    <option value="personalOfDismissal">
-                                            ${person.firstName}${" "}${person.lastName}${" "}${person.id}
-                                    </option>
+                                        <option value="personalOfDismissal">
+                                            Personal Of Recruitment
+                                        </option>
+                                        <option value="personalOfDismissal">
+                                                ${person.firstName}${" "}${person.lastName}${" "}${person.id}
+                                        </option>
                                     </c:forEach>
                                 </select>
                             </div>

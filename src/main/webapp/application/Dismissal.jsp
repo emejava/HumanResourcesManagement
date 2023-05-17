@@ -129,12 +129,36 @@
                             <div class="input-field">
                                 <select class="select" name="PersonId">
                                     <c:forEach var="person" items="${sessionScope.personList}">
-                                    <option value="personalOfDismissal">
-                                        Personal Of Dismissal
-                                    </option>
-                                    <option value="personalOfDismissal">
-                                            ${person.firstName}+${person.lastName}
-                                    </option>
+                                        <option value="personalOfDismissal">
+                                            Personal Of Dismissal
+                                        </option>
+                                        <option value="personalOfDismissal">
+                                                ${person.firstName}+${person.lastName}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <select class="select" name="Attachment">
+                                    <c:forEach var="attachment" items="${sessionScope.attachmentList}">
+                                        <option value="Attachment">
+                                            Attachment Of Resignation
+                                        </option>
+                                        <option value="Attachment">
+                                                ${attachment.id}${" "}${attachment.name}${" "}${attachment.path}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <select class="select" name="LastPayment">
+                                    <c:forEach var="lastPayment" items="${sessionScope.lastPaymentList}">
+                                        <option value="LastPayment">
+                                            LastPayment Of Resignation
+                                        </option>
+                                        <option value="LastPayment">
+                                                ${lastPayment.id}
+                                        </option>
                                     </c:forEach>
                                 </select>
                             </div>

@@ -124,14 +124,42 @@
                                 <input type="text" name="Attachment" placeholder="پیوست مربوطه را وارد کنید" required>
                             </div>
                             <div class="input-field">
+                                <label>آخرین تراکنش</label>
+                                <input type="datetime-local" name="lastPayment" required>
+                            </div>
+                            <div class="input-field">
                                 <select class="select" name="PersonalId">
-                                    <c:forEach var="person" items="${sessionScope.person}">
-                                    <option value="personalOfDismissal">
-                                        Personal Of Resignation
-                                    </option>
-                                    <option value="personalOfDismissal">
-                                            ${person.firstName}${" "}${person.lastName}${" "}${person.id}
-                                    </option>
+                                    <c:forEach var="person" items="${sessionScope.personList}">
+                                        <option value="personalOfResignation">
+                                            Personal Of Resignation
+                                        </option>
+                                        <option value="personalOfResignation">
+                                                ${person.firstName}${" "}${person.lastName}${" "}${person.id}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <select class="select" name="Attachment">
+                                    <c:forEach var="attachment" items="${sessionScope.attachmentList}">
+                                        <option value="Attachment">
+                                            Attachment Of Resignation
+                                        </option>
+                                        <option value="Attachment">
+                                                ${attachment.id}${" "}${attachment.name}${" "}${attachment.path}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <select class="select" name="LastPayment">
+                                    <c:forEach var="lastPayment" items="${sessionScope.lastPaymentList}">
+                                        <option value="LastPayment">
+                                            LastPayment Of Resignation
+                                        </option>
+                                        <option value="LastPayment">
+                                                ${lastPayment.id}
+                                        </option>
                                     </c:forEach>
                                 </select>
                             </div>

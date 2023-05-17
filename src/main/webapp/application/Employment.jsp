@@ -140,9 +140,48 @@
                             <div class="input-field">
                                 <select class="select" name="PersonId">
                                     <c:forEach var="person" items="${sessionScope.personList}">
-                                    <option value="${person.id}">
-                                            ${person.firstName} + " " + ${person.lastName}
-                                    </option>
+                                        <option value="personalOfEmployment">
+                                            Personal Of Employment
+                                        </option>
+                                        <option value="personalOfEmployment">
+                                                ${person.firstName}${" "}${person.lastName}${" "}${person.id}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <select class="select" name="unit">
+                                    <c:forEach var="unit" items="${sessionScope.unitList}">
+                                        <option value="unit">
+                                            unit Of Employment
+                                        </option>
+                                        <option value="unit">
+                                                ${unit.id}${" "}${unit.name}${" "}${unit.duties}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <select class="select" name="duty">
+                                    <c:forEach var="duty" items="${sessionScope.dutyList}">
+                                        <option value="duty">
+                                            Duty Of Employment
+                                        </option>
+                                        <option value="duty">
+                                                ${duty.id}${" "}${duty.position}
+                                        </option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <select class="select" name="position">
+                                    <c:forEach var="position" items="${sessionScope.positionList}">
+                                        <option value="position">
+                                            position Of Employment
+                                        </option>
+                                        <option value="position">
+                                                ${position.id}${" "}${position.name}
+                                        </option>
                                     </c:forEach>
                                 </select>
                             </div>

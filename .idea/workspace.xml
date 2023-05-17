@@ -10,169 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="last changes still without view">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/74445ddf-77c2-49d3-b067-59772bae0f5f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/74445ddf-77c2-49d3-b067-59772bae0f5f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DismissalFormServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DismissalFormServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentFormServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentFormServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/EmploymentListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/FiredPersonnelListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/FiredPersonnelListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysRequestsListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysRequestsListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysSubmitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LeaveDaysSubmitServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/MainServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/DashboardServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/NewsSubmitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/NewsSubmitServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaySlipsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaySlipsServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaymentSubmitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/PaymentSubmitServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentFormServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentFormServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RecruitmentListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ResignConfirmationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ResignConfirmationServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ResignSubmitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/ResignSubmitServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetireEmployeeForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetireEmployeeForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetiredPersonnelList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/RetiredPersonnelList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SignUpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SignUpServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SinglePaySlipServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/SinglePaySlipServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/UnitAndDutyListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/UnitAndDutyListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/UnitAndDutySubmitServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/controller/servlet/UnitAndDutySubmitServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Dismissal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Dismissal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Duty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Duty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Employment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Employment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/LeaveDays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/LeaveDays.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Payment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Payment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Recruitment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Recruitment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Resignation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Resignation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Retirement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Retirement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Unit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/particles1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/particles1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/FastInfoset-1.2.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/antlr-2.7.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/asm-9.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/asyncutil-0.1.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/btf-1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/byte-buddy-1.11.20.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/classmate-1.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-dbcp2-2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-dbcp2-2.1.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-logging-1.1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-logging-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-pool2-2.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-pool2-2.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/gson-2.9.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/hibernate-commons-annotations-5.1.2.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/hibernate-core-5.6.0.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/hibernate-validator-6.2.0.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jackson-annotations-2.11.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jackson-core-2.11.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jackson-coreutils-2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jackson-databind-2.11.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jackson-jaxrs-base-2.11.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jackson-jaxrs-json-provider-2.11.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jackson-module-jaxb-annotations-2.11.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jakarta.activation-1.2.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jakarta.activation-api-1.2.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jakarta.validation-api-2.0.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jandex-2.2.3.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/javax.activation-api-1.2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/javax.persistence-api-2.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jaxb-api-2.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jaxb-runtime-2.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jboss-annotations-api_1.3_spec-2.0.1.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jboss-jaxb-api_2.3_spec-2.0.0.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jboss-jaxrs-api_2.1_spec-2.0.1.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jboss-logging-3.4.2.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/json-patch-1.13.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/lombok-1.18.22.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/microprofile-config-api-2.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/msg-simple-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/ojdbc11-21.8.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/reactive-streams-1.0.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/resteasy-core-4.6.1.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/resteasy-core-spi-4.6.1.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/resteasy-jackson2-provider-4.6.0.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/resteasy-servlet-initializer-4.6.1.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/smallrye-common-annotation-1.6.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/smallrye-common-classloader-1.6.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/smallrye-common-constraint-1.6.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/smallrye-common-expression-1.6.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/smallrye-common-function-1.6.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/smallrye-config-2.3.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/smallrye-config-common-2.3.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/smallrye-config-core-2.3.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/stax-ex-1.8.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/txw2-2.3.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/CentralRecruitment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/CentralRecruitment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Dashboard.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Dashboard.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboard1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboard1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardForm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardNews.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardNews.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTwoPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTwoPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/styleSelect.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/styleSelect.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Dismissal.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Dismissal.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Employment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Employment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/EmploymentList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/EmploymentList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/FiredPersonnel.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/FiredPersonnel.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/LeaveDays.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/LeaveDays.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/LeaveDaysConfirmationList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/LeaveDaysConfirmationList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/News.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/News.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/PaySlips.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/PaySlips.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Payment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Payment.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Recruitment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Recruitment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/RecruitmentList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/RecruitmentList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/ResignConfirmationList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/ResignConfirmationList.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Resignation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Resignation.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/RetiredPersonalsList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/RetiredPersonalsList.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Retirement.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Retirement.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/ShowUnitWithDutyAndPosition.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/ShowUnitWithDutyAndPosition.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/SignUp.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/SignUp.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/SinglePayment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/SinglePayment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/UnitAndDuty.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/UnitAndDuty.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleNews.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleOne.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/css/styleSignUp.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/Dismissal.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/Employment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/LeaveDays.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/News.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/Payment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/Recruitment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/Resignation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/Retirement.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/SignUp.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/html/UnitAndDuty.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/asetes/js/nextBTN.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/customer1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/customer2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/customer3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/customer4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/customer5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/customer6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/centralRecruitment.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/dashboard1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/dashboard1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Delbar2 Bold .ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Digikala -_font.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Gasq.otf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Shabnam-Medium.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Shabnam.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Sultan Adan 2Line .ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/Trashin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/amin.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard1/fonts/hadye.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard2/dashboard2.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/dashboard2/dashboard2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/dashboard/user.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/navbar/navbar1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/navbar/navbar1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/navbar/navbar1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles2.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles3.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/particlesJs/particles3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/selectMenu/selectMenu1/selectMenu1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/selectMenu/selectMenu1/selectMenu1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/selectMenu/selectMenu1/selectMenu1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/sidebar/sidebar1/sidebar1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/sidebar/sidebar1/sidebar1.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
