@@ -10,17 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a64b3f48-841f-4e95-b8ce-cbfad8c7abbd" name="Changes" comment="last changes still without view">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboard1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboard1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardForm.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardForm.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardNews.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardNews.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTable.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTable.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTwoPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/dashboardTwoPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/styleSelect.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/styleSelect.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Dismissal.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Dismissal.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Employment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Employment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Recruitment.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Recruitment.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/application/Resignation.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/application/Resignation.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2161911000-02.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/humanresourcesmanagement/model/entity/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/css/font-awesome.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/HCJ/CSS/font-awesome/css/font-awesome.min.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,35 +61,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Java EE/Projects/EE/HumanResourcesManagement/src/main/webapp/WEB-INF/lib&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15234375&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "TODO_SCOPE": "All Places",
+    "WebServerToolWindowFactoryState": "false",
+    "full.screen.before.presentation.mode": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "F:/Java EE/Projects/EE/HumanResourcesManagement/src/main/webapp/WEB-INF/lib",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15234375",
+    "project.structure.side.proportion": "0.34024897",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;oracle&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "oracle"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.humanresourcesmanagement.model.entity.enums" />

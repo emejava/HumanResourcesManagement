@@ -148,7 +148,7 @@ public class Person {
     @JsonProperty("ایمیل")
     @NonNull
     @Email
-    @Pattern(regexp = "/[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,4}/",message = "ایمیل به درستی وارد نشده")
+    @Pattern(regexp = "/[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{10,40}/",message = "ایمیل به درستی وارد نشده")
     @Column(name = "email",columnDefinition = "NVARCHAR2(40)")
     private String email;
 
